@@ -32,5 +32,11 @@ namespace BlackJack.Controllers
             return View();
         }
 
+        public IActionResult Regras()
+        {
+            return View();
+        }
+           
+
     }
 }
