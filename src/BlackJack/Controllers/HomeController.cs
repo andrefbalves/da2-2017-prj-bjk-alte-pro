@@ -36,6 +36,11 @@ namespace BlackJack.Controllers
         {
             return View();
         }
+
+        public IActionResult HighScores()
+        {
+            return View();
+        }
            
 
     }
