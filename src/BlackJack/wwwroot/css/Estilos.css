@@ -14,12 +14,9 @@ h1 {
     text-align:center;
 }
 
-.navbar .navbar-nav {
-display: inline-block;
-float: none !important;
-}
-
-.navbar .navbar-collapse {
-text-align: center;
+.nav .navbar-nav {
+  list-style-type:none;
+  display:flex;
+  justify-content: center;
 }
 
