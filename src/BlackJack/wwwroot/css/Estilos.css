@@ -14,6 +14,12 @@ h1 {
     text-align:center;
 }
 
-p {
-    color:white;
+.navbar .navbar-nav {
+display: inline-block;
+float: none !important;
 }
+
+.navbar .navbar-collapse {
+text-align: center;
+}
+
