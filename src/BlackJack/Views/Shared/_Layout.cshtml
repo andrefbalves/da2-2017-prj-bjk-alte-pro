@@ -52,7 +52,17 @@
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12"><h1>@ViewData["Title"]</h1></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">@RenderBody()</div>                
+            </div>
+            <div class="row">
+                ...
+            </div>
+        </div>
         
         <footer style="color:white">
             <p>&copy; 2017 - Developed by Alte.pro</p>

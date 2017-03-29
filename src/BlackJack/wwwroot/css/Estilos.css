@@ -9,3 +9,11 @@ h1 {
     text-align:center;
 }
 
+.ViewData[Title] {
+    color:white;
+    text-align:center;
+}
+
+p {
+    color:white;
+}
