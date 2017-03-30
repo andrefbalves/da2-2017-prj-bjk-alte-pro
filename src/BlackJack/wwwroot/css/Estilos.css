@@ -9,14 +9,17 @@ h1 {
     text-align:center;
 }
 
-.ViewData[Title] {
+div.container.h1 {
     color:white;
     text-align:center;
 }
-
-.nav .navbar-nav {
+/*
+ul.centernav {
   list-style-type:none;
   display:flex;
   justify-content: center;
-}
+  float:none; 
+}*/
+
+
 
