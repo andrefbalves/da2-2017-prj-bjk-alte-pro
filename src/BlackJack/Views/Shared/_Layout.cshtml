@@ -28,36 +28,33 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top w3-bar w3-border w3-card-4">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="navbar-header">
+            <div class="row">                
+                    <div class="navbar-header col-md-2">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
-                        </button>
-                        <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BlackJack</a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav centernav">
-                            <li><a asp-area="" asp-controller="Home" asp-action="HighScores" class="w3-hover-green">HighScores</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Regras" class="w3-hover-green">Regras </a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="About" class="w3-hover-green">Alte.pro</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Contact" class="w3-hover-green">Ajuda</a></li>
-
-                        </ul>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <button class="btn btn-outline-success navbar-btn navbar-right"><span class="glyphicon glyphicon-play"></span> Jogar</button>
-                    </div>
+                        </button>                        
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BlackJack</a>
+                   </div>    
+                <div class="col-md-2"></div>            
+                    <div class="navbar-collapse collapse col-md-4">
+                            <ul class="nav navbar-nav centernav">
+                                <li><a asp-area="" asp-controller="Home" asp-action="HighScores" class="w3-hover-green">HighScores</a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="Regras" class="w3-hover-green">Regras </a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="About" class="w3-hover-green">Alte.pro</a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="Contact" class="w3-hover-green">Ajuda</a></li>
+                            </ul>
+                   </div>  
+                <div class="col-md-2"></div>                   
+                   <div class="navbar-collapse collapse col-md-2 navbar-right">
+                            <button class="btn btn-outline-success navbar-btn"><span class="glyphicon glyphicon-play"></span> Jogar</button>
+                  </div>                    
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
+     <div class="container body-content">
         <div class="container">
             <div class="row">
                 <div class="col-md-12"><h1>@ViewData["Title"]</h1></div>
