@@ -3,12 +3,16 @@
     padding-bottom: 20px;
     background-image:url(../images/39378439-blackjack-wallpapers.jpg);
     background-position:top left;
-    background-attachment:fixed;
+    background-attachment:fixed;    
 }
 
 h1 {
     color:white;
     text-align:center;
+}
+
+div.body {
+    color:white;
 }
 
 

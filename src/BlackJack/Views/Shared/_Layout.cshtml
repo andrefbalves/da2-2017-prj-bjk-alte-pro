@@ -40,16 +40,16 @@
                    </div>    
                 <div class="col-md-2"></div>            
                     <div class="navbar-collapse collapse col-md-4">
-                            <ul class="nav navbar-nav centernav">
-                                <li><a asp-area="" asp-controller="Home" asp-action="HighScores" class="w3-hover-green">HighScores</a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="Regras" class="w3-hover-green">Regras </a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="About" class="w3-hover-green">Alte.pro</a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="Contact" class="w3-hover-green">Ajuda</a></li>
+                            <ul class="nav navbar-nav">
+                                <li><a asp-area="" asp-controller="Home" asp-action="HighScores">HighScores</a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="Regras">Regras </a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="About">Alte.pro</a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Ajuda</a></li>
                             </ul>
                    </div>  
                 <div class="col-md-2"></div>                   
                    <div class="navbar-collapse collapse col-md-2 navbar-right">
-                            <button class="btn btn-outline-success navbar-btn"><span class="glyphicon glyphicon-play"></span> Jogar</button>
+                            <button class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-play"></span> Jogar</button>
                   </div>                    
                 </div>
             </div>
@@ -60,11 +60,8 @@
                 <div class="col-md-12"><h1>@ViewData["Title"]</h1></div>
             </div>
             <div class="row">
-                <div class="col-md-6">@RenderBody()</div>                
-            </div>
-            <div class="row">
-                ...
-            </div>
+                <div class="col-md-6 body">@RenderBody()</div>                
+            </div>            
         </div>
         
         <footer style="color:white">
