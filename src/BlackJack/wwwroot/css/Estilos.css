@@ -6,9 +6,11 @@
     background-attachment:fixed;    
 }
 
-h1 {
+div.coltittle {
     color:white;
     text-align:center;
+     font-weight:bolder;
+    font-size: 80px;
 }
 
 div.tittle {
@@ -20,12 +22,14 @@ p.blackjack {
     font-weight:bolder;
     font-size: 80px;
     padding-top:0px;
-    padding-bottom:0px;
-    
+    padding-bottom:0px;    
 }
 
 div.body {
     color:white;
 }
 
+footer {
+    color:white;
+}
 
