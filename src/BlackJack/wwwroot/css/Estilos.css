@@ -15,7 +15,8 @@ div.coltittle {
 
 div.tittle {
     background-color: transparent !important;  
-    margin-bottom:0px;          
+    margin-bottom:0px;        
+    line-height:200%;  
 }
 
 p.blackjack {

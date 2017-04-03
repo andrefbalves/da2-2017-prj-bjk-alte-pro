@@ -22,7 +22,7 @@ namespace BlackJack.Controllers
         }
 
 
-        public IActionResult Contact()
+        public IActionResult Help()
         {
             return View();
         }
