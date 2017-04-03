@@ -3,7 +3,7 @@
     padding-bottom: 20px;
     background-image:url(../images/39378439-blackjack-wallpapers.jpg);
     background-position:top left;
-    background-attachment:fixed;    
+    background-attachment:fixed;      
 }
 
 div.coltittle {
@@ -49,5 +49,6 @@ footer {
 .input-validation-error					{	border:1px solid #f00;	background-color:	#fee;}	
 .validation-summary-errors		{	font-weight:	bold;	color: #f00;}	
 .validation-summary-valid			{	display:	none;}
+
 
 
