@@ -10,7 +10,7 @@ div.coltittle {
     color:white;
     text-align:center;
      font-weight:bolder;
-    font-size: 80px;
+    font-size: 80px;    
 }
 
 div.tittle {
@@ -27,9 +27,19 @@ p.blackjack {
 
 div.body {
     color:white;
+    text-align:justify;    
 }
 
 footer {
     color:white;
+}
+
+.thumbnail {
+    background-color:transparent !important;
+    border: none;       
+}
+
+.thumbnail .caption {
+    color:white !important;
 }
 
