@@ -9,21 +9,21 @@
 div.coltittle {
     color:white;
     text-align:center;
-     font-weight:bolder;
+    font-weight:bolder;
     font-size: 80px;    
 }
 
 div.tittle {
     background-color: transparent !important;  
-    margin-bottom:0px;        
+    margin-bottom:0;        
     line-height:200%;  
 }
 
 p.blackjack {
     font-weight:bolder;
     font-size: 80px;
-    padding-top:0px;
-    padding-bottom:0px;    
+    padding-top:0;
+    padding-bottom:0;    
 }
 
 div.body {
@@ -43,4 +43,11 @@ footer {
 .thumbnail .caption {
     color:white !important;
 }
+
+.field-validation-error					{	color: #f00;}	
+.field-validation-valid					{	display:	none;}	
+.input-validation-error					{	border:1px solid #f00;	background-color:	#fee;}	
+.validation-summary-errors		{	font-weight:	bold;	color: #f00;}	
+.validation-summary-valid			{	display:	none;}
+
 
