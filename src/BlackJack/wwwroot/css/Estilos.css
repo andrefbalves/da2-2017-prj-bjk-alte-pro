@@ -1,16 +1,16 @@
-﻿body {
-    padding-top: 100px;
-    padding-bottom: 20px;
+﻿body {    
     background-image:url(../images/39378439-blackjack-wallpapers.jpg);
     background-position:top left;
     background-attachment:fixed;      
 }
 
-div.coltittle {
+div.coltitle {
     color:white;
     text-align:center;
     font-weight:bolder;
-    font-size: 80px;    
+    font-size: 80px;  
+    padding-top: 20px;
+    padding-bottom: 20px;  
 }
 
 div.tittle {
