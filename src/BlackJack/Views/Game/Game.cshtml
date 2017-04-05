@@ -1,9 +1,66 @@
 ﻿@model BlackJack.Models.Player
-
 @section css {
-        <link rel="stylesheet" href="~/css/GameEstilos.css" />
+        <link rel="stylesheet" href="~/css/GameEstilos.css"/>
 }
- <img src="~/images/deck_small.jpg" />  
+  
+<div class="container jogolayout">
+    <div class="row">
+        <div class="col-md-4 saudacao">
+            <h1>Olá @Model.Nome!!</h1>
+            <div class="playingCards baralho">
+                <ul class="deck">
+                    <li><div class="card back">*</div></li>
+                    <li><div class="card back">*</div></li>
+                    <li><div class="card back">*</div></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="playingCards fourColours rotateHand">              
+                 <ul class="hand">
+                    <li><div class="card back">*</div></li>
+                    <li>
+                        <div class="card rank-a spades">
+                            <span class="rank">A</span>
+                            <span class="suit">&spades;</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <strong>Pontos::</strong> 1 ou 11
+        </div>
+        <div class="col-md-4"><h1>Ronda 1</h1></div>
+    </div>   
+    <div class="row">
+        <div class="col-md-4">Aposta: 10</div>
+        <div class="col-md-4">
+            <div class="playingCards fourColours rotateHand">
+                <ul class="hand">
+                    <li>
+                        <div class="card rank-10 spades">
+                            <span class="rank">10</span>
+                            <span class="suit">&spades;</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card rank-a spades">
+                            <span class="rank">A</span>
+                            <span class="suit">&spades;</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+    </div>
+
+</div>
+
 
 
 

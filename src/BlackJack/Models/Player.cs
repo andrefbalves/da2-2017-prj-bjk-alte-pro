@@ -15,6 +15,9 @@ namespace BlackJack.Models
         [Range(18, 65, ErrorMessage = "Deve ser maior de Idade para jogar este jogo.") ]
         public int Idade { get; set; }
 
+        [Required(ErrorMessage = "Por favor introduza o numero de créditos")]
+        public int Creditos { get; set; }
+
         public Player()
         { }
     }

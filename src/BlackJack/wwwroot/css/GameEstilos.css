@@ -1,4 +1,20 @@
 ﻿body {
-    background-color: #5cb85c;
-    background-image: none;   
+    background-image:url(../images/tapete-de-blackjack-fieltro-001.jpg);
+    background-size:cover;
+}
+
+.jogolayout {
+    margin-left:0;
+}
+
+.saudacao {
+    text-align:left;     
+}
+
+baralho {
+    text-align:right !important;  
+}
+
+.mao {
+   
 }
