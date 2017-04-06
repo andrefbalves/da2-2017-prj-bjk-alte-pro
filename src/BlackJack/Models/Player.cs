@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BlackJack.Models
 {
-    public class Player
+    public class Player : Game
     {
         [Required(ErrorMessage = "Por favor introduza o seu nome")]        
         public string Nome { get; set; }
@@ -16,9 +16,7 @@ namespace BlackJack.Models
         public int Idade { get; set; }
 
         [Required(ErrorMessage = "Por favor introduza o numero de créditos")]
-        public int Creditos { get; set; }
-
-        public bool Ronda { get; set; } /*fghdf*/
+        public int Creditos { get; set; }       
 
         public Player()
         { }
