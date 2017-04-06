@@ -41,7 +41,7 @@
                             <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BlackJack</a>
                    </div>    
                 <div class="col-md-2"></div>            
-                    <div class="navbar-collapse collapse col-md-4">
+                    <div class="navbar-collapse collapse col-md-8">
                             <ul class="nav navbar-nav">
                                 <li><a asp-area="" asp-controller="Home" asp-action="HighScores">HighScores</a></li>
                                 <li><a asp-area="" asp-controller="Home" asp-action="Regras">Regras </a></li>
@@ -50,8 +50,15 @@
                             </ul>
                    </div>  
                 <div class="col-md-2"></div>                   
-                   <div class="navbar-collapse collapse col-md-2 navbar-right">
+                   <div class="navbar-collapse collapse col-md-2 navbar-right">                      
+                        @if (ViewBag.Jogo == true)
+                        {
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-play"></span> Terminar Jogo</a>
+                        }
+                        else
+                        {
                             <a asp-controller="Game" asp-action="Index" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-play"></span> Jogar</a>
+                        }
                   </div>                    
                 </div>
             </div>

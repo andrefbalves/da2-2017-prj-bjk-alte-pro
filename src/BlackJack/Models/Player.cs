@@ -18,6 +18,8 @@ namespace BlackJack.Models
         [Required(ErrorMessage = "Por favor introduza o numero de créditos")]
         public int Creditos { get; set; }
 
+        public bool Ronda { get; set; } /*fghdf*/
+
         public Player()
         { }
     }

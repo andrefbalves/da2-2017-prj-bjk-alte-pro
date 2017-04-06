@@ -1,79 +1,86 @@
 ﻿@model BlackJack.Models.Player
 @section css {
-        <link rel="stylesheet" href="~/css/GameEstilos.css"/>
+    <link rel="stylesheet" href="~/css/GameEstilos.css" />
 }
-  
-<div class="container jogolayout">
-    <div class="row">
-        <div class="col-md-3">            
-            <div class="playingCards baralho">
-                <ul class="deck">
-                    <li><div class="card back"></div></li>
-                    <li><div class="card back"></div></li>
-                    <li><div class="card back"></div></li>
-                </ul>
+@{
+    ViewBag.Jogo = true;
+}
+
+@if (@Model.Ronda == false)
+{
+    <div class="container">
+        <div class="row dealerrow">
+            <div class="col-md-3">
+                <div class="playingCards baralho">
+                    <ul class="deck">
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="playingCards fourColours">              
-                 <ul class="hand">
-                    <li><div class="card back"></div></li>
-                    <li>
-                        <div class="card rank-a spades">
-                            <span class="rank">A</span>
-                            <span class="suit">&spades;</span>
-                        </div>
-                    </li>
-                </ul>
+            <div class="col-md-6 container">
+                <div class="playingCards rotateHand faceImages">
+                    <ul class="hand">
+                        <li><div class="card back"></div></li>
+                        <li>
+                            <div class="card rank-a spades">
+                                <span class="rank">A</span>
+                                <span class="suit">&spades;</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <p><strong>Pontos:</strong> 1 ou 11</p>
             </div>
-            <p><strong>Pontos:</strong> 1 ou 11</p>
+            <div class="col-md-3"><h1>Ronda 1</h1></div>
         </div>
-        <div class="col-md-3"><h1>Ronda 1</h1></div>
-    </div>   
-    <div class="row">
-        <div class="col-md-3">Aposta: 10</div>
-        <div class="col-md-6">
-            <div class="playingCards fourColours">                
-                <ul class="table">
-                    <li>
-                        <div class="card rank-10 spades">
-                            <span class="rank">10</span>
-                            <span class="suit">&spades;</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card rank-j hearts">
-                            <span class="rank">J</span>
-                            <span class="suit">&hearts;</span>
-                        </div>
-                    </li>
-                </ul>                                  
+
+
+        <div class="row">
+            <div class="col-md-3"><button class="btn btn-primary round-btn center-block">HIT <span class="glyphicon glyphicon-plus"></span></button></div>
+            <div class="col-md-3">
+                <button class="btn btn-warning round-btn center-block">STAND <span class="glyphicon glyphicon-pause"></span></button>
             </div>
-            <p><strong>Pontos:</strong>21</p>
+            <div class="col-md-3">
+                <button class="btn btn-info round-btn center-block">DOUBLE <span class="glyphicon glyphicon-remove">2</span></button>
+            </div>
+            <div class="col-md-3"></div>
+            <button class="btn btn-danger round-btn center-block">SURRENDER</button>
         </div>
-        <div class="col-md-3"><strong>Créditos:</strong>@Model.Creditos</div>
-    </div>
-    <div class="row">        
+
+
+        <div class="row playerrow">
             <div class="col-md-4">
                 <div>@Model.Nome</div>
             </div>
             <div class="col-md-4">
-                <div class="active">
-                     <button class="btn btn-primary round-btn">HIT <span class="glyphicon glyphicon-plus"></span></button>
-                     <button class="btn btn-warning round-btn">STAND <span class="glyphicon glyphicon-pause"></span></button>
-                     <button class="btn btn-info round-btn">DOUBLE <span class="glyphicon glyphicon-remove">2</span></button>
-                     <button class="btn btn-danger round-btn">SURRENDER</button>
+                <div class="playingCards rotateHand faceImages">
+                    <ul class="table">
+                        <li>
+                            <div class="card rank-10 spades">
+                                <span class="rank">10</span>
+                                <span class="suit">&spades;</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card rank-j hearts">
+                                <span class="rank">J</span>
+                                <span class="suit">&hearts;</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="nav navbar-nav navbar-btn">
-                    <button class="btn btn-danger">Terminar Jogo</button>
-                </div>
+                <p><strong>Pontos:</strong>21</p>
             </div>
         </div>
-    </div>
-</div>
-
+        <div class="col-md-4"></div>
+    </div>    
+}
+else
+{
+    Olá!!!!!!
+}
 
 
 
