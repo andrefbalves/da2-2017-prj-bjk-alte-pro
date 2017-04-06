@@ -5,8 +5,7 @@
   
 <div class="container jogolayout">
     <div class="row">
-        <div class="col-md-4 saudacao">
-            <h1>Olá @Model.Nome!!</h1>
+        <div class="col-md-3">            
             <div class="playingCards baralho">
                 <ul class="deck">
                     <li><div class="card back"></div></li>
@@ -15,7 +14,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="playingCards fourColours">              
                  <ul class="hand">
                     <li><div class="card back"></div></li>
@@ -29,11 +28,11 @@
             </div>
             <p><strong>Pontos:</strong> 1 ou 11</p>
         </div>
-        <div class="col-md-4"><h1>Ronda 1</h1></div>
+        <div class="col-md-3"><h1>Ronda 1</h1></div>
     </div>   
     <div class="row">
-        <div class="col-md-4">Aposta: 10</div>
-        <div class="col-md-4">
+        <div class="col-md-3">Aposta: 10</div>
+        <div class="col-md-6">
             <div class="playingCards fourColours">                
                 <ul class="table">
                     <li>
@@ -52,21 +51,28 @@
             </div>
             <p><strong>Pontos:</strong>21</p>
         </div>
-        <div class="col-md-4"><strong>Créditos:</strong>@Model.Creditos</div>
+        <div class="col-md-3"><strong>Créditos:</strong>@Model.Creditos</div>
     </div>
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <button class="btn btn-primary roun d-btn">HIT</button> 
-            <button class="btn btn-warning round-btn">STAND</button> 
-            <button class="btn btn-info round-btn">DOUBLE</button> 
-            <button class="btn btn-danger round-btn">SURRENDER</button> 
-        </div>
-        <div class="col-md-4">
-            <button class="btn btn-danger">Terminar Jogo</button>
+        <div class="navbar navbar-inverse navbar-fixed-bottom w3-bar w3-border w3-card-4">
+            <div class="col-md-2">
+                <div>@Model.Nome</div>
+            </div>
+            <div class="col-md-8">
+                <div class="nav navbar-nav navbar-btn navbar-collapse collapse ">
+                     <button class="btn btn-primary round-btn navbar-btn">HIT</button>
+                     <button class="btn btn-warning round-btn navbar-btn">STAND</button>
+                     <button class="btn btn-info round-btn navbar-btn">DOUBLE</button>
+                     <button class="btn btn-danger round-btn navbar-btn">SURRENDER</button>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="navbar-collapse collapse navbar-right">
+                    <button class="btn btn-danger navbar-right navbar-btn">Terminar Jogo</button>
+                </div>
+            </div>
         </div>
     </div>
-
 </div>
 
 

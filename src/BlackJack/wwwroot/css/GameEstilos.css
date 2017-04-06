@@ -15,9 +15,9 @@ baralho {
     text-align:right !important;  
 }
 
-.round-btn {
+round-btn {
     display:block;
-    width:80px;
+    width:100px;
     height:80px;
     line-height:50px;
     border: 2px solid #f5f5f5;
