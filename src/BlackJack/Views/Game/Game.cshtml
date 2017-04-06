@@ -16,6 +16,18 @@
                         <li><div class="card back"></div></li>
                         <li><div class="card back"></div></li>
                         <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
                     </ul>
                 </div>
             </div>
@@ -33,7 +45,7 @@
                 </div>
                 <p><strong>Pontos:</strong> 1 ou 11</p>
             </div>
-            <div class="col-md-3"><h1>Ronda 1</h1></div>
+            <div class="c   ol-md-3"><h1>Ronda 1</h1></div>
         </div>
 
 
@@ -78,17 +90,50 @@
     </div>
 }
 else
-{
-    <form asp-action="Game" method="post">
-        <div asp-validation-summary="All"></div>
-        <div class="form-group form">
-            <label asp-for="Aposta">Está na hora de largar dinheiro</label>
-            <input asp-for="Aposta" class="form-control" />
-        </div>
-        <button type="submit" class="btn btn-warning">Apostar</button>
-    </form>
+{ 
+    <div class="container">
+        <div class="row dealerrow">
+            <div class="col-md-3">
+                <div class="playingCards baralho">
+                    <ul class="deck">
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                        <li><div class="card back"></div></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 container">                           
+            </div>
+            <div class="col-md-3"></div>
+        </div>             
 
-    
+        <div class="row playerrow">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"> 
+                <form asp-action="Game" method="post">
+                    <div asp-validation-summary="All"></div>
+                    <div class="form-group text-center">
+                        <label asp-for="Aposta">Está na altura de largar dinheiro:</label>
+                        <input asp-for="Aposta" class="form-control center-block" />
+                    </div>
+                    <button type="submit" class="btn btn-warning center-block">Apostar</button>
+                </form>            
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
 }
 
 

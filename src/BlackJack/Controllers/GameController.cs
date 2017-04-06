@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BlackJack.Models;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace BlackJack.Controllers
 {
     public class GameController : Controller
@@ -36,7 +34,7 @@ namespace BlackJack.Controllers
 
         [HttpPost]
         public IActionResult Game(Player novojogo) //perguntar ao stor se pode ser assim!!!
-        {
+        {   
             novojogo.Ronda = true;
             return View(novojogo);
         }
