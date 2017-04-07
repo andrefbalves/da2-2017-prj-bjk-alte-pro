@@ -15,6 +15,12 @@
 
 .playerrow {
     margin-top:20px;    
+    margin-bottom:60px;
+    align-items:center;
+}
+
+.btnrow {
+    text-align:center;
 }
 
 .forminicial {
@@ -25,19 +31,11 @@ baralho {
     text-align:right !important;  
 }
 
-.round-btn {
-    display:block;
-    width:100px;
-    height:80px;
-    line-height:50px;    
-    border-radius: 12px;
-    text-align:center;
-    text-decoration:none;        
-    font-size:10px;
-    font-weight:bold;
+.roundbtn {       
+    border-radius: 12px;      
 }
 
-round-btn:hover {
+.roundbtn:hover {
     background: #262626;
     
 }
