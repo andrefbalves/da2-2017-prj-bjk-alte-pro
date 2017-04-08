@@ -46,7 +46,8 @@
 
             </div>
             <div class="col-md-2">
-                <div class="w3-container">
+                <div class="container well wellsize">
+                    <p><strong><span class="glyphicon glyphicon-exclamation-sign"></span>   Ronda @Model.NumeroRonda</strong></p>
                     <strong>Dealer:</strong> 1 ou 11
                 </div>
             </div>
@@ -75,10 +76,12 @@
 
             </div>
             <div class="col-md-2">
-                <div>
-                    @Model.NomeJogador
-                <p><strong>Pontos:</strong>21</p>
-            </div>
+                <div class="container well wellsize">
+                    <p><strong><span class="glyphicon glyphicon-user"></span>   @Model.NomeJogador</strong></p>
+                    <p><strong>Créditos:</strong> @Model.CreditosAtuais()</p>
+                    <p><strong>Aposta:</strong> @Model.Aposta</p>
+                    <p><strong>Pontos:</strong> 21</p>
+                </div>
             </div>
         </div>
 
@@ -87,8 +90,8 @@
             <div class="col-md-3"></div>
 
             <div class="col-md-5">
-                <button class="btn btn-success btn-large roundbtn"><span class="glyphicon glyphicon-plus"></span>Hit</button>
-                <button class="btn btn-primary btn-large roundbtn"><span class="glyphicon glyphicon-pause"> </span>Stand</button>
+                <button class="btn btn-success btn-large roundbtn"><span class="glyphicon glyphicon-plus"></span> Hit</button>
+                <button class="btn btn-primary btn-large roundbtn"><span class="glyphicon glyphicon-pause"></span> Stand</button>
                 <button class="btn btn-warning btn-large roundbtn"><span class="glyphicon glyphicon-refresh"></span> Double</button>
                 <button class="btn btn-danger btn-large roundbtn"><span class="glyphicon glyphicon-remove"></span> Surrender</button>
 
@@ -132,19 +135,32 @@ else
         <div class="row playerrow">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                <form asp-action="PlayGame" method="post">
-                    <div asp-validation-summary="All"></div>
-                    <div class="form-group text-center">
-                        <label asp-for="Aposta">Está na altura de largar dinheiro:</label>
-                        <input asp-for="Aposta" class="form-control center-block" />
-                        <input asp-for="NomeJogador" value="@Model.NomeJogador" hidden />
-                        <input asp-for="CreditosJogador" value="@Model.NomeJogador" hidden />
-                    </div>
-                    <button type="submit" class="btn btn-warning center-block">Apostar</button>
-                </form>
+                <div class="container well wellsize">
+                    <h3>Introduz a tua aposta!</h3>
+                    <form asp-action="PlayGame" method="post">
+                        <div asp-validation-summary="All"></div>
+                        <div class="form-group text-center">
+                            <input asp-for="Aposta" class="form-control center-block" />
+                        </div>
+                        <div class="form-group text-center">
+                            <input asp-for="NomeJogador" value="@Model.NomeJogador" hidden />
+                            <input asp-for="CreditosJogador" value="@Model.CreditosJogador" hidden />
+                            <input asp-for="NumeroRonda" value="@Model.NumeroRonda" hidden />
+                        </div>
+                        <button type="submit" class="btn btn-warning center-block">Apostar</button>
+                    </form>
+                </div>
             </div>
-
             <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <div class="container well wellsize">
+                            <p><strong><span class="glyphicon glyphicon-user"></span>   @Model.NomeJogador</strong></p>
+                            <p><strong>Créditos:</strong> @Model.CreditosJogador</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

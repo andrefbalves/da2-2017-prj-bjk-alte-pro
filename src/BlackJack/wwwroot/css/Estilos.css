@@ -31,13 +31,8 @@ div.body {
     text-align:justify;    
 }
 
-.thumbnail {
+.boolform {
     background-color:transparent !important;
-    border: none;       
-}
-
-.thumbnail .caption {
-    color:white !important;
 }
 
 .field-validation-error					{	color: #f00;}	

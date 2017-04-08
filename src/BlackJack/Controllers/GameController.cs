@@ -21,6 +21,7 @@ namespace BlackJack.Controllers
             if (ModelState.IsValid)
             {
                 Game novojogo = new Game(novoJogador.Nome);
+                novojogo.EmRonda = false;
                 return View("PlayGame", novojogo);
             }
             else
@@ -28,10 +29,16 @@ namespace BlackJack.Controllers
         }
 
         [HttpPost]
-        public IActionResult PlayGame(Game  novojogo)
+        public IActionResult PlayGame(Game novojogo)
         {
-            novojogo.EmRonda = true;
-            return View(novojogo);
+            if (ModelState.IsValid)
+            {
+                novojogo.NumeroRonda = 1;
+                novojogo.EmRonda = true;
+                return View(novojogo);
+            }
+            else
+                return View(novojogo);
         }
 
 

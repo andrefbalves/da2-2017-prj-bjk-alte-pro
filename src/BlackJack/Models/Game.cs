@@ -12,10 +12,19 @@ namespace BlackJack.Models
 
         public double  CreditosJogador { get; set; }
 
+        public int NumeroRonda { get; set; }
+
         public bool EmRonda { get; set; }
 
         [Required(ErrorMessage = "Por favor faz a tua aposta!")]
-        public int Aposta { get; set; }
+        [Range(10,1000, ErrorMessage = "A aposta miníma é de 10 créditos.")]
+        public double Aposta { get; set; }   //double? causa problemas no metodo creditosatuais
+
+        public double CreditosAtuais()
+        {
+            double resultado = CreditosJogador - Aposta;
+            return resultado;
+        }
 
         public Game(string nomeJogador)
         {
