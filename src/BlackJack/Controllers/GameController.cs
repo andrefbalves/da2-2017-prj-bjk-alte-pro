@@ -35,6 +35,7 @@ namespace BlackJack.Controllers
             {
                 novojogo.NumeroRonda = 1;
                 novojogo.EmRonda = true;
+                novojogo.CreditosJogador = novojogo.CreditosAtuais();
                 return View(novojogo);
             }
             else
