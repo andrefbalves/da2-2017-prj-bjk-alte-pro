@@ -17,7 +17,7 @@ namespace BlackJack.Models
         public bool EmRonda { get; set; }
 
         [Required(ErrorMessage = "Por favor faz a tua aposta!")]
-        [Range(10,1000, ErrorMessage = "A aposta miníma é de 10 créditos.")]
+        [Range(10,100, ErrorMessage = "A aposta deve ser de 10 a 100 créditos.")]
         public double Aposta { get; set; }   //double? causa problemas no metodo creditosatuais
 
         public double CreditosAtuais()
