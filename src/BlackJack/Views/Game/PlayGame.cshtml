@@ -1,9 +1,7 @@
 ﻿@model BlackJack.Models.Game
-@section css {
-    <link rel="stylesheet" href="~/css/GameEstilos.css" />
-}
 @{
     ViewBag.Jogo = true;
+    ViewBag.BodyCLass = "Jogo";
 }
 
 @if (Model.EmRonda == true)

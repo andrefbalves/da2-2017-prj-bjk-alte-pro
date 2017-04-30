@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/cards.css" />        
-        @RenderSection("css", false)
+       
 
 
     </environment>
@@ -21,11 +21,11 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />        
-        @RenderSection("css",false)
+       
 
     </environment>
 </head>
-<body>
+<body class="@ViewBag.BodyCLass">
     <div class="navbar navbar-inverse navbar-fixed-top w3-bar w3-border w3-card-4">
         <div class="container">
             <div class="row">                
@@ -84,7 +84,6 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
-    @RenderSection("scripts", required: false)
+           
 </body>
 </html>

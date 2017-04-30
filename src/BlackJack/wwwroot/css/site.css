@@ -6,6 +6,12 @@
     background-attachment:fixed;
 }
 
+body.Jogo {
+    background-image: url(../images/s-l1000.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -73,6 +79,44 @@ div.body {
 
 .boolform {
     background-color:transparent !important;
+}
+
+
+
+.dealerrow {
+    margin-top: 60px;
+    margin-bottom: 15px;
+}
+
+.dealerhand {
+    align-items: center;
+}
+
+.playerrow {
+    margin-top: 20px;
+    margin-bottom: 60px;
+    align-items: center;
+}
+
+.btnrow {
+    text-align: center;
+}
+
+.forminicial {
+    align-items: center;
+}
+
+.roundbtn {
+    border-radius: 12px;
+}
+
+    .roundbtn:hover {
+        background: #262626;
+    }
+
+.wellsize {
+    width: 100%;
+    color: #262626;
 }
 
 .field-validation-error					{	color: #f00;}	
