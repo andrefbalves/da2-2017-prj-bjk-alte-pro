@@ -1,29 +1,52 @@
 ﻿@{
     ViewData["Title"] = "Alte.pro";
 }
-<p>
-    Esta equipa surgiu na necessidade da criação deste projeto. O objetivo central desta aplicação Web é desenvolver um dos jogos mais conhecidos dos casinos,
-    o BlackJack.
-</p>
-<p>
-    A Alte.pro é composta por 2 alunos do 2º ano da licenciatura de <strong>G</strong>estão de
-    <strong>S</strong>istemas de <strong>I</strong>nformação que almejam um futuro proveniente de sucesso.
-</p>
-<div class="row">
-    <div class="col-md-6">
-        <figure>
-            <img src="~/images/andre_alves.jpg" class="img-circle" width="210" height="210" />
-            <figcaption>André Filipe Alves, 21 anos</figcaption>
-        </figure>
-    </div>
-    <div class="col-md-6">
-        <figure>
-            <img src="~/images/diogo_teles.jpg" class="img-circle" width="210" height="210" />
-            <figcaption>Diogo Filipe Teles, 20 anos</figcaption>
-        </figure>
-    </div>
+
+<div class="btn-group-justified">
+    <button class="btn btn-success" data-toggle="collapse" href="#equipa">Equipa</button>
+    <button class="btn btn-success" data-toggle="collapse" data-target="#membros">Membros</button>
+    <button class="btn btn-success" data-toggle="collapse" data-target="#projeto">Projeto</button>
 </div>
 
+<div id="equipa" class="collapse in">
+    <p>
+        Esta equipa foi criada em 2017, com o objetivo de criar uma aplicação Web. Recebeu o nome através da junção 
+        dos apelidos dos seus criadores e uma de uma pitada de criatividade.
+    </p>
+</div>
+<div id="membros" class="collapse in">
+    <p>
+        A Alte.pro é composta por 2 alunos do 2º ano da licenciatura de <strong>G</strong>estão de
+        <strong>S</strong>istemas de <strong>I</strong>nformação que almejam um futuro proveniente de sucesso.
+    </p>
+    <div class="row">
+        <div class="col-md-6">
+            <figure>
+                <img src="~/images/andre_alves.jpg" class="img-circle" width="210" height="210" />
+                <figcaption>André Filipe Alves, 21 anos</figcaption>
+            </figure>
+        </div>
+        <div class="col-md-6">
+            <figure>
+                <img src="~/images/diogo_teles.jpg" class="img-circle" width="210" height="210" />
+                <figcaption>Diogo Filipe Teles, 20 anos</figcaption>
+            </figure>
+        </div>
+    </div>
+</div>
+<div id="projeto" class="collapse">
+   <p></p>
+     <p>
+        Este projeto surgiu na necessidade da elaboração de uma aplicação Web que pretende implementar o tão conhecido jogo de casino BlackJack.
+        Esta aplicação foi programada em Html com recurso a Bootstrap, Asp.net e MVC. O desenvolvimento do projeto foi executado através do sistema
+        de controlo de versões da plataforma GitHub, tendo assim um excelente acompanhamento do corpo de docentes da Unidade Curricular de
+        <b>Desenvolvimento de Aplicações II</b>.
+    </p>
+    <p>
+        Para facilitar o desenvolvimento do mesmo foi elaborado um sistema de entrega repartido em 3 Milestones, que permitiu
+        a receção de Feedback por parte do corpo de docentes à medida que o projeto iria sendo entregue.
+    </p>
+</div>
 
 
 
