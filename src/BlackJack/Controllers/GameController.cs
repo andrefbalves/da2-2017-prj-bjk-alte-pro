@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BlackJack.Models;
+using System.Net.Http;
 
 namespace BlackJack.Controllers
 {
@@ -16,13 +17,22 @@ namespace BlackJack.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(Player novoJogador)
+        public IActionResult Index(NewGameApiRequest novoJogador)
         {
             if (ModelState.IsValid)
             {
-                Game novojogo = new Game(novoJogador.Nome);
-                novojogo.EmRonda = false;
-                return View("PlayGame", novojogo);
+                HttpClient client = MyHTTPClientNewGame.Client;
+                string path = "/api/NewGame";
+                HttpResponseMessage response = client.PostAsJsonAsync(path, novoJogador).Result;
+                if(!response.IsSuccessStatusCode)
+                {
+                    return View();
+                }
+
+                NewGameApiRequest ng = response.Content.ReadAsAsync<NewGameApiRequest>().Result;
+                //Game novojogo = new Game(novoJogador.PlayerName);
+                //novojogo.EmRonda = false;
+                return View("PlayGame", ng);
             }
             else
                 return View();
@@ -42,6 +52,7 @@ namespace BlackJack.Controllers
                 return View(novojogo);
         }
 
+    
 
     }
 }
