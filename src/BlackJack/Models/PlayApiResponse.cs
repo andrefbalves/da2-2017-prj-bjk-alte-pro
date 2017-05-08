@@ -30,12 +30,14 @@ namespace BlackJack.Models
 
         public double CalcularResultado(RoundFinalResult resultado)
         {
-            if (resultado == RoundFinalResult.Vitória)
+            if (resultado == RoundFinalResult.Vitória)  //acrescentar quando acontecer BlackJack
                 return Bet * 2;
             else if (resultado == RoundFinalResult.Empate)
                 return Bet;
+            else if (resultado == RoundFinalResult.Derrota)
+                return 0;
             else
-                return 0; //acrescentar quando acontecer BlackJack
+                return -1; 
 
         }
 
