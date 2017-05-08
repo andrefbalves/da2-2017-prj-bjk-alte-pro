@@ -42,8 +42,7 @@ namespace BlackJack.Controllers
             if (ModelState.IsValid)
             {
                 novojogo.RoundCount = 1;
-                novojogo.PlayingRound = true;
-                novojogo.PlayerCredits = novojogo.AtualCredits();
+                novojogo.PlayingRound = true;                
                 return View(novojogo);
             }
             else

@@ -14,12 +14,6 @@ namespace BlackJack.Models
 
         public double PlayerCredits { get; set; }
 
-        public double AtualCredits()
-        {
-            double resultado = PlayerCredits - Bet;
-            return resultado;
-        }
-
         public bool PlayingRound { get; set; }
 
         public int RoundCount { get; set; }
@@ -30,7 +24,7 @@ namespace BlackJack.Models
         [Range(10, 100, ErrorMessage = "A aposta deve ser de 10 a 100 créditos.")]
         public double Bet { get; set; }
 
-        public int PlayerDecisionResult { get; set;}
+        public int PlayerDecisionResult { get; set; }
 
         public enum RoundFinalResult { Vitória, Derrota, Empate }
 
@@ -44,11 +38,11 @@ namespace BlackJack.Models
                 return 0; //acrescentar quando acontecer BlackJack
 
         }
-         
-   
 
 
-       
+
+
+
 
     }
 }
