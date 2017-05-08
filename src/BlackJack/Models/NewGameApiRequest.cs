@@ -15,18 +15,15 @@ namespace BlackJack.Models
         [RegularExpression("True", ErrorMessage = "Deves ser maior de Idade para jogar este jogo")]
         public bool MaiorIdade { get; set; }
 
-        [Required(ErrorMessage = "Por favor introduz o número de créditos")]
-        public double Creditos { get; set; }
-
         public string TeamKey { get; set; }
 
-        public NewGameApiRequest(string playername)
+       
+        public NewGameApiRequest()
         {
-            PlayerName = playername;
             TeamKey = "rGAUUmCfk3vUgfSF";
         }
-
-        public NewGameApiRequest()
-        { }
+    
+        
+            
     }
 }

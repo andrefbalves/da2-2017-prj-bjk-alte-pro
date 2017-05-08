@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Models
 {
-    public class MyHTTPClientNewGame
+    public static class MyHTTPClientNewGame
     {
         private static string baseAddress = "http://193.137.46.2";
         private static HttpClient client;

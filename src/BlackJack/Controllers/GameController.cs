@@ -24,14 +24,12 @@ namespace BlackJack.Controllers
                 HttpClient client = MyHTTPClientNewGame.Client;
                 string path = "/api/NewGame";
                 HttpResponseMessage response = client.PostAsJsonAsync(path, novoJogador).Result;
-                if(!response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
                     return View();
                 }
 
-                NewGameApiRequest ng = response.Content.ReadAsAsync<NewGameApiRequest>().Result;
-                //Game novojogo = new Game(novoJogador.PlayerName);
-                //novojogo.EmRonda = false;
+                PlayApiResponse ng = response.Content.ReadAsAsync<PlayApiResponse>().Result;
                 return View("PlayGame", ng);
             }
             else
@@ -39,20 +37,20 @@ namespace BlackJack.Controllers
         }
 
         [HttpPost]
-        public IActionResult PlayGame(Game novojogo)
+        public IActionResult PlayGame(PlayApiResponse novojogo)
         {
             if (ModelState.IsValid)
             {
-                novojogo.NumeroRonda = 1;
-                novojogo.EmRonda = true;
-                novojogo.CreditosJogador = novojogo.CreditosAtuais();
+                novojogo.RoundCount = 1;
+                novojogo.PlayingRound = true;
+                novojogo.PlayerCredits = novojogo.AtualCredits();
                 return View(novojogo);
             }
             else
                 return View(novojogo);
         }
 
-    
+
 
     }
 }

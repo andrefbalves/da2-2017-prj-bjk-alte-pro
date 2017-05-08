@@ -1,10 +1,10 @@
-﻿@model BlackJack.Models.NewGameApiRequest
+﻿@model BlackJack.Models.PlayApiResponse
 @{
     ViewBag.Jogo = true;
     ViewBag.BodyCLass = "Jogo";
 }
 
-@if (Model.EmRonda == true)
+@if (Model.PlayingRound == true)
 {
     <div class="container">
         <div class="row dealerrow">
@@ -45,7 +45,7 @@
             </div>
             <div class="col-md-2">
                 <div class="container well wellsize">
-                    <p><strong><span class="glyphicon glyphicon-exclamation-sign"></span>   Ronda @Model.NumeroRonda</strong></p>
+                    <p><strong><span class="glyphicon glyphicon-exclamation-sign"></span>   Ronda @Model.RoundCount</strong></p>
                     <strong>Dealer:</strong> 1 ou 11
                 </div>
             </div>
@@ -75,9 +75,9 @@
             </div>
             <div class="col-md-2">
                 <div class="container well wellsize">
-                    <p><strong><span class="glyphicon glyphicon-user"></span>   @Model.NomeJogador</strong></p>
-                    <p><strong>Créditos:</strong> @Model.CreditosJogador</p>
-                    <p><strong>Aposta:</strong> @Model.Aposta</p>
+                    <p><strong><span class="glyphicon glyphicon-user"></span>   @Model.PlayerName</strong></p>
+                    <p><strong>Créditos:</strong> @Model.PlayerCredits</p>
+                    <p><strong>Aposta:</strong> @Model.Bet</p>
                     <p><strong>Pontos:</strong> 21</p>
                 </div>
             </div>
@@ -138,12 +138,12 @@ else
                     <form asp-action="PlayGame" method="post">
                         <div asp-validation-summary="All"></div>
                         <div class="form-group text-center">
-                            <input asp-for="Aposta" class="form-control center-block" />
+                            <input asp-for="Bet" class="form-control center-block" />
                         </div>
                         <div class="form-group text-center">
-                            <input asp-for="NomeJogador" value="@Model.NomeJogador" hidden />
-                            <input asp-for="CreditosJogador" value="@Model.CreditosJogador" hidden />
-                            <input asp-for="NumeroRonda" value="@Model.NumeroRonda" hidden />
+                            <input asp-for="PlayerName" value="@Model.PlayerName" hidden />
+                            <input asp-for="PlayerCredits" value="@Model.PlayerCredits" hidden />
+                            <input asp-for="RoundCount" value="@Model.RoundCount" hidden />
                         </div>
                         <button type="submit" class="btn btn-warning center-block">Apostar</button>
                     </form>
@@ -154,8 +154,8 @@ else
                     <div class="col-md-6"></div>
                     <div class="col-md-6">
                         <div class="container well wellsize">
-                            <p><strong><span class="glyphicon glyphicon-user"></span>   @Model.NomeJogador</strong></p>
-                            <p><strong>Créditos:</strong> @Model.CreditosJogador</p>
+                            <p><strong><span class="glyphicon glyphicon-user"></span>   @Model.PlayerName</strong></p>
+                            <p><strong>Créditos:</strong> @Model.AtualCredits()</p>
                         </div>
                     </div>
                 </div>
