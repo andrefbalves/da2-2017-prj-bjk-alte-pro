@@ -14,6 +14,10 @@ namespace BlackJack.Models
 
         public double PlayerCredits { get; set; }
 
+        public List<Card> Dealerhand { get; set; }
+
+        public List<Card> PlayerHand { get; set; }
+
         public bool PlayingRound { get; set; }
 
         public int RoundCount { get; set; }
@@ -41,7 +45,7 @@ namespace BlackJack.Models
 
         }
 
-
+        
 
 
 

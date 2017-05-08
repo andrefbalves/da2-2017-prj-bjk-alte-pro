@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 
-namespace O_Meu_Namespace
+namespace BlackJack.Models
 {
     // Alterar namespace em cima...
 
