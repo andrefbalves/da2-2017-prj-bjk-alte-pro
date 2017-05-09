@@ -2,20 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace BlackJack.Models
 {
+    public enum PlayerAction { Hit, Stand, Double, Surrender, NotUse, NewRound }
+
     public class PlayApiRequest
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public string Key { get; set; }
 
-        public enum PlayerAction { Hit, Stand, Double, Surrender, NotUse , NewRound }
-        
-        public int InicialBet { get; set; }
+        public PlayerAction PlayerAction { get; set; }
 
-        public PlayApiRequest()
-        {  }
+        [Required(ErrorMessage = "Por favor faz a tua aposta!")]
+        [Range(10, 100, ErrorMessage = "A aposta deve ser de 10 a 100 créditos.")]
+        public double InitialBet { get; set; }
+
+        public PlayApiRequest(int id, PlayerAction playerAction, double initialBet)
+        {
+            Id = id;
+            Key = "rGAUUmCfk3vUgfSF";
+            PlayerAction = playerAction;
+            InitialBet = initialBet;
+        }
     }
 }

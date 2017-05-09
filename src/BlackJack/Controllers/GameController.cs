@@ -37,16 +37,24 @@ namespace BlackJack.Controllers
         }
 
         [HttpPost]
-        public IActionResult PlayGame(PlayApiResponse novojogo)
+        public IActionResult PlayGame(int id, PlayerAction playerAction, double initialBet)
         {
             if (ModelState.IsValid)
             {
-                novojogo.RoundCount = 1;
-                novojogo.PlayingRound = true;                
-                return View(novojogo);
+                HttpClient client = MyHTTPClientNewGame.Client;
+                string path = "/api/Play";
+                PlayApiRequest req = new PlayApiRequest(id, playerAction, initialBet);
+                HttpResponseMessage response = client.PostAsJsonAsync(path, req).Result;
+                if (!response.IsSuccessStatusCode)
+                {
+                    return View();
+                }
+
+                PlayApiResponse nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
+                return View(nr);
             }
             else
-                return View(novojogo);
+                return View();
         }
 
 

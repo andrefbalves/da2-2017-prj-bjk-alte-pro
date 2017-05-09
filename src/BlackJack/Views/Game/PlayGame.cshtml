@@ -1,4 +1,6 @@
 ﻿@model BlackJack.Models.PlayApiResponse
+@using BlackJack.Models;
+
 @{
     ViewBag.Jogo = true;
     ViewBag.BodyCLass = "Jogo";
@@ -138,12 +140,11 @@ else
                     <form asp-action="PlayGame" method="post">
                         <div asp-validation-summary="All"></div>
                         <div class="form-group text-center">
-                            <input asp-for="Bet" class="form-control center-block" />
+                            <input type="text" name="InitialBet" class="form-control" />
                         </div>
-                        <div class="form-group text-center">
-                            <input asp-for="PlayerName" value="@Model.PlayerName" hidden />
-                            <input asp-for="PlayerCredits" value="@Model.PlayerCredits" hidden />
-                            <input asp-for="RoundCount" value="@Model.RoundCount" hidden />
+                        <div>
+                            <input name="PlayerAction" value="@PlayerAction.NewRound" hidden/>
+                            <input name="Id" value="" hidden/>                            
                         </div>
                         <button type="submit" class="btn btn-warning center-block">Apostar</button>
                     </form>
