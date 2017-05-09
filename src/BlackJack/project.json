@@ -29,7 +29,8 @@
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.1.0",
     "Swashbuckle.AspNetCore": "1.0.0-rc3",
     "System.Net.Http": "4.1.0",
-    "System.Runtime.Serialization.Xml": "4.3.0"
+    "System.Runtime.Serialization.Xml": "4.3.0",
+      "System.Runtime": "4.3.0"
   },
 
   "tools": {
