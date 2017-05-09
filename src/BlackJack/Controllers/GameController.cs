@@ -37,7 +37,7 @@ namespace BlackJack.Controllers
         }
 
         [HttpPost]
-        public IActionResult PlayGame(int id, int playerAction, double initialBet)
+        public IActionResult PlayGame(int id, PlayerAction playerAction, double initialBet)
         {
             if (ModelState.IsValid)
             {
