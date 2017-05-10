@@ -51,7 +51,7 @@
             <div class="col-md-2">
                 <div class="container well wellsize">
                     <p><strong><span class="glyphicon glyphicon-exclamation-sign"></span>   Ronda @Model.RoundCount</strong></p>
-                    <strong>Dealer:</strong> 1 ou 11
+                    <strong>Dealer:</strong> @Model.CalcularCartas(Model.Dealerhand)
                 </div>
             </div>
         </div>
@@ -79,8 +79,8 @@
                 <div class="container well wellsize">
                     <p><strong><span class="glyphicon glyphicon-user"></span>   @Model.PlayerName</strong></p>
                     <p><strong>Créditos:</strong> @Model.PlayerCredits</p>
-                    <p><strong>Aposta:</strong> @Model.Bet</p>
-                    <p><strong>Pontos:</strong> 21</p>
+                    <p><strong>Aposta:</strong> @Model.Bet</p>  
+                    <p><strong>Pontos:</strong> @Model.CalcularCartas(Model.PlayerHand) </p>
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
                         <div>
                             <input name="PlayerAction" value="@PlayerAction.Hit" hidden />
                             <input name="Id" value="@Model.GameId" hidden />
-                            <input name="InitialBet" value="0" hidden />
+                            <input name="InitialBet" value="@Model.Bet" hidden />
                         </div>
                         <button type="submit" class="btn btn-success btn-large roundbtn"><span class="glyphicon glyphicon-plus"></span> Hit</button>
                     </form>
@@ -105,7 +105,7 @@
                         <div>
                             <input name="PlayerAction" value="@PlayerAction.Stand" hidden />
                             <input name="Id" value="@Model.GameId" hidden />
-                            <input name="InitialBet" value="0" hidden />
+                            <input name="InitialBet" value="@Model.Bet" hidden />
                         </div>
                         <button class="btn btn-primary btn-large roundbtn"><span class="glyphicon glyphicon-pause"></span> Stand</button>
                     </form>
@@ -115,7 +115,7 @@
                         <div>
                             <input name="PlayerAction" value="@PlayerAction.Double" hidden />
                             <input name="Id" value="@Model.GameId" hidden />
-                            <input name="InitialBet" value="0" hidden />
+                            <input name="InitialBet" value="@Model.Bet" hidden />
                         </div>
 
                         <button class="btn btn-warning btn-large roundbtn"><span class="glyphicon glyphicon-refresh"></span> Double</button>
@@ -126,7 +126,7 @@
                         <div>
                             <input name="PlayerAction" value="@PlayerAction.Surrender" hidden />
                             <input name="Id" value="@Model.GameId" hidden />
-                            <input name="InitialBet" value="0" hidden />
+                            <input name="InitialBet" value="@Model.Bet" hidden />
                         </div>
                         <button class="btn btn-danger btn-large roundbtn"><span class="glyphicon glyphicon-remove"></span> Surrender</button>
                     </form>
@@ -136,6 +136,13 @@
             <div class="col-md-3">  </div>
         </div>
     </div>
+   @if (Model.RoundFinalResult == (int)RoundFinalResult.Win)  //continuar!!!!!!
+   {
+    <div class="container well wellsize" > 
+        
+    </div>
+   }
+
 
 }
 else

@@ -6,6 +6,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BlackJack.Models
 {
+    public enum RoundFinalResult { NewRound, Lose, Win, Empate, Surrender, BlackJack }
+
     public class PlayApiResponse
     {
         public int GameId { get; set; }
@@ -40,9 +42,31 @@ namespace BlackJack.Models
                 return face;
         }
 
+        public int ValueCards(Card card)
+        {
+            if (card.Value == 1)
+                return 1;      //valor do as!!
+            else if (card.Value <= 10)
+                return card.Value;
+            else
+                return 10;
+        }
+
+        public int CalcularCartas(List<Card> cards)
+        {
+            int total = 0;
+            foreach (BlackJack.Models.Card c in cards)
+            {
+                total = ValueCards(c) + total;                 
+            }
+            return total;
+        }
+
         public int PlayerDecisionResult { get; set; }
 
-        public enum RoundFinalResult { Vitória, Derrota, Empate }
+        public int RoundFinalResult { get; set; }
+
+
 
     }
 }

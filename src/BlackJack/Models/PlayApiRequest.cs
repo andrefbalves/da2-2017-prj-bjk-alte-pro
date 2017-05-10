@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BlackJack.Models
 {
-    public enum PlayerAction { Hit, Stand, Double, Surrender, NotUse, NewRound }
+    public enum PlayerAction { Hit, Stand, Double, Surrender, NotUse, NewRound }    
 
     public class PlayApiRequest
     {
@@ -18,7 +18,7 @@ namespace BlackJack.Models
 
         [Required(ErrorMessage = "Por favor faz a tua aposta!")]   //n aparece!!!
         [Range(10, 100, ErrorMessage = "A aposta deve ser de 10 a 100 créditos.")]
-        public int InitialBet { get; set; }
+        public int InitialBet { get; set; }        
 
         public PlayApiRequest(int id, int playerAction, int initialBet)
         {
