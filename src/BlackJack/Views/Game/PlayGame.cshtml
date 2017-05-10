@@ -87,9 +87,9 @@
 
 
         <div class="row btnrow">
-            <div class="col-md-3"></div>
+            <div class="col-md-2"></div>
 
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="col-md-3">
                     <form asp-action="PlayGame" method="post">
                         <div>
@@ -97,7 +97,7 @@
                             <input name="Id" value="@Model.GameId" hidden />
                             <input name="InitialBet" value="@Model.Bet" hidden />
                         </div>
-                        <button type="submit" class="btn btn-success btn-large roundbtn"><span class="glyphicon glyphicon-plus"></span> Hit</button>
+                        <button type="submit" class="btn btn-success btn-large roundbtn"><span class="glyphicon glyphicon-plus"></span><strong> Hit</strong> </button>
                     </form>
                 </div>
                 <div class="col-md-3">
@@ -107,7 +107,7 @@
                             <input name="Id" value="@Model.GameId" hidden />
                             <input name="InitialBet" value="@Model.Bet" hidden />
                         </div>
-                        <button class="btn btn-primary btn-large roundbtn"><span class="glyphicon glyphicon-pause"></span> Stand</button>
+                        <button class="btn btn-primary btn-large roundbtn"><span class="glyphicon glyphicon-pause"></span><strong> Stand</strong></button>
                     </form>
                 </div>
                 <div class="col-md-3">
@@ -118,7 +118,7 @@
                             <input name="InitialBet" value="@Model.Bet" hidden />
                         </div>
 
-                        <button class="btn btn-warning btn-large roundbtn"><span class="glyphicon glyphicon-refresh"></span> Double</button>
+                        <button class="btn btn-warning btn-large roundbtn"><span class="glyphicon glyphicon-refresh"></span><strong> Double</strong></button>
                     </form>
                 </div>
                 <div class="col-md-3">
@@ -128,7 +128,7 @@
                             <input name="Id" value="@Model.GameId" hidden />
                             <input name="InitialBet" value="@Model.Bet" hidden />
                         </div>
-                        <button class="btn btn-danger btn-large roundbtn"><span class="glyphicon glyphicon-remove"></span> Surrender</button>
+                        <button class="btn btn-danger btn-large roundbtn"><span class="glyphicon glyphicon-remove"></span><strong> Surrender</strong></button>
                     </form>
                 </div>
 

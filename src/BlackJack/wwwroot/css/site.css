@@ -80,11 +80,11 @@ div.body {
     background-color: transparent !important;
 }
 
-.baralho{
-    margin-top:60px;
+.baralho {
+    margin-top: 60px;
 }
 
-.dealerrow {   
+.dealerrow {
     margin-bottom: 15px;
 }
 
@@ -108,10 +108,25 @@ div.body {
 
 .roundbtn {
     border-radius: 12px;
+    border: none;
+    box-shadow: 0 9px #999;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
 }
 
     .roundbtn:hover {
         background: #262626;
+       
+    }
+
+    .roundbtn:active {
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
     }
 
 .wellsize {
@@ -145,28 +160,28 @@ div.body {
     padding: 20px;
     background-color: #f66358;
     color: white;
-    text-align:center;
+    text-align: center;
 }
 
 .alertwin {
     padding: 20px;
     background-color: #6Abc6e;
     color: white;
-    text-align:center;
+    text-align: center;
 }
 
 .alertempate {
     padding: 20px;
     background-color: #47a8f5;
     color: white;
-    text-align:center;
+    text-align: center;
 }
 
 .alertsurrender {
     padding: 20px;
     background-color: #ffa92c;
     color: white;
-    text-align:center;
+    text-align: center;
 }
 
 .closebtn {
@@ -180,6 +195,6 @@ div.body {
     transition: 0.3s;
 }
 
-.closebtn:hover {
-    color: black;
-}
+    .closebtn:hover {
+        color: black;
+    }
