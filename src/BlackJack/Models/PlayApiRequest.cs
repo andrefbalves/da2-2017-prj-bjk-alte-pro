@@ -14,13 +14,13 @@ namespace BlackJack.Models
 
         public string Key { get; set; }
 
-        public PlayerAction PlayerAction { get; set; }
+        public int PlayerAction { get; set; }
 
         [Required(ErrorMessage = "Por favor faz a tua aposta!")]
         [Range(10, 100, ErrorMessage = "A aposta deve ser de 10 a 100 créditos.")]
         public double InitialBet { get; set; }
 
-        public PlayApiRequest(int id, PlayerAction playerAction, double initialBet)
+        public PlayApiRequest(int id, int playerAction, double initialBet)
         {
             Id = id;
             Key = "rGAUUmCfk3vUgfSF";

@@ -43,7 +43,7 @@ namespace BlackJack.Controllers
             {
                 HttpClient client = MyHTTPClientNewGame.Client;
                 string path = "/api/Play";
-                PlayApiRequest req = new PlayApiRequest(id, playerAction, initialBet);
+                PlayApiRequest req = new PlayApiRequest(id, (int)playerAction, initialBet);
                 HttpResponseMessage response = client.PostAsJsonAsync(path, req).Result;
                 if (!response.IsSuccessStatusCode)
                 {
