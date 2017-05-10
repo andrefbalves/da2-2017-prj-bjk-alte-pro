@@ -45,7 +45,12 @@ namespace BlackJack.Models
         public int ValueCards(Card card)
         {
             if (card.Value == 1)
-                return 11;      //valor do as!!
+            {
+                if (ValueHands().Equals(21))
+                    return 1;
+                else
+                    return 11;
+            }
             else if (card.Value <= 10)
                 return card.Value;
             else
