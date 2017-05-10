@@ -18,9 +18,9 @@ namespace BlackJack.Models
 
         [Required(ErrorMessage = "Por favor faz a tua aposta!")]
         [Range(10, 100, ErrorMessage = "A aposta deve ser de 10 a 100 créditos.")]
-        public double InitialBet { get; set; }
+        public int InitialBet { get; set; }
 
-        public PlayApiRequest(int id, int playerAction, double initialBet)
+        public PlayApiRequest(int id, int playerAction, int initialBet)
         {
             Id = id;
             Key = "rGAUUmCfk3vUgfSF";
