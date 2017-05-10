@@ -90,10 +90,40 @@
             <div class="col-md-3"></div>
 
             <div class="col-md-5">
-                <button class="btn btn-success btn-large roundbtn"><span class="glyphicon glyphicon-plus"></span> Hit</button>
-                <button class="btn btn-primary btn-large roundbtn"><span class="glyphicon glyphicon-pause"></span> Stand</button>
-                <button class="btn btn-warning btn-large roundbtn"><span class="glyphicon glyphicon-refresh"></span> Double</button>
-                <button class="btn btn-danger btn-large roundbtn"><span class="glyphicon glyphicon-remove"></span> Surrender</button>
+                <form asp-action="PlayGame" method="post">
+                    <div>
+                        <input name="PlayerAction" value="@PlayerAction.Hit" hidden />
+                        <input name="Id" value="@Model.GameId" hidden />
+                        <input name="InitialBet" value="15" hidden />
+                    </div>
+                    <button type="submit" class="btn btn-success btn-large roundbtn"><span class="glyphicon glyphicon-plus"></span> Hit</button>
+                </form>
+                <form asp-action="PlayGame" method="post">
+                    <div>
+                        <input name="PlayerAction" value="@PlayerAction.Stand" hidden />
+                        <input name="Id" value="@Model.GameId" hidden />
+                        <input name="InitialBet" value="15" hidden />
+                    </div>
+                    <button class="btn btn-primary btn-large roundbtn"><span class="glyphicon glyphicon-pause"></span> Stand</button>
+                </form>
+                <form asp-action="PlayGame" method="post">
+                    <div>
+                        <input name="PlayerAction" value="@PlayerAction.Double" hidden />
+                        <input name="Id" value="@Model.GameId" hidden />
+                        <input name="InitialBet" value="15" hidden />
+                    </div>
+
+                    <button class="btn btn-warning btn-large roundbtn"><span class="glyphicon glyphicon-refresh"></span> Double</button>
+                </form>
+                <form asp-action="PlayGame" method="post">
+                    <div>
+                        <input name="PlayerAction" value="@PlayerAction.Surrender" hidden />
+                        <input name="Id" value="@Model.GameId" hidden />
+                        <input name="InitialBet" value="15" hidden />
+                    </div>
+                    <button class="btn btn-danger btn-large roundbtn"><span class="glyphicon glyphicon-remove"></span> Surrender</button>
+                </form>
+
 
                 <div class="col-md-4">  </div>
 
@@ -143,8 +173,8 @@ else
                             <input type="text" name="InitialBet" class="form-control" />
                         </div>
                         <div>
-                            <input name="PlayerAction" value="@PlayerAction.NewRound" hidden/>
-                            <input name="Id" value="@Model.GameId" hidden/>                            
+                            <input name="PlayerAction" value="@PlayerAction.NewRound" hidden />
+                            <input name="Id" value="@Model.GameId" hidden />
                         </div>
                         <button type="submit" class="btn btn-warning center-block">Apostar</button>
                     </form>
