@@ -16,7 +16,7 @@ namespace BlackJack.Models
 
         public int PlayerAction { get; set; }
 
-        [Required(ErrorMessage = "Por favor faz a tua aposta!")]
+        [Required(ErrorMessage = "Por favor faz a tua aposta!")]   //n aparece!!!
         [Range(10, 100, ErrorMessage = "A aposta deve ser de 10 a 100 créditos.")]
         public int InitialBet { get; set; }
 

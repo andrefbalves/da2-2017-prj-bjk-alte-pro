@@ -33,13 +33,16 @@
             </div>
             <div class="col-md-6 container dealerhand">
                 <div class="playingCards rotateHand faceImages">
-                    <ul class="hand">
+                    <ul class="table">
                         <li><div class="card back"></div></li>
                         <li>
-                            <div class="card rank-a spades">
-                                <span class="rank">A</span>
-                                <span class="suit">&spades;</span>
-                            </div>
+                            @foreach (BlackJack.Models.Card card in Model.PlayerHand)
+                            {
+                                <div class="card rank-@Model.ConverterCard(card.GetFaceAlias()) @card.GetSuitAliasMin()">
+                                    <span class="rank">@Model.ConverterCard(card.GetFaceAlias())</span>
+                                    <span class="suit">&@card.GetSuitAliasMin();</span>
+                                </div>
+                            }  
                         </li>
                     </ul>
                 </div>
@@ -60,17 +63,14 @@
                 <div class="playingCards rotateHand faceImages">
                     <ul class="table">
                         <li>
-                            <div class="card rank-10 spades">
-                                <span class="rank">10</span>
-                                <span class="suit">&spades;</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="card rank-j hearts">
-                                <span class="rank">J</span>
-                                <span class="suit">&hearts;</span>
-                            </div>
-                        </li>
+                            @foreach (BlackJack.Models.Card card in Model.PlayerHand)
+                            {
+                                <div class="card rank-@Model.ConverterCard(card.GetFaceAlias()) @card.GetSuitAliasMin()">
+                                    <span class="rank">@Model.ConverterCard(card.GetFaceAlias())</span>
+                                    <span class="suit">&@card.GetSuitAliasMin();</span>
+                                </div>
+                            }                           
+                        </li>                       
                     </ul>
                 </div>
 
@@ -90,42 +90,49 @@
             <div class="col-md-3"></div>
 
             <div class="col-md-6">
-                <form asp-action="PlayGame" method="post">
-                    <div>
-                        <input name="PlayerAction" value="@PlayerAction.Hit" hidden />
-                        <input name="Id" value="@Model.GameId" hidden />
-                        <input name="InitialBet" value="0" hidden />
-                    </div>
-                    <button type="submit" class="btn btn-success btn-large roundbtn"><span class="glyphicon glyphicon-plus"></span> Hit</button>
-                </form>
-                <form asp-action="PlayGame" method="post">
-                    <div>
-                        <input name="PlayerAction" value="@PlayerAction.Stand" hidden />
-                        <input name="Id" value="@Model.GameId" hidden />
-                        <input name="InitialBet" value="0" hidden />
-                    </div>
-                    <button class="btn btn-primary btn-large roundbtn"><span class="glyphicon glyphicon-pause"></span> Stand</button>
-                </form>
-                <form asp-action="PlayGame" method="post">
-                    <div>
-                        <input name="PlayerAction" value="@PlayerAction.Double" hidden />
-                        <input name="Id" value="@Model.GameId" hidden />
-                        <input name="InitialBet" value="0" hidden />
-                    </div>
+                <div class="col-md-3">
+                    <form asp-action="PlayGame" method="post">
+                        <div>
+                            <input name="PlayerAction" value="@PlayerAction.Hit" hidden />
+                            <input name="Id" value="@Model.GameId" hidden />
+                            <input name="InitialBet" value="0" hidden />
+                        </div>
+                        <button type="submit" class="btn btn-success btn-large roundbtn"><span class="glyphicon glyphicon-plus"></span> Hit</button>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <form asp-action="PlayGame" method="post">
+                        <div>
+                            <input name="PlayerAction" value="@PlayerAction.Stand" hidden />
+                            <input name="Id" value="@Model.GameId" hidden />
+                            <input name="InitialBet" value="0" hidden />
+                        </div>
+                        <button class="btn btn-primary btn-large roundbtn"><span class="glyphicon glyphicon-pause"></span> Stand</button>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <form asp-action="PlayGame" method="post">
+                        <div>
+                            <input name="PlayerAction" value="@PlayerAction.Double" hidden />
+                            <input name="Id" value="@Model.GameId" hidden />
+                            <input name="InitialBet" value="0" hidden />
+                        </div>
 
-                    <button class="btn btn-warning btn-large roundbtn"><span class="glyphicon glyphicon-refresh"></span> Double</button>
-                </form>
-                <form asp-action="PlayGame" method="post">
-                    <div>
-                        <input name="PlayerAction" value="@PlayerAction.Surrender" hidden />
-                        <input name="Id" value="@Model.GameId" hidden />
-                        <input name="InitialBet" value="0" hidden />
-                    </div>
-                    <button class="btn btn-danger btn-large roundbtn"><span class="glyphicon glyphicon-remove"></span> Surrender</button>
-                </form>
+                        <button class="btn btn-warning btn-large roundbtn"><span class="glyphicon glyphicon-refresh"></span> Double</button>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <form asp-action="PlayGame" method="post">
+                        <div>
+                            <input name="PlayerAction" value="@PlayerAction.Surrender" hidden />
+                            <input name="Id" value="@Model.GameId" hidden />
+                            <input name="InitialBet" value="0" hidden />
+                        </div>
+                        <button class="btn btn-danger btn-large roundbtn"><span class="glyphicon glyphicon-remove"></span> Surrender</button>
+                    </form>
+                </div>
 
-
-            </div>
+                        </div>
             <div class="col-md-3">  </div>
         </div>
     </div>

@@ -26,6 +26,20 @@ namespace BlackJack.Models
 
         public double Bet { get; set; }
 
+        public string ConverterCard(string face)
+        {
+            if (face.Equals("Ace"))
+                return face.First().ToString();
+            else if (face.Equals("Jack"))
+                return face.First().ToString();
+            else if (face.Equals("Queen"))
+                return face.First().ToString();
+            else if (face.Equals("King"))
+                return face.First().ToString();
+            else
+                return face;
+        }
+
         public int PlayerDecisionResult { get; set; }
 
         public enum RoundFinalResult { Vitória, Derrota, Empate }
