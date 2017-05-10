@@ -36,9 +36,9 @@
                     <ul class="table">
                         <li><div class="card back"></div></li>
                         <li>
-                            @foreach (BlackJack.Models.Card card in Model.PlayerHand)
+                            @foreach (BlackJack.Models.Card card in Model.Dealerhand)
                             {
-                                <div class="card rank-@Model.ConverterCard(card.GetFaceAlias()) @card.GetSuitAliasMin()">
+                                <div class="card rank-@card.GetFaceAliasMin() @card.GetSuitAliasMin()">
                                     <span class="rank">@Model.ConverterCard(card.GetFaceAlias())</span>
                                     <span class="suit">&@card.GetSuitAliasMin();</span>
                                 </div>
@@ -61,16 +61,16 @@
             </div>
             <div class="col-md-6">
                 <div class="playingCards rotateHand faceImages">
-                    <ul class="table">
-                        <li>
+                    <ul class="table">                        
                             @foreach (BlackJack.Models.Card card in Model.PlayerHand)
                             {
-                                <div class="card rank-@Model.ConverterCard(card.GetFaceAlias()) @card.GetSuitAliasMin()">
-                                    <span class="rank">@Model.ConverterCard(card.GetFaceAlias())</span>
-                                    <span class="suit">&@card.GetSuitAliasMin();</span>
-                                </div>
-                            }                           
-                        </li>                       
+                                <li>
+                                    <div class="card rank-@card.GetFaceAliasMin() @card.GetSuitAliasMin()">
+                                        <span class="rank">@Model.ConverterCard(card.GetFaceAlias())</span>
+                                        <span class="suit">&@card.GetSuitAliasMin();</span>
+                                    </div>
+                                </li>
+                            }                                                    
                     </ul>
                 </div>
 

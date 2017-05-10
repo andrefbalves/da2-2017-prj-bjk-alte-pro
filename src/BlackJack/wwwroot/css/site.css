@@ -1,16 +1,16 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-image:url(../images/39378439-blackjack-wallpapers.jpg);
-    background-position:top left;
-    background-attachment:fixed;
+    background-image: url(../images/39378439-blackjack-wallpapers.jpg);
+    background-position: top left;
+    background-attachment: fixed;
 }
 
-body.Jogo {
-    background-image: url(../images/s-l1000.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-}
+    body.Jogo {
+        background-image: url(../images/s-l1000.jpg);
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -33,58 +33,58 @@ textarea {
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"]
-{
+.carousel-inner .item img[src$=".svg"] {
     width: 100%;
 }
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
-  /* Hide captions */
-  .carousel-caption {
-    display: none
-  }
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
 }
 
-.navbar .navbar-collapse{
-    text-align:center;
+.navbar .navbar-collapse {
+    text-align: center;
 }
 
 div.coltitle {
-    color:white;
-    text-align:center;
-    font-weight:bolder;
-    font-size: 80px;  
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 80px;
     padding-top: 20px;
-    padding-bottom: 20px;  
+    padding-bottom: 20px;
 }
 
 div.title {
-    background-color: transparent !important;  
-    margin-bottom:0;        
-    line-height:200%;  
+    background-color: transparent !important;
+    margin-bottom: 0;
+    line-height: 200%;
 }
 
 p.blackjack {
-    font-weight:bolder;
+    font-weight: bolder;
     font-size: 80px;
-    padding-top:0;
-    padding-bottom:0;    
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 div.body {
-    color:white;
-    text-align:justify;    
+    color: white;
+    text-align: justify;
 }
 
 .boolform {
-    background-color:transparent !important;
+    background-color: transparent !important;
 }
 
+.baralho{
+    margin-top:60px;
+}
 
-
-.dealerrow {
-    margin-top: 60px;
+.dealerrow {   
     margin-bottom: 15px;
 }
 
@@ -119,9 +119,24 @@ div.body {
     color: #262626;
 }
 
-.field-validation-error					{	color: #f00;}	
-.field-validation-valid					{	display:	none;}	
-.input-validation-error					{	border:1px solid #f00;	background-color:	#fee;}	
-.validation-summary-errors		{	font-weight:	bold;	color: #f00;}	
-.validation-summary-valid			{	display:	none;}
+.field-validation-error {
+    color: #f00;
+}
 
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
