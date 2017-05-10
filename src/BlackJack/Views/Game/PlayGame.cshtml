@@ -51,7 +51,7 @@
             <div class="col-md-2">
                 <div class="container well wellsize">
                     <p><strong><span class="glyphicon glyphicon-exclamation-sign"></span>   Ronda @Model.RoundCount</strong></p>
-                    <strong>Dealer:</strong> @Model.CalcularCartas(Model.Dealerhand)
+                    <strong>Dealer:</strong> @Model.ValueHands(Model.Dealerhand)
                 </div>
             </div>
         </div>
@@ -80,7 +80,7 @@
                     <p><strong><span class="glyphicon glyphicon-user"></span>   @Model.PlayerName</strong></p>
                     <p><strong>Créditos:</strong> @Model.PlayerCredits</p>
                     <p><strong>Aposta:</strong> @Model.Bet</p>
-                    <p><strong>Pontos:</strong> @Model.CalcularCartas(Model.PlayerHand) </p>
+                    <p><strong>Pontos:</strong> @Model.ValueHands(Model.PlayerHand) </p>
                 </div>
             </div>
         </div>

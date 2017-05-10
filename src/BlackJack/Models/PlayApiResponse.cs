@@ -45,19 +45,21 @@ namespace BlackJack.Models
         public int ValueCards(Card card)
         {
             if (card.Value == 1)
-                return 1;      //valor do as!!
+                return 11;      //valor do as!!
             else if (card.Value <= 10)
                 return card.Value;
             else
                 return 10;
         }
 
-        public int CalcularCartas(List<Card> cards)
+        public int ValueHands(List<Card> cards)
         {
             int total = 0;
             foreach (BlackJack.Models.Card c in cards)
             {
                 total = ValueCards(c) + total;
+                if (total > 21 && ValueCards(c) == 11)   //serviria se o AS tivesse sido a ultima carta adicionada
+                    total = total - 10;
             }
             return total;
         }
