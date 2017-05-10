@@ -59,6 +59,19 @@ namespace BlackJack.Controllers
                 return View();
         }
 
+        [HttpPost]
+        public IActionResult QuitGame(int id)
+        {
+            HttpClient client = MyHTTPClientNewGame.Client;
+            string path = "/api/Quit";
+            QuitApiRequest req = new QuitApiRequest(id);
+            HttpResponseMessage response = client.PostAsJsonAsync(path, req).Result;
+            if (!response.IsSuccessStatusCode)
+            {
+                return View();
+            }
+            return View("HighScores");
+        }
 
 
     }

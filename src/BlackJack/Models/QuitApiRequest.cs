@@ -5,13 +5,16 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Models
 {
-    public class QuitRequest
+    public class QuitApiRequest
     {
         public int Id { get; set; }
 
         public string Key { get; set; }
 
-        public QuitRequest()
-        { }
+        public QuitApiRequest(int id)
+        {
+            Id = id;
+            Key = "rGAUUmCfk3vUgfSF";
+        }
     }
 }
