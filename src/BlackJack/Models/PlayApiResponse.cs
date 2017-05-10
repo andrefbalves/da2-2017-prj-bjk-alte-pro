@@ -46,7 +46,7 @@ namespace BlackJack.Models
         {
             if (card.Value == 1)
             {
-                if (ValueHands().Equals(21))
+                if (ValueHands(Dealerhand) > 21 || ValueHands(PlayerHand) > 21)
                     return 1;
                 else
                     return 11;
@@ -63,8 +63,8 @@ namespace BlackJack.Models
             foreach (BlackJack.Models.Card c in cards)
             {
                 total = ValueCards(c) + total;
-                if (total > 21 && ValueCards(c) == 11)   //serviria se o AS tivesse sido a ultima carta adicionada
-                    total = total - 10;
+                //if (total > 21 && ValueCards(c) == 11)   //serviria se o AS tivesse sido a ultima carta adicionada
+                //    total = total - 10;
             }
             return total;
         }
