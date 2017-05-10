@@ -51,6 +51,7 @@ namespace BlackJack.Controllers
                 }
 
                 PlayApiResponse nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
+                nr.Bet = initialBet;
                 return View(nr);
             }
             else
