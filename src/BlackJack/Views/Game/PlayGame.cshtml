@@ -42,7 +42,7 @@
                                     <span class="rank">@Model.ConverterCard(card.GetFaceAlias())</span>
                                     <span class="suit">&@card.GetSuitAliasMin();</span>
                                 </div>
-                            }  
+                            }
                         </li>
                     </ul>
                 </div>
@@ -61,16 +61,16 @@
             </div>
             <div class="col-md-6">
                 <div class="playingCards rotateHand faceImages">
-                    <ul class="table">                        
-                            @foreach (BlackJack.Models.Card card in Model.PlayerHand)
-                            {
-                                <li>
-                                    <div class="card rank-@card.GetFaceAliasMin() @card.GetSuitAliasMin()">
-                                        <span class="rank">@Model.ConverterCard(card.GetFaceAlias())</span>
-                                        <span class="suit">&@card.GetSuitAliasMin();</span>
-                                    </div>
-                                </li>
-                            }                                                    
+                    <ul class="table">
+                        @foreach (BlackJack.Models.Card card in Model.PlayerHand)
+                        {
+                            <li>
+                                <div class="card rank-@card.GetFaceAliasMin() @card.GetSuitAliasMin()">
+                                    <span class="rank">@Model.ConverterCard(card.GetFaceAlias())</span>
+                                    <span class="suit">&@card.GetSuitAliasMin();</span>
+                                </div>
+                            </li>
+                        }
                     </ul>
                 </div>
 
@@ -79,7 +79,7 @@
                 <div class="container well wellsize">
                     <p><strong><span class="glyphicon glyphicon-user"></span>   @Model.PlayerName</strong></p>
                     <p><strong>Créditos:</strong> @Model.PlayerCredits</p>
-                    <p><strong>Aposta:</strong> @Model.Bet</p>  
+                    <p><strong>Aposta:</strong> @Model.Bet</p>
                     <p><strong>Pontos:</strong> @Model.CalcularCartas(Model.PlayerHand) </p>
                 </div>
             </div>
@@ -132,18 +132,10 @@
                     </form>
                 </div>
 
-                        </div>
+            </div>
             <div class="col-md-3">  </div>
         </div>
     </div>
-   @if (Model.RoundFinalResult == (int)RoundFinalResult.Win)  //continuar!!!!!!
-   {
-    <div class="container well wellsize" > 
-        
-    </div>
-   }
-
-
 }
 else
 {
@@ -179,11 +171,39 @@ else
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="container well wellsize">
-                    <h3>Introduz a tua aposta!</h3>
+                    @if (Model.RoundFinalResult == (int)RoundFinalResult.Win) 
+                    {
+                        <div class="alertwin">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            <strong>Ganhaste!</strong>
+                        </div>
+                    }
+                    else if (Model.RoundFinalResult == (int)RoundFinalResult.Lose)
+                    {
+                        <div class="alertlose">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            <strong>Perdeste!</strong>
+                        </div>
+                    }
+                    else if (Model.RoundFinalResult == (int)RoundFinalResult.Empate)
+                    {
+                        <div class="alertempate">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            <strong>Empate!</strong>
+                        </div>
+                    }
+                    else if (Model.RoundFinalResult == (int)RoundFinalResult.Surrender)
+                    {
+                        <div class="alertsurrender">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            <strong>Desististe!</strong>
+                        </div>
+                    }
+                    <h3 class="text-center">Introduz a tua aposta!</h3>
                     <form asp-action="PlayGame" method="post">
-                        <div asp-validation-summary="All"></div>
-                        <div class="form-group text-center">
-                            <input type="text" name="InitialBet" class="form-control" />
+                        <div asp-validation-summary="All"></div> 
+                        <div class="form-group">
+                            <input type="text" name="InitialBet" class="form-control center-block"/>
                         </div>
                         <div>
                             <input name="PlayerAction" value="@PlayerAction.NewRound" hidden />

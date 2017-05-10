@@ -140,3 +140,46 @@ div.body {
 .validation-summary-valid {
     display: none;
 }
+
+.alertlose {
+    padding: 20px;
+    background-color: #f66358;
+    color: white;
+    text-align:center;
+}
+
+.alertwin {
+    padding: 20px;
+    background-color: #6Abc6e;
+    color: white;
+    text-align:center;
+}
+
+.alertempate {
+    padding: 20px;
+    background-color: #47a8f5;
+    color: white;
+    text-align:center;
+}
+
+.alertsurrender {
+    padding: 20px;
+    background-color: #ffa92c;
+    color: white;
+    text-align:center;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}

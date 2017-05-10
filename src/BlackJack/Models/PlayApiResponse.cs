@@ -57,7 +57,7 @@ namespace BlackJack.Models
             int total = 0;
             foreach (BlackJack.Models.Card c in cards)
             {
-                total = ValueCards(c) + total;                 
+                total = ValueCards(c) + total;
             }
             return total;
         }
