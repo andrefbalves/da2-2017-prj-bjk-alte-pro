@@ -122,22 +122,13 @@
             </div>
         </div>
         <div class="col-md-2">
-            @if (Model.PlayingRound == false)
-            {
-                <div class="container well wellsize">
-                    <p><strong><span class="glyphicon glyphicon-user"></span>   @Model.PlayerName</strong></p>
-                    <p><strong>Créditos:</strong> @Model.PlayerCredits</p>
-                </div>
-            }
-            else
-            {
-                <div class="container well wellsize">
-                    <p><strong><span class="glyphicon glyphicon-user"></span>   @Model.PlayerName</strong></p>
-                    <p><strong>Créditos:</strong> @Model.PlayerCredits</p>
-                    <p><strong>Aposta:</strong> @Model.Bet</p>
-                    <p><strong>Pontos:</strong> @Model.ValueHands(Model.PlayerHand) </p>
-                </div>
-            }
+
+            <div class="container well wellsize">
+                <p><strong><span class="glyphicon glyphicon-user"></span>   @Model.PlayerName</strong></p>
+                <p><strong>Créditos:</strong> @Model.PlayerCredits</p>
+                <p><strong>Aposta:</strong> @Model.Bet</p>
+                <p><strong>Pontos:</strong> @Model.ValueHands(Model.PlayerHand) </p>
+            </div>
         </div>
     </div>
 
