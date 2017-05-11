@@ -1,109 +1,43 @@
-﻿@{
+﻿@model List<BlackJack.Models.Player>
+
+@{
     ViewData["Title"] = "HighScores";
 }
 
 
-  
-        <table class="table">
-            <thead>
-              <tr>
-                <th> # </th>
-                <th> Nome</th>
-                <th> Rondas </th>
-                <th> V/E/D</th>
-                <th> BlackJack</th>
-                <th> Créditos</th>
-                
-                
-                
-              </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td> 1 </td>
-                <td> José dos Santos</td>
-                <td> 143 </td>
-                <td> 90/25/28 </td>
-                <td>80 </td>
-                <td> 11440 </td>
-                
-            </tr>
-            <tr class="sucess" >
-                <td> 2 </td>
-                <td> António</td>
-                <td> 140 </td>
-                <td> 85/25/30</td>
-                <td> 81 </td>
-                <td> 11290 </td>
-            </tr>
-            <tr>
-                <td> 3 </td>
-                <td> João Franscisco </td>
-                <td> 101 </td>
-                <td> 83/8/10 </td>
-                <td> 81</td>
-                <td> 8181 </td>
-            </tr>
-            <tr class="sucess">
-                <td> 4 </td>
-                <td> Pedro Almeida </td>
-                <td> 110 </td>
-                <td> 79/15/16</td>
-                <td> 70 </td>
-                <td> 7700 </td>
-            </tr>
-            <tr>
-                <td> 5 </td>
-                <td> André Correia </td>
-                <td> 99 </td>
-                <td> 59/20/20</td>
-                <td> 50</td>
-                <td> 1188 </td>
-            </tr>
-            <tr>
-                <td> 6 </td>
-                <td> Andreia Pinto </td>
-                <td> 86 </td>
-                <td> 52/26/8</td>
-                <td> 51</td>
-                <td> 1032 </td>
-            </tr>   
-                <tr>
-                    <td> 7 </td>
-                    <td> João Guilherme</td>
-                    <td> 80 </td>
-                    <td> 30/24/26</td>
-                    <td> 20</td>
-                    <td> 759</td>
-                <tr>
-                    <td> 8 </td>
-                    <td> Bruna Mendes</td>
-                    <td> 50 </td>
-                    <td> 20/15/15</td>
-                    <td> 12</td>
-                    <td> 600</td>
-                <tr>
-                    <td> 9 </td>
-                    <td> Beatriz Silva</td>
-                    <td> 33 </td>
-                    <td> 13/12/8</td>
-                    <td> 9</td>
-                    <td> 270</td>
 
-                </tr>
-                <tr>
-                    <td> 10 </td>
-                    <td> Bruno André </td>
-                    <td> 10 </td>
-                    <td> 3/5/2</td>
-                    <td> 2</td>
-                    <td> 120 </td>
+<table class="table">
+    <thead>
+        <tr>
+            <th> # </th>
+            <th> Nome</th>
+            <th> Rondas </th>
+            <th> V/E/D</th>
+            <th> BlackJack</th>
+            <th> Créditos</th>
 
-                </tr>
 
-                         
-        </tbody>         
 
-        </table>
-         
-    
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (BlackJack.Models.Player p in Model)
+            {
+                int nmr = 0;
+
+            <tr>
+                <td> @nmr = nmr + 1 </td>
+                <td> @p.NomeJogador</td>
+                <td> @p.Rondas </td>
+                <td> @p.Vitorias<strong>/</strong>@p.Empates<strong>/</strong>@p.Derrotas </td>
+                <td> @p.BlackJack </td>
+                <td> @p.Creditos </td>
+
+            </tr>
+        }
+
+
+    </tbody>
+
+</table>
+

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using Newtonsoft.Json;
+using BlackJack.Models;
 
 namespace BlackJack.Controllers
 {
@@ -34,7 +35,8 @@ namespace BlackJack.Controllers
 
         public IActionResult HighScores()
         {
-            return View();
+            List<Player> players = Repository.Players;
+            return View(players);
         }
 
        

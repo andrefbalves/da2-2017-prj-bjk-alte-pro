@@ -51,11 +51,11 @@ namespace BlackJack.Controllers
                 }
 
                 PlayApiResponse nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
-
                 if (playerAction == PlayerAction.Double)
                     nr.Bet = initialBet * 2;
                 else
                     nr.Bet = initialBet;
+                
 
                 return View(nr);
             }
@@ -67,13 +67,24 @@ namespace BlackJack.Controllers
         public IActionResult QuitGame(int id)
         {
             HttpClient client = MyHTTPClientNewGame.Client;
-            string path = "/api/Quit";
-            QuitApiRequest req = new QuitApiRequest(id);
-            HttpResponseMessage response = client.PostAsJsonAsync(path, req).Result;
+            string path = "/api/Play/rGAUUmCfk3vUgfSF/" + id;           
+            HttpResponseMessage resp = client.GetAsync(path).Result;
+            if (!resp.IsSuccessStatusCode)
+            {
+                return View();
+            }
+            PlayApiResponse nr = resp.Content.ReadAsAsync<PlayApiResponse>().Result;
+            Player newplayer = new Player(nr);
+            Repository.AddPlayer(newplayer);
+
+            string pathq = "/api/Quit";
+            QuitApiRequest reqq = new QuitApiRequest(id);
+            HttpResponseMessage response = client.PostAsJsonAsync(pathq, reqq).Result;
             if (!response.IsSuccessStatusCode)
             {
                 return View();
             }
+
             return Redirect("/Home/HighScores");
         }
 

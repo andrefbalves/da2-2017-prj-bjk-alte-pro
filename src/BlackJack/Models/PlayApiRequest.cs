@@ -27,5 +27,11 @@ namespace BlackJack.Models
             PlayerAction = playerAction;
             InitialBet = initialBet;
         }
+
+        public PlayApiRequest(int id)
+        {
+            Id = id;
+            Key = "rGAUUmCfk3vUgfSF";
+        }
     }
 }
