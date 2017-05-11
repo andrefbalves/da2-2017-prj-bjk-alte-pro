@@ -2,30 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
 namespace BlackJack.Models
 {
-    public enum RoundFinalResult { NewRound, Lose, Win, Empate, Surrender, BlackJack }
-
-    public class PlayApiResponse
+    public class Game : PlayApiResponse
     {
-        public int GameId { get; set; }
-
-        public string PlayerName { get; set; }
-
-        public double PlayerCredits { get; set; }
-
-        public List<Card> Dealerhand { get; set; }
-
-        public List<Card> PlayerHand { get; set; }
-
-        public bool PlayingRound { get; set; }
-
-        public int RoundCount { get; set; }
-
-        public bool IsNewShoe { get; set; }
-
         public int Bet { get; set; }
 
         public string ConverterCard(string face)
@@ -45,7 +26,12 @@ namespace BlackJack.Models
         public int ValueCards(Card card)
         {
             if (card.Value == 1)
-                return 11;
+            {
+                if (ValueHands(Dealerhand) > 21 || ValueHands(PlayerHand) > 21)
+                    return 1;
+                else
+                    return 11;
+            }
             else if (card.Value <= 10)
                 return card.Value;
             else
@@ -58,31 +44,15 @@ namespace BlackJack.Models
             foreach (BlackJack.Models.Card c in cards)
             {
                 total = ValueCards(c) + total;
+                //if (total > 21 && ValueCards(c) == 11)   //serviria se o AS tivesse sido a ultima carta adicionada
+                //    total = total - 10;
             }
-            bool temAs = MaoComAs(cards);
-
-            if (total > 21 && temAs == true)
-                total = total - 10;
-
             return total;
         }
 
-        private bool MaoComAs(List<Card> cards)
+        public Game(PlayApiResponse r)
         {
-            foreach (Card c in cards)
-            {
-                if (c.Value == 1)
-                    return true;
-            }
-
-            return false;
+            
         }
-
-        public int PlayerDecisionResult { get; set; }
-
-        public int RoundFinalResult { get; set; }
-
-
-
     }
 }

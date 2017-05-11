@@ -51,7 +51,11 @@ namespace BlackJack.Controllers
                 }
 
                 PlayApiResponse nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
-                nr.Bet = initialBet;               
+
+                if (playerAction == PlayerAction.Double)
+                    nr.Bet = initialBet * 2;
+                else
+                    nr.Bet = initialBet;
 
                 return View(nr);
             }
@@ -68,9 +72,9 @@ namespace BlackJack.Controllers
             HttpResponseMessage response = client.PostAsJsonAsync(path, req).Result;
             if (!response.IsSuccessStatusCode)
             {
-                return View();
+                return View("/");
             }
-            return View("HighScores");
+            return Redirect("/HighScores");
         }
 
 
