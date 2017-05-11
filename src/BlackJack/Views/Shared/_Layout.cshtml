@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BlackJack</title>
 
-    
+
 
     <environment names="Development">
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
-        <link rel="stylesheet" href="~/css/cards.css" />        
-       
+        <link rel="stylesheet" href="~/css/cards.css" />
+
 
 
     </environment>
@@ -20,53 +20,58 @@
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />        
-       
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+
 
     </environment>
 </head>
 <body class="@ViewBag.BodyCLass">
     <div class="navbar navbar-inverse navbar-fixed-top w3-bar w3-border w3-card-4">
         <div class="container">
-            <div class="row">                
-                    <div class="navbar-header col-md-4">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>                        
-                            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BlackJack</a>
-                   </div>                              
-                    <div class="navbar-collapse collapse col-md-4">
-                            <ul class="nav navbar-nav">
-                                <li><a asp-area="" asp-controller="Home" asp-action="HighScores">HighScores</a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="Regras">Regras </a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="About">Alte.pro</a></li>
-                              
-                            </ul>
-                   </div>                                    
-                   <div class="navbar-collapse collapse col-md-4 navbar-right">                      
-                        @if (ViewBag.Jogo == true)
-                        {                           
-                            <a asp-controller="Game" asp-action="QuitGame" class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-off"></span> Terminar Jogo </a>
-                        }
-                        else
-                        {
-                            <a asp-controller="Game" asp-action="Index" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-play"></span> Jogar</a>
-                        }
-                  </div>                    
+            <div class="row">
+                <div class="navbar-header col-md-4">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BlackJack</a>
+                </div>
+                <div class="navbar-collapse collapse col-md-4">
+                    <ul class="nav navbar-nav">
+                        <li><a asp-area="" asp-controller="Home" asp-action="HighScores">HighScores</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Regras">Regras </a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="About">Alte.pro</a></li>
+
+                    </ul>
+                </div>
+                <div class="navbar-collapse collapse col-md-4 navbar-right">
+                    @if (ViewBag.Jogo == true)
+                    {
+                        <form asp-action="QuitGame" method="post">
+                            <div>
+                                <input name="Id" value="@Model.GameId" hidden />
+                            </div>
+                            <button type="submit" class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-off"></span><strong> Terminar Jogo</strong> </button>
+                        </form>                            
+                    }
+                    else
+                    {
+                        <a asp-controller="Game" asp-action="Index" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-play"></span> Jogar</a>
+                    }
                 </div>
             </div>
-        </div>     
-        <div class="container">
-            <div class="row coltitle">
-                <div class="col-md-5">@ViewData["Title"]</div>
-            </div>
-            <div class="row">
-                <div class="col-md-5 body">@RenderBody()</div>                
-            </div>            
-        </div>          
+        </div>
+    </div>
+    <div class="container">
+        <div class="row coltitle">
+            <div class="col-md-5">@ViewData["Title"]</div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 body">@RenderBody()</div>
+        </div>
+    </div>
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -84,6 +89,6 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-           
+
 </body>
 </html>

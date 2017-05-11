@@ -72,9 +72,9 @@ namespace BlackJack.Controllers
             HttpResponseMessage response = client.PostAsJsonAsync(path, req).Result;
             if (!response.IsSuccessStatusCode)
             {
-                return View("/");
+                return View();
             }
-            return Redirect("/HighScores");
+            return Redirect("/Home/HighScores");
         }
 
 
