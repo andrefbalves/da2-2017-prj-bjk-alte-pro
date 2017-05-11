@@ -41,7 +41,7 @@
                         @foreach (BlackJack.Models.Card card in Model.Dealerhand)
                         {
                             <div class="card rank-@card.GetFaceAliasMin() @card.GetSuitAliasMin()">
-                                <span class="rank">@Model.ConverterCard(card.GetFaceAlias())</span>
+                                <span class="rank">@card.GetFaceAliasMin().ToUpper()</span>   @*metodos na view! !*@ 
                                 <span class="suit">&@card.GetSuitAliasMin();</span>
                             </div>
                         }
@@ -53,7 +53,7 @@
         <div class="col-md-2">
             <div class="container well wellsize">
                 <p><strong><span class="glyphicon glyphicon-exclamation-sign"></span>   Ronda @Model.RoundCount</strong></p>
-                <strong>Dealer:</strong> @Model.ValueHands(Model.Dealerhand)
+                <strong>Dealer:</strong> @Model.ValueHands(Model.Dealerhand) @*meter na subclasse da card e chamar no controller e guardar na viewbag*@
             </div>
         </div>
     </div>

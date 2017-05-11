@@ -26,21 +26,7 @@ namespace BlackJack.Models
 
         public bool IsNewShoe { get; set; }
 
-        public int Bet { get; set; }
-
-        public string ConverterCard(string face)
-        {
-            if (face.Equals("Ace"))
-                return face.First().ToString();
-            else if (face.Equals("Jack"))
-                return face.First().ToString();
-            else if (face.Equals("Queen"))
-                return face.First().ToString();
-            else if (face.Equals("King"))
-                return face.First().ToString();
-            else
-                return face;
-        }
+        public int Bet { get; set; }               
 
         public int ValueCards(Card card)
         {
