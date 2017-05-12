@@ -4,40 +4,31 @@
     ViewData["Title"] = "HighScores";
 }
 
-
-
-<table class="table">
+<table class="table text-center">
     <thead>
         <tr>
-            <th> # </th>
             <th> Nome</th>
             <th> Rondas </th>
-            <th> V E D</th>
+            <th> Vitórias </th>
+            <th>Empates </th>
+            <th>Derrotas</th>
             <th> BlackJack</th>
             <th> Créditos</th>
-
-
-
         </tr>
     </thead>
     <tbody>
         @foreach (BlackJack.Models.Game p in Model)
         {
-           
-
             <tr>
-                <td> @nmr </td>
                 <td> @p.PlayerName</td>
                 <td> @p.Rounds </td>
-                <td> @p.Wins<strong> </strong>@p.Ties<strong> </strong>@p.Loses </td>
+                <td> @p.Wins</td>
+                <td> @p.Ties</td>
+                <td> @p.Loses </td>
                 <td> @p.BlackJack </td>
                 <td> @p.Credits </td>
-
             </tr>
         }
-
-
     </tbody>
-
 </table>
 

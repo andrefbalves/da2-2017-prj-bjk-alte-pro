@@ -66,7 +66,12 @@ namespace BlackJack.Controllers
                 else if (nr.RoundFinalResult == (int)RoundFinalResult.Empate)
                     Repository.Ties = game.Ties + 1;
                 else if (nr.RoundFinalResult == (int)RoundFinalResult.BlackJack)
+                {
                     Repository.BlackJack = game.BlackJack + 1;
+                    ViewBag.Result = ViewBag.Bet * 1.5;
+                }
+                else if (nr.RoundFinalResult == (int)RoundFinalResult.Surrender)
+                    ViewBag.Result = ViewBag.Bet / 2;
 
                 ViewBag.DealerHand = card.ValueHands(nr.Dealerhand);
                 ViewBag.PlayerHand = card.ValueHands(nr.PlayerHand);

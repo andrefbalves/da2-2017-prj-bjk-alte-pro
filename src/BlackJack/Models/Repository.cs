@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Models
 {
-    public static class Repository
+    public static class Repository 
     {
 
         private static List<Game> players = new List<Game>();

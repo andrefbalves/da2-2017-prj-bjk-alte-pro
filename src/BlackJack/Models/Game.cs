@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Models
 {
-    public class Game
+    public class Game : IComparable
     {
         public string PlayerName { get; set; }
         public int Rounds { get; set; }
@@ -16,9 +16,12 @@ namespace BlackJack.Models
         public double Credits { get; set; }
 
         public Game()
-        { }
+        { }             
 
-
-
+        int IComparable.CompareTo(object obj)
+        {
+            Game g = (Game)obj;
+            return Credits.CompareTo(g.Credits);
+        }
     }
 }

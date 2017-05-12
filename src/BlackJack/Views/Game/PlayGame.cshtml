@@ -55,7 +55,7 @@
                 <p><strong><span class="glyphicon glyphicon-exclamation-sign"></span>   Ronda @Model.RoundCount</strong></p>
                 @if (ViewBag.Bet != null)
                 {
-                    <strong>Dealer:</strong> @ViewBag.DealerHand 
+                    <strong>Dealer:</strong> @ViewBag.DealerHand
                 }
             </div>
         </div>
@@ -67,10 +67,9 @@
             {
                 <div class="container well wellsize">
                     <h3 class="text-center">Aposta!</h3>
-                    <form asp-action="PlayGame" method="post">
-                        <div asp-validation-summary="All"></div>
+                    <form action="/Game/PlayGame" method="post">
                         <div class="form-group">
-                            <input type="text" name="InitialBet" class="form-control center-block" />
+                            <input type="number" name="InitialBet" min="10" max="100" class="form-control center-block" required />
                         </div>
                         <div>
                             <input name="PlayerAction" value="@PlayerAction.NewRound" hidden />
@@ -114,12 +113,8 @@
     <div class="row btnrow">
         @if (Model.PlayingRound == true)
             {
-            <div class="col-md-2">
-            </div>
-
+            <div class="col-md-2"></div>
             <div class="col-md-7">
-
-
                 <div class="col-md-3">
                     <form asp-action="PlayGame" method="post">
                         <div>
@@ -174,14 +169,14 @@
                 {
                     <div class="alertwin">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                        <strong>Ganhaste!</strong> @ViewBag.Bet créditos
+                        <strong>Ganhaste!</strong> + @ViewBag.Bet créditos
                     </div>
                 }
                 else if (Model.RoundFinalResult == (int)RoundFinalResult.Lose)
                 {
                     <div class="alertlose">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                        <strong>Perdeste!</strong> @ViewBag.Bet créditos
+                        <strong>Perdeste!</strong> - @ViewBag.Bet créditos
                     </div>
                 }
                 else if (Model.RoundFinalResult == (int)RoundFinalResult.Empate)
@@ -195,11 +190,18 @@
                 {
                     <div class="alertsurrender">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                        <strong>Desististe!</strong>
+                        <strong>Desististe!</strong> - @ViewBag.Result créditos
+                    </div>
+                }
+                else if (Model.RoundFinalResult == (int)RoundFinalResult.BlackJack)
+                {
+                    <div class="alertblackjack">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        <strong>BlackJack!</strong> + @ViewBag.Result créditos!
                     </div>
                 }
             </div>
-            <div class="col-md-3"></div>           
+            <div class="col-md-3"></div>
         }
     </div>
 </div>
