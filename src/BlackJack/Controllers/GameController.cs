@@ -41,6 +41,7 @@ namespace BlackJack.Controllers
         {
             if (ModelState.IsValid)
             {
+                CardMethods card = new CardMethods();
                 HttpClient client = MyHTTPClientNewGame.Client;
                 string path = "/api/Play";
                 PlayApiRequest req = new PlayApiRequest(id, (int)playerAction, initialBet);
@@ -52,10 +53,12 @@ namespace BlackJack.Controllers
 
                 PlayApiResponse nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
                 if (playerAction == PlayerAction.Double)
-                    nr.Bet = initialBet * 2;
+                    ViewBag.Bet = initialBet * 2;
                 else
-                    nr.Bet = initialBet;
-                
+                    ViewBag.Bet = initialBet;
+
+                ViewBag.DealerHand = card.ValueHands(nr.Dealerhand);
+                ViewBag.PlayerHand = card.ValueHands(nr.PlayerHand);
 
                 return View(nr);
             }
