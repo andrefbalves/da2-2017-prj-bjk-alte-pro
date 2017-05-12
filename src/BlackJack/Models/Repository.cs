@@ -17,14 +17,17 @@ namespace BlackJack.Models
             }
         }
 
-        public static void AddPlayer (Game newPlayer)
+        public static void AddPlayer(Game newPlayer)
         {
             players.Add(newPlayer);
         }
 
+        public static int Wins { get; set; }
 
+        public static int Loses { get; set; }
 
+        public static int Ties { get; set; }
 
-
+        public static int BlackJack { get; set; }
     }
 }

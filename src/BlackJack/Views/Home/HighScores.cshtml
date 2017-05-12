@@ -12,7 +12,7 @@
             <th> # </th>
             <th> Nome</th>
             <th> Rondas </th>
-            <th> V/E/D</th>
+            <th> V E D</th>
             <th> BlackJack</th>
             <th> Créditos</th>
 
@@ -23,15 +23,15 @@
     <tbody>
         @foreach (BlackJack.Models.Game p in Model)
         {
-            int nmr = 0;
+           
 
             <tr>
-                <td> @ </td>
-                <td> @p.NomeJogador</td>
-                <td> @p.Rondas </td>
-                <td> @p.Vitorias<strong>/</strong>@p.Empates<strong>/</strong>@p.Derrotas </td>
+                <td> @nmr </td>
+                <td> @p.PlayerName</td>
+                <td> @p.Rounds </td>
+                <td> @p.Wins<strong> </strong>@p.Ties<strong> </strong>@p.Loses </td>
                 <td> @p.BlackJack </td>
-                <td> @p.Creditos </td>
+                <td> @p.Credits </td>
 
             </tr>
         }

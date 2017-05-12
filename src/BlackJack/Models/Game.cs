@@ -5,23 +5,20 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Models
 {
-    public class Game 
-    {        
-        public string NomeJogador { get; set; }
-        public int Rondas { get; set; }
-        public int Vitorias { get; set; }
-        public int Derrotas { get; set; }
-        public int Empates { get; set; }
+    public class Game
+    {
+        public string PlayerName { get; set; }
+        public int Rounds { get; set; }
+        public int Wins { get; set; }
+        public int Loses { get; set; }
+        public int Ties { get; set; }
         public int BlackJack { get; set; }
-        public double Creditos { get; set; }
+        public double Credits { get; set; }
 
-        public Game (PlayApiResponse r)
-        {
-            NomeJogador = r.PlayerName;
-            Rondas = r.RoundCount;
-            Creditos = r.PlayerCredits;
-        }
+        public Game()
+        { }
 
-      
+
+
     }
 }
