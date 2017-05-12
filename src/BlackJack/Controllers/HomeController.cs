@@ -37,6 +37,7 @@ namespace BlackJack.Controllers
         {
             List<Game> players = Repository.Players;
             players.Sort();
+            players.Reverse();
             return View(players);
         }
 

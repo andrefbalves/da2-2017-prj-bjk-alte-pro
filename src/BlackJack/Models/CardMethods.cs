@@ -24,15 +24,15 @@ namespace BlackJack.Models
             {
                 total = ValueCards(c) + total;
             }
-            bool temAs = MaoComAs(cards);
+            bool AceInHands = AceHands(cards);
 
-            if (total > 21 && temAs == true)
+            if (total > 21 && AceInHands == true)
                 total = total - 10;
 
             return total;
         }
 
-        private  bool MaoComAs(List<Card> cards)
+        private  bool AceHands(List<Card> cards)
         {
             foreach (Card c in cards)
             {
