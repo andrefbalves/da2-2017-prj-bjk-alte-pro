@@ -26,7 +26,7 @@ namespace BlackJack.Controllers
                 HttpResponseMessage response = client.PostAsJsonAsync(path, novoJogador).Result;
                 if (!response.IsSuccessStatusCode)
                 {
-                    return View();
+                    return View("Index");
                 }
 
                 PlayApiResponse ng = response.Content.ReadAsAsync<PlayApiResponse>().Result;
@@ -49,7 +49,7 @@ namespace BlackJack.Controllers
                 HttpResponseMessage response = client.PostAsJsonAsync(path, req).Result;
                 if (!response.IsSuccessStatusCode)
                 {
-                    return View();
+                    return View("Index");
                 }
 
                 PlayApiResponse nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
@@ -91,7 +91,7 @@ namespace BlackJack.Controllers
             HttpResponseMessage resp = client.GetAsync(path).Result;
             if (!resp.IsSuccessStatusCode)
             {
-                return View();
+                return View("Index");
             }
             PlayApiResponse nr = resp.Content.ReadAsAsync<PlayApiResponse>().Result;
 
@@ -109,7 +109,7 @@ namespace BlackJack.Controllers
             HttpResponseMessage response = client.PostAsJsonAsync(pathq, reqq).Result;
             if (!response.IsSuccessStatusCode)
             {
-                return View();
+                return View("Index");
             }
 
             return Redirect("/Home/HighScores");
