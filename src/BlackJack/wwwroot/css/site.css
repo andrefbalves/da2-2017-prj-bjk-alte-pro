@@ -6,11 +6,11 @@
     background-attachment: fixed;
 }
 
-    body.Jogo {
+body.Jogo {
         background-image: url(../images/s-l1000.jpg);
         background-size: 100%;
         background-repeat: no-repeat;
-    }
+}
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -88,13 +88,9 @@ div.body {
     margin-bottom: 15px;
 }
 
-.dealerhand {
-    align-items: center;    
-}
-
 .playerrow {
     margin-top: 20px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     align-items: center;
 }
 

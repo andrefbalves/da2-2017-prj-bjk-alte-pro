@@ -8,8 +8,8 @@ namespace BlackJack.Models
     public static class Repository
     {
 
-        private static List<Player> players = new List<Player>();
-        public static List<Player> Players
+        private static List<Game> players = new List<Game>();
+        public static List<Game> Players
         {
             get
             {
@@ -17,7 +17,7 @@ namespace BlackJack.Models
             }
         }
 
-        public static void AddPlayer (Player newPlayer)
+        public static void AddPlayer (Game newPlayer)
         {
             players.Add(newPlayer);
         }

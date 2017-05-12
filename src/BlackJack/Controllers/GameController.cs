@@ -77,7 +77,7 @@ namespace BlackJack.Controllers
                 return View();
             }
             PlayApiResponse nr = resp.Content.ReadAsAsync<PlayApiResponse>().Result;
-            Player newplayer = new Player(nr);
+            Game newplayer = new Game(nr);
             Repository.AddPlayer(newplayer);
 
             string pathq = "/api/Quit";

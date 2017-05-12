@@ -35,7 +35,7 @@ namespace BlackJack.Controllers
 
         public IActionResult HighScores()
         {
-            List<Player> players = Repository.Players;
+            List<Game> players = Repository.Players;
             return View(players);
         }
 

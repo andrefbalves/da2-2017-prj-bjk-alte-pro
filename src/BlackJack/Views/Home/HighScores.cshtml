@@ -1,4 +1,4 @@
-﻿@model List<BlackJack.Models.Player>
+﻿@model List<BlackJack.Models.Game>
 
 @{
     ViewData["Title"] = "HighScores";
@@ -21,12 +21,12 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (BlackJack.Models.Player p in Model)
-            {
-                int nmr = 0;
+        @foreach (BlackJack.Models.Game p in Model)
+        {
+            int nmr = 0;
 
             <tr>
-                <td> @nmr = nmr + 1 </td>
+                <td> @ </td>
                 <td> @p.NomeJogador</td>
                 <td> @p.Rondas </td>
                 <td> @p.Vitorias<strong>/</strong>@p.Empates<strong>/</strong>@p.Derrotas </td>

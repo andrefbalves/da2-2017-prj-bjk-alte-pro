@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Models
 {
-    public class Player 
+    public class Game 
     {        
         public string NomeJogador { get; set; }
         public int Rondas { get; set; }
@@ -15,7 +15,7 @@ namespace BlackJack.Models
         public int BlackJack { get; set; }
         public double Creditos { get; set; }
 
-        public Player (PlayApiResponse r)
+        public Game (PlayApiResponse r)
         {
             NomeJogador = r.PlayerName;
             Rondas = r.RoundCount;
