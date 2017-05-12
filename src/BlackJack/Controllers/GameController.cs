@@ -40,8 +40,7 @@ namespace BlackJack.Controllers
         public IActionResult PlayGame(int id, PlayerAction playerAction, int initialBet)
         {
             if (ModelState.IsValid)
-            {
-                Game game = new Game();
+            {                
                 CardMethods card = new CardMethods();
                 HttpClient client = MyHTTPClientNewGame.Client;
                 string path = "/api/Play";
@@ -59,19 +58,23 @@ namespace BlackJack.Controllers
                 else
                     ViewBag.Bet = initialBet;
 
-                if (nr.RoundFinalResult == (int)RoundFinalResult.Win)
-                    Repository.Wins = game.Wins + 1;
-                else if (nr.RoundFinalResult == (int)RoundFinalResult.Lose)
-                    Repository.Loses = game.Loses + 1;
-                else if (nr.RoundFinalResult == (int)RoundFinalResult.Empate)
-                    Repository.Ties = game.Ties + 1;
-                else if (nr.RoundFinalResult == (int)RoundFinalResult.BlackJack)
+                if (nr.PlayingRound == false)
                 {
-                    Repository.BlackJack = game.BlackJack + 1;
-                    ViewBag.Result = ViewBag.Bet * 1.5;
-                }
-                else if (nr.RoundFinalResult == (int)RoundFinalResult.Surrender)
-                    ViewBag.Result = ViewBag.Bet / 2;
+                    if (nr.RoundFinalResult == (int)RoundFinalResult.Win)
+                        Repository.Wins = Repository.Wins + 1;
+                    else if (nr.RoundFinalResult == (int)RoundFinalResult.Lose)
+                        Repository.Loses = Repository.Loses + 1;
+                    else if (nr.RoundFinalResult == (int)RoundFinalResult.Empate)
+                        Repository.Ties = Repository.Ties + 1;
+                    else if (nr.RoundFinalResult == (int)RoundFinalResult.BlackJack)
+                    {
+                        Repository.BlackJack = Repository.BlackJack + 1;
+                        Repository.Wins = Repository.Wins + 1;
+                        ViewBag.Result = ViewBag.Bet * 1.5;
+                    }
+                    else if (nr.RoundFinalResult == (int)RoundFinalResult.Surrender)
+                        ViewBag.Result = ViewBag.Bet / 2;
+                }              
 
                 ViewBag.DealerHand = card.ValueHands(nr.Dealerhand);
                 ViewBag.PlayerHand = card.ValueHands(nr.PlayerHand);

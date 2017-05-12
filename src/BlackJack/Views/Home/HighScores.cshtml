@@ -9,33 +9,33 @@
     <h3 class="text-center">Sem jogadores registados...</h3>
 }
 else
-{ 
-<table class="table table-hover text-center">
-    <thead>
-        <tr>
-            <th> Nome</th>
-            <th> Rondas </th>
-            <th class="text-success"> Vitórias </th>
-            <th class="text-warning">Empates </th>
-            <th class="text-danger">Derrotas</th>
-            <th> BlackJack</th>
-            <th> Créditos</th>
-        </tr>
-    </thead>
-    <tbody>
-       @for (int i = 0; i < Model.Count && i < 10; i = i + 1)
-       {
-        <tr>
-            <td> @Model.ElementAt(i).PlayerName</td>
-            <td> @Model.ElementAt(i).Rounds </td>
-            <td> @Model.ElementAt(i).Wins</td>
-            <td> @Model.ElementAt(i).Ties</td>
-            <td> @Model.ElementAt(i).Loses </td>
-            <td> @Model.ElementAt(i).BlackJack </td>
-            <td> @Model.ElementAt(i).Credits </td>
-        </tr>
-       }                                                
-    </tbody>
-</table>
+{
+    <table class="table table-hover text-center">
+        <thead>
+            <tr>
+                <th> Nome</th>
+                <th> Rondas </th>
+                <th class="text-success"> Vitórias </th>
+                <th class="text-warning">Empates </th>
+                <th class="text-danger">Derrotas</th>
+                <th> BlackJack</th>
+                <th> Créditos</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (BlackJack.Models.Game p in Model.Take(10))
+            {
+                <tr>
+                    <td> @p.PlayerName</td>
+                    <td> @p.Rounds </td>
+                    <td> @p.Wins</td>
+                    <td> @p.Ties</td>
+                    <td> @p.Loses </td>
+                    <td> @p.BlackJack </td>
+                    <td> @p.Credits </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 

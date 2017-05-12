@@ -152,32 +152,26 @@ div.body {
     display: none;
 }
 
-.alertlose {
-    padding: 20px;
-    background-color: #f66358;
+.alert {
+    padding: 20px;   
     color: white;
     text-align: center;
 }
 
-.alertwin {
-    padding: 20px;
-    background-color: #6Abc6e;
-    color: white;
-    text-align: center;
+.lose{
+     background-color: #f66358;
 }
 
-.alertempate {
-    padding: 20px;
-    background-color: #47a8f5;
-    color: white;
-    text-align: center;
+.win {   
+    background-color: #6Abc6e;    
 }
 
-.alertsurrender {
-    padding: 20px;
-    background-color: #ffa92c;
-    color: white;
-    text-align: center;
+.empate {   
+    background-color: #47a8f5;   
+}
+
+.surrender {    
+    background-color: #ffa92c;    
 }
 
 .closebtn {

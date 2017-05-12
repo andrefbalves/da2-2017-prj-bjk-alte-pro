@@ -33,7 +33,7 @@
 
             <div class="playingCards rotateHand faceImages">
                 <ul class="table">
-                    @if (Model.PlayingRound == true)
+                    @if (ViewBag.Dealerhand < 17 || Model.PlayingRound == true)
                     {
                         <li><div class="card back"></div></li>
                     }
@@ -167,35 +167,35 @@
             <div class="col-md-6">
                 @if (Model.RoundFinalResult == (int)RoundFinalResult.Win)
                 {
-                    <div class="alertwin">
+                    <div class="alert win">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <strong>Ganhaste!</strong> + @ViewBag.Bet créditos
                     </div>
                 }
                 else if (Model.RoundFinalResult == (int)RoundFinalResult.Lose)
                 {
-                    <div class="alertlose">
+                    <div class="alert lose">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <strong>Perdeste!</strong> - @ViewBag.Bet créditos
                     </div>
                 }
                 else if (Model.RoundFinalResult == (int)RoundFinalResult.Empate)
                 {
-                    <div class="alertempate">
+                    <div class="alert empate">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <strong>Empate!</strong>
                     </div>
                 }
                 else if (Model.RoundFinalResult == (int)RoundFinalResult.Surrender)
                 {
-                    <div class="alertsurrender">
+                    <div class="alert surrender">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <strong>Desististe!</strong> - @ViewBag.Result créditos
                     </div>
                 }
                 else if (Model.RoundFinalResult == (int)RoundFinalResult.BlackJack)
                 {
-                    <div class="alertblackjack">
+                    <div class="alert win">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <strong>BlackJack!</strong> + @ViewBag.Result créditos!
                     </div>
