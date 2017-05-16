@@ -113,6 +113,7 @@ div.body {
     text-align: center;
     text-decoration: none;
     outline: none;
+    margin-bottom: 25px;
 }
 
     .roundbtn:hover {
@@ -124,6 +125,15 @@ div.body {
         box-shadow: 0 5px #666;
         transform: translateY(4px);
     }
+
+    .roundbtn.active {
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+
+div.btnrules {
+    margin-top:10px;
+}
 
 .wellsize {
     width: 100%;
@@ -192,4 +202,8 @@ div.body {
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   color: black;
   font-weight: bold;
+} 
+
+.btnrules {
+    color:black;
 }

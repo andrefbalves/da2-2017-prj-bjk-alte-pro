@@ -2,41 +2,54 @@
     ViewData["Title"] = "Regras";
 }
 
-<p> O dealer começa por dar duas cartas abertas (de face voltada para cima) ao jogador. Tira, também, para si duas cartas: uma aberta e outra voltada para baixo.
-Se as primeiras duas cartas que o jogador recebeu totalizarem 21 pontos, o jogador terá feito <strong>Blackjack</strong>. Nessa situação, o jogador ganha 1.5 vezes o valor da aposta (além de recuperar a aposta colocada) e a
-ronda termina de imediato. No caso de não ter Blackjack, o jogador tem as seguintes quatro opções: </p>
+<div>
 
-<ul>
-    <li>  <strong>  Ficar </strong> (stand) - O jogador fica com a pontuação atual da sua mão e é a vez do dealer fazer a sua jogada. </li>
-    <li>
-        <strong> Pedir carta </strong> (hit) – O dealer dá mais uma carta aberta ao jogador. Caso o jogador ultrapasse os 21
-        pontos, o jogador perde automaticamente e a ronda termina. Caso contrário, pode continuar a sua jogada voltando a tomar uma das quatro opções.
-    </li>
-    <li>
-        <strong> Dobrar </strong> (Double) - O jogador dobra a sua aposta e de seguida o dealer dá mais uma carta aberta ao jogador. Caso o jogador ultrapasse os 21 pontos, o jogador perde automaticamente e a ronda
-        termina. caso contrário, o jogador fica com a pontuação resultante e é a vez do dealer fazer a jogada.
-    </li>
-    <li>
-        <strong> Desistir </strong> (Surrender) - O jogador perde e a ronda termina. No entanto, o jogador recupera metade da sua aposta.
-    </li>
-    <li>
-        <strong> Jogada do dealer </strong> - O dealer não tem vontade livre, jogando sempre com as mesmas regras. Concretamente,
-        o dealer é obrigado a fazer hit até perfazer 17 ou mais pontos. Caso a pontuação final do dealer exceda os
-        21 pontos, o jogador ganha a ronda. No caso contrário, o jogador ganha se tiver mais pontos
-        que o dealer. Caso o jogador e o dealer tenham os mesmos pontos, a ronda termina com um empate.
-    </li>
-</ul>
-<p> Assim, existem três resultados possíveis após a jogada do dealer: </p>
-<ul>   
-    <li>
-        <strong>  O jogador ganha</strong> - O jogador recupera o valor da aposta colocada, acrescido de um valor igual à sua
-        aposta (ou seja, o seu lucro é o valor da aposta).
-    <li>
-         <strong> O dealer ganha</strong> - O jogador perde a sua aposta (ou seja, fica com os mesmos créditos que tiver no
-        final da ronda)
-    </li>
-    <li>
-        <strong> Empate</strong> - O jogador recupera o valor da aposta colocada (ou seja, fica com os mesmos
-        créditos que tinha antes de iniciar a ronda).
-    </li>
-</ul>
+    Este jogo só tem um objetivo, chegar o mais perto dos <strong class="text-success">21 pontos</strong> sem os ultrapassar!
+    <p>
+        Se o fizeres recebes o valor da tua <strong class="text-success"> aposta a duplicar</strong> Caso sejas um sortudo e consigas exatamente
+        21 pontos na primeira jogada fazes, <strong class="text-warning">Blackjack</strong> e <strong class="text-warning">ganhas 2,5 vezes a tua aposta</strong>.
+        No caso de não teres tanta sorte e <strong class="text-danger">perderes</strong> uma ronda, <strong class="text-danger"> o valor que apostaste</strong>.
+    <p>
+        Se te estiveres a perguntar o que acontece se obtiveres exatamente a <strong class="text-info">mesma pontuação</strong> que o Dealer, não te preocupes,
+        nós <strong class="text-info">devolvemos-te</strong> os créditos que apostas-te.
+    </p>
+    <p>
+        Para te tornares num perito só precisas de saber quais as opções que poderás tomar:
+    </p>
+</div>
+<div class="btn-group btn-group-justified">
+    <a id="btnhit" class="btn btn-success btn-large roundbtn "><span class="glyphicon glyphicon-plus"></span><strong> Hit</strong> </a>
+    <a id="btnstand" class="btn btn-primary btn-large roundbtn "><span class="glyphicon glyphicon-pause"></span><strong> Stand</strong> </a>
+    <a id="btndouble" class="btn btn-warning btn-large roundbtn "><span class="glyphicon glyphicon-refresh"></span><strong> Double</strong> </a>
+    <a id="btnsurrender" class="btn btn-danger btn-large roundbtn "><span class="glyphicon glyphicon-remove"></span><strong> Surrender</strong> </a>
+</div>
+
+<div id="hit" class="alert alert-success btnrules">
+    <p>
+        <strong class="text-success">Recebes + 1 carta</strong>. Caso ultrapasses os 21 pontos perdes a ronda. Caso contrário,
+        continuas a jogar.
+    </p>
+</div>
+
+<div id="stand" class="alert alert-info btnrules">
+    <p>
+        <strong class="text-info">Ficas</strong> com a pontuação atual da tua mão e é a <strong class="text-info">vez do dealer</strong> jogar. Agora só te resta rezar...
+    </p>
+</div>
+
+<div id="double" class="alert alert-warning btnrules">
+    <p>
+        <strong class="text-warning">Dobras</strong> a tua aposta e recebes
+        <strong class="text-warning">+ 1 carta</strong>.
+        É a vez do Dealer jogar, isto se não perderes antes...
+    </p>
+</div>
+
+<div id="surrender" class="alert alert-danger btnrules">
+    <p>
+        <strong class="text-danger">Desistir</strong> é para os fracos. Mas para não haver descriminação damos-te
+        <strong class="text-danger">metade da tua aposta</strong>.
+    </p>
+</div>
+
+
