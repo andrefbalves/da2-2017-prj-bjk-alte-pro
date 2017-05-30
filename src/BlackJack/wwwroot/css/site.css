@@ -200,8 +200,7 @@ div.btnrules {
     }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  color: black;
-  font-weight: bold;
+  color: black;  
 } 
 
 .btnrules {
