@@ -209,5 +209,6 @@ div.btnrules {
 
 table.background {
     background:url(/images/s-l1000.jpg);
-    
+    border: dotted;
+    border-color:red;
 }
