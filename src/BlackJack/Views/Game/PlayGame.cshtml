@@ -32,11 +32,7 @@
         <div class="col-md-7 container dealerhand">
 
             <div class="playingCards rotateHand faceImages">
-                <ul class="table">
-                    @if (ViewBag.Dealerhand < 17 || Model.PlayingRound == true)
-                    {
-                        <li><div class="card back"></div></li>
-                    }
+                <ul class="table">                   
                     @foreach (BlackJack.Models.Card card in Model.Dealerhand)
                     {
                         <li>
@@ -45,6 +41,10 @@
                                 <span class="suit">&@card.GetSuitAliasMin();</span>
                             </div>
                         </li>
+                    }
+                    @if (ViewBag.Dealerhand < 17 || Model.PlayingRound == true)
+                    {
+                        <li><div class="card back"></div></li>
                     }
                 </ul>
             </div>
