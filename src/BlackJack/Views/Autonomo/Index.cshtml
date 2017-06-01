@@ -1,0 +1,23 @@
+﻿@model BlackJack.Models.NewGameApiRequest
+@{
+    ViewData["Title"] = "Modo Autónomo";
+}
+
+<form asp-action="Index" method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="form-group form">
+        <label asp-for="PlayerName">Selecione número de rondas:</label>
+        <select asp-for="PlayerName" class="form-control">
+            <option value="auto1" selected="selected">1 Ronda</option>
+            <option value="auto3">3 Rondas</option>
+            <option value="auto10">10 Rondas</option>
+            <option value="auto0">eXtreme</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="checkbox" asp-for="MaiorIdade" />
+        <label asp-for="MaiorIdade">Sou Maior de Idade</label>
+    </div>
+    <button type="submit" class="btn btn-success">Jogar</button>
+</form>
+
