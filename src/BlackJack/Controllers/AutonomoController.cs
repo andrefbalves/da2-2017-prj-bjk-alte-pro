@@ -18,23 +18,23 @@ namespace BlackJack.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Index(NewGameApiRequest novoJogador)
-        {
-            if (ModelState.IsValid)
-            {
-                HttpClient client = MyHTTPClientNewGame.Client;
-                string path = "/api/NewGame";
-                HttpResponseMessage response = client.PostAsJsonAsync(path, novoJogador).Result;
-                if (!response.IsSuccessStatusCode)
-                {
-                    return View("Index");
-                }
+        //[HttpPost]
+        //public IActionResult Index(NewGameApiRequest novoJogador)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        HttpClient client = MyHTTPClientNewGame.Client;
+        //        string path = "/api/NewGame";
+        //        HttpResponseMessage response = client.PostAsJsonAsync(path, novoJogador).Result;
+        //        if (!response.IsSuccessStatusCode)
+        //        {
+        //            return View("Index");
+        //        }
 
-                PlayApiResponse ng = response.Content.ReadAsAsync<PlayApiResponse>().Result;
+        //        PlayApiResponse ng = response.Content.ReadAsAsync<PlayApiResponse>().Result;
                 
-            }
+        //    }
             
-        }
+        //}
     }
 }

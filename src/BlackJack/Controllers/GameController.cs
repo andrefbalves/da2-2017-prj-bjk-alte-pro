@@ -53,37 +53,34 @@ namespace BlackJack.Controllers
 
                 PlayApiResponse nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
 
-                //if (nr.PlayerCredits - ViewBag.Bet >= nr.PlayerCredits)
-                //{
-                    if (playerAction == PlayerAction.Double)
-                        ViewBag.Bet = initialBet * 2;
-                    else
-                        ViewBag.Bet = initialBet;
+                if (playerAction == PlayerAction.Double)
+                    ViewBag.Bet = initialBet * 2;
+                else
+                    ViewBag.Bet = initialBet;
 
-                    if (nr.PlayingRound == false)
+                if (nr.PlayingRound == false)
+                {
+                    if (nr.RoundFinalResult == (int)RoundFinalResult.Win)
+                        Repository.Wins = Repository.Wins + 1;
+                    else if (nr.RoundFinalResult == (int)RoundFinalResult.Lose)
+                        Repository.Loses = Repository.Loses + 1;
+                    else if (nr.RoundFinalResult == (int)RoundFinalResult.Empate)
+                        Repository.Ties = Repository.Ties + 1;
+                    else if (nr.RoundFinalResult == (int)RoundFinalResult.BlackJack)
                     {
-                        if (nr.RoundFinalResult == (int)RoundFinalResult.Win)
-                            Repository.Wins = Repository.Wins + 1;
-                        else if (nr.RoundFinalResult == (int)RoundFinalResult.Lose)
-                            Repository.Loses = Repository.Loses + 1;
-                        else if (nr.RoundFinalResult == (int)RoundFinalResult.Empate)
-                            Repository.Ties = Repository.Ties + 1;
-                        else if (nr.RoundFinalResult == (int)RoundFinalResult.BlackJack)
-                        {
-                            Repository.BlackJack = Repository.BlackJack + 1;
-                            Repository.Wins = Repository.Wins + 1;
-                            ViewBag.Result = ViewBag.Bet * 1.5;
-                        }
-                        else if (nr.RoundFinalResult == (int)RoundFinalResult.Surrender)
-                            ViewBag.Result = ViewBag.Bet / 2;
+                        Repository.BlackJack = Repository.BlackJack + 1;
+                        Repository.Wins = Repository.Wins + 1;
+                        ViewBag.Result = ViewBag.Bet * 1.5;
                     }
+                    else if (nr.RoundFinalResult == (int)RoundFinalResult.Surrender)
+                        ViewBag.Result = ViewBag.Bet / 2;
+                }
 
-                    ViewBag.DealerHand = card.ValueHands(nr.Dealerhand);
-                    ViewBag.PlayerHand = card.ValueHands(nr.PlayerHand);
+                ViewBag.DealerHand = card.ValueHands(nr.Dealerhand);
+                ViewBag.PlayerHand = card.ValueHands(nr.PlayerHand);
 
-                    return View(nr);
-                //}  
-                                              
+                return View(nr);
+
             }
             else
                 return View();

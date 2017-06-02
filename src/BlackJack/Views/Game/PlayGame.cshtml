@@ -135,6 +135,8 @@
                         <button class="btn btn-primary btn-large roundbtn"><span class="glyphicon glyphicon-pause"></span><strong> Stand</strong></button>
                     </form>
                 </div>
+                @if (Model.PlayerCredits >= ViewBag.Bet)
+                { 
                 <div class="col-md-3">
                     <form asp-action="PlayGame" method="post">
                         <div>
@@ -146,6 +148,7 @@
                         <button class="btn btn-warning btn-large roundbtn"><span class="glyphicon glyphicon-refresh"></span><strong> Double</strong></button>
                     </form>
                 </div>
+                }
                 <div class="col-md-3">
                     <form asp-action="PlayGame" method="post">
                         <div>
