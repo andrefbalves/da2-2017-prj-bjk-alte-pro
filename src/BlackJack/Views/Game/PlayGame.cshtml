@@ -32,7 +32,7 @@
         <div class="col-md-7 container dealerhand">
 
             <div class="playingCards rotateHand faceImages">
-                <ul class="table">                   
+                <ul class="table">
                     @foreach (BlackJack.Models.Card card in Model.Dealerhand)
                     {
                         <li>
@@ -66,17 +66,25 @@
             @if (Model.PlayingRound == false)
             {
                 <div class="container well wellsize">
-                    <h3 class="text-center">Aposta!</h3>
-                    <form action="/Game/PlayGame" method="post">
-                        <div class="form-group">
-                            <input type="number" name="InitialBet" min="10" max="100" class="form-control center-block" required />
-                        </div>
-                        <div>
-                            <input name="PlayerAction" value="@PlayerAction.NewRound" hidden />
-                            <input name="Id" value="@Model.GameId" hidden />
-                        </div>
-                        <button type="submit" class="btn btn-warning center-block">Apostar</button>
-                    </form>
+                    @if (Model.PlayerCredits > 0)
+                    {
+                        <h3 class="text-center">Aposta!</h3>
+                        <form action="/Game/PlayGame" method="post">
+                            <div class="form-group">
+                                <input type="number" name="InitialBet" min="10" max="100" class="form-control center-block" required />
+                            </div>
+                            <div>
+                                <input name="PlayerAction" value="@PlayerAction.NewRound" hidden />
+                                <input name="Id" value="@Model.GameId" hidden />
+                            </div>
+
+                            <button type="submit" class="btn btn-warning center-block">Apostar</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <h3 class="text-center text-danger">Ficaste sem Créditos </h3>
+                    }
                 </div>
             }
         </div>
@@ -136,18 +144,18 @@
                     </form>
                 </div>
                 @if (Model.PlayerCredits >= ViewBag.Bet)
-                { 
-                <div class="col-md-3">
-                    <form asp-action="PlayGame" method="post">
-                        <div>
-                            <input name="PlayerAction" value="@PlayerAction.Double" hidden />
-                            <input name="Id" value="@Model.GameId" hidden />
-                            <input name="InitialBet" value="@ViewBag.Bet" hidden />
-                        </div>
+                {
+                    <div class="col-md-3">
+                        <form asp-action="PlayGame" method="post">
+                            <div>
+                                <input name="PlayerAction" value="@PlayerAction.Double" hidden />
+                                <input name="Id" value="@Model.GameId" hidden />
+                                <input name="InitialBet" value="@ViewBag.Bet" hidden />
+                            </div>
 
-                        <button class="btn btn-warning btn-large roundbtn"><span class="glyphicon glyphicon-refresh"></span><strong> Double</strong></button>
-                    </form>
-                </div>
+                            <button class="btn btn-warning btn-large roundbtn"><span class="glyphicon glyphicon-refresh"></span><strong> Double</strong></button>
+                        </form>
+                    </div>
                 }
                 <div class="col-md-3">
                     <form asp-action="PlayGame" method="post">
@@ -202,7 +210,7 @@
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <strong>BlackJack!</strong> + @ViewBag.Result créditos!
                     </div>
-                }              
+                }
             </div>
             <div class="col-md-3"></div>
         }
