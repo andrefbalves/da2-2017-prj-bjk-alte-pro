@@ -26,6 +26,6 @@ namespace BlackJack.Models
         public double FinalCredits { get; set; }
 
         public RoundSummary()
-        { }
+        {}
     }
 }
