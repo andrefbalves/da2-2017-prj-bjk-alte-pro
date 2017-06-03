@@ -88,8 +88,9 @@ namespace BlackJack.Controllers
                         rs.Rounds = res.RoundCount;
                         rs.RoundResult = res.RoundFinalResult;
                         rs.FinalCredits = res.PlayerCredits;
+                        Repository.AddRound(rs);
 
-                        return View("Result", rs);
+                        return View("Result");
                     }
                     else
                         return View();

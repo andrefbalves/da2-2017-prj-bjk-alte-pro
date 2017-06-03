@@ -22,6 +22,20 @@ namespace BlackJack.Models
             players.Add(newPlayer);
         }
 
+        private static List<RoundSummary> rounds = new List<RoundSummary>();
+        public static List<RoundSummary> Rounds
+        {
+            get
+            {
+                return rounds;
+            }
+        }
+
+        public static void AddRound(RoundSummary newround)
+        {
+            rounds.Add(newround);
+        }
+
         public static int Wins { get; set; }
 
         public static int Loses { get; set; }
