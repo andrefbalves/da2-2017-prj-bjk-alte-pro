@@ -28,7 +28,7 @@
 <body class="@ViewBag.BodyCLass">
     <div class="navbar navbar-inverse navbar-fixed-top w3-bar w3-border w3-card-4">
         <div class="container">
-            <div class="row">                
+            <div class="row">
                 @if (ViewBag.Jogo != true)
                 {
                     <div class="navbar-header col-md-4">
@@ -40,14 +40,13 @@
                         </button>
                         <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BlackJack</a>
                     </div>
-                <div class="navbar-collapse collapse col-md-4">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Home" asp-action="HighScores">HighScores</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Regras">Regras </a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="About">Alte.pro</a></li>
-                        <li><a asp-area="" asp-controller="Autonomo" asp-action="Index">Autonomo</a></li>
-                    </ul>
-                </div>
+                    <div class="navbar-collapse collapse col-md-4">
+                        <ul class="nav navbar-nav">
+                            <li><a asp-area="" asp-controller="Home" asp-action="HighScores">HighScores</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Regras">Regras </a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="About">Alte.pro</a></li>                           
+                        </ul>
+                    </div>
                 }
                 else
                 {
@@ -69,11 +68,20 @@
                                 <input name="Id" value="@Model.GameId" hidden />
                             </div>
                             <button type="submit" class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-off"></span><strong> Terminar Jogo</strong> </button>
-                        </form>                            
+                        </form>
                     }
                     else
                     {
-                        <a asp-controller="Game" asp-action="Index" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-play"></span> Jogar</a>
+                        <div class="dropdown">
+                            <button class="btn btn-success navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-play"></span> Jogar
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a asp-controller="Game" asp-action="Index">Normal</a></li>
+                                <li><a asp-controller="Autonomo" asp-action="Index">Automático</a></li>
+                            </ul>
+                        </div>
                     }
                 </div>
             </div>
