@@ -200,8 +200,19 @@ div.btnrules {
     }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  color: black;  
+  color: black;   
 } 
+
+.table {
+     background:#000;
+        opacity: 0.8; 
+        filter:alpha(opacity=80); 
+        zoom:1;
+}
+
+tr th {
+    text-align:center;
+}
 
 .btnrules {
     color:black;

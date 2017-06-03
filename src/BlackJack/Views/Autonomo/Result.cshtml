@@ -1,28 +1,70 @@
 ﻿@model BlackJack.Models.RoundSummary
 
-<table class="table table-hover text-center">
-    <thead>
-        <tr>
-            <th> Rondas </th>
-            <th> Créditos Iniciais</th>
-            <th> Aposta</th>
-            <th> Resultado </th>        
-            <th> Double </th>
-            <th> BlackJack </th>
-            <th> BlackJack Dealer </th>
-            <th> Créditos Finais </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>@Model.Rounds</td>
-            <td>@Model.InitialCredits</td>
-            <td>@Model.Bet</td>
-            <td>@Model.RoundResult</td>
-            <td>@Model.Double</td>
-            <td>@Model.Blackjack</td>
-            <td>@Model.DealerBlackjack</td>
-            <td>@Model.FinalCredits</td>
-        </tr>
-    </tbody>
-</table>
+@{
+    ViewData["Title"] = "Resultado";
+    ViewBag.BodyCLass = "Jogo";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <table class="table table-hover text-center">
+                <thead>
+                    <tr>
+                        <th> Rondas </th>
+                        <th> Créditos Iniciais</th>
+                        <th> Aposta</th>
+                        <th> Resultado </th>
+                        <th> Double </th>
+                        <th> BlackJack </th>
+                        <th> BlackJack Dealer </th>
+                        <th> Créditos Finais </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.Rounds</td>
+                        <td>@Model.InitialCredits</td>
+                        <td>@Model.Bet</td>
+                        <td>@Model.RoundResult</td>
+                        <td>
+                            @if (Model.Double)
+            {
+                                @:Sim
+             }
+            else
+            {
+                                @:Não
+            }
+                        </td>
+                        <td>
+                            @if (Model.Blackjack)
+            {
+                                @:Sim
+             }
+            else
+            {
+                                @:Não
+            }
+                        </td>
+                        <td>
+                            @if (Model.DealerBlackjack)
+            {
+                                @:Sim
+             }
+            else
+            {
+                                @:Não
+            }
+                        </td>
+                        <td>@Model.FinalCredits</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+

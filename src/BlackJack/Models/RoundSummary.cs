@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BlackJack.Models;
 
 namespace BlackJack.Models
 {
-    public enum RoundResult { Win, Lose, Tie }
+    public enum RoundResult { NewRound, Lose, Win, Empate, Surrender, BlackJack }
 
     public class RoundSummary
     {
@@ -26,6 +27,6 @@ namespace BlackJack.Models
         public double FinalCredits { get; set; }
 
         public RoundSummary()
-        {}
+        { }
     }
 }

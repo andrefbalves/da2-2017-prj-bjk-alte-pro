@@ -45,6 +45,10 @@ namespace BlackJack.Controllers
                     }
 
                     PlayApiResponse nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
+                    RoundSummary rs = new RoundSummary();
+                    rs.InitialCredits = ng.PlayerCredits;
+                    rs.Bet = req.InitialBet;
+                   
 
                     // 1 Ronda
                     if (nr.PlayerName == "auto1")  
@@ -53,14 +57,21 @@ namespace BlackJack.Controllers
 
                         CardMethods card = new CardMethods();
 
-                        if (card.ValueHands(nr.Dealerhand) >= 8 && card.ValueHands(ng.Dealerhand) <= 11)
+                        if (card.ValueHands(nr.PlayerHand) >= 8 && card.ValueHands(ng.PlayerHand) <= 11)
+                        {
                             playerAction = PlayerAction.Double;
-                        else if (card.ValueHands(nr.Dealerhand) <= 18)
+                            rs.Double = true;
+                            rs.Bet = rs.Bet + rs.Bet;
+                        }                           
+                        else if (card.ValueHands(nr.PlayerHand) <= 18)
                             playerAction = PlayerAction.Hit;
-                        else if (card.ValueHands(nr.Dealerhand) > 19)
+                        else if (card.ValueHands(nr.PlayerHand) > 19)
                             playerAction = PlayerAction.Stand;                       
                         else
                             playerAction = PlayerAction.Surrender;
+
+                        if (nr.RoundFinalResult == (int)RoundFinalResult.BlackJack)
+                            rs.Blackjack = true;                                               
 
                         req = new PlayApiRequest(ng.GameId, (int)playerAction, 10);
                         response = client.PostAsJsonAsync("/api/Play", req).Result;
@@ -71,7 +82,14 @@ namespace BlackJack.Controllers
 
                         PlayApiResponse res = response.Content.ReadAsAsync<PlayApiResponse>().Result;
 
-                        return View("Result", res);
+                        if (card.ValueHands(res.Dealerhand) == 21)
+                            rs.DealerBlackjack = true;
+
+                        rs.Rounds = res.RoundCount;
+                        rs.RoundResult = res.RoundFinalResult;
+                        rs.FinalCredits = res.PlayerCredits;
+
+                        return View("Result", rs);
                     }
                     else
                         return View();
