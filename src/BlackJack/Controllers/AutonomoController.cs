@@ -48,10 +48,10 @@ namespace BlackJack.Controllers
                     RoundSummary rs = new RoundSummary();
                     rs.InitialCredits = ng.PlayerCredits;
                     rs.Bet = req.InitialBet;
-                   
+
 
                     // 1 Ronda
-                    if (nr.PlayerName == "auto1")  
+                    if (nr.PlayerName == "auto1")
                     {
                         PlayerAction playerAction;
 
@@ -62,16 +62,16 @@ namespace BlackJack.Controllers
                             playerAction = PlayerAction.Double;
                             rs.Double = true;
                             rs.Bet = rs.Bet + rs.Bet;
-                        }                           
+                        }
                         else if (card.ValueHands(nr.PlayerHand) <= 18)
                             playerAction = PlayerAction.Hit;
                         else if (card.ValueHands(nr.PlayerHand) > 19)
-                            playerAction = PlayerAction.Stand;                       
+                            playerAction = PlayerAction.Stand;
                         else
                             playerAction = PlayerAction.Surrender;
 
                         if (nr.RoundFinalResult == (int)RoundFinalResult.BlackJack)
-                            rs.Blackjack = true;                                               
+                            rs.Blackjack = true;
 
                         req = new PlayApiRequest(ng.GameId, (int)playerAction, 10);
                         response = client.PostAsJsonAsync("/api/Play", req).Result;
@@ -89,8 +89,9 @@ namespace BlackJack.Controllers
                         rs.RoundResult = res.RoundFinalResult;
                         rs.FinalCredits = res.PlayerCredits;
                         Repository.AddRound(rs);
+                        List<RoundSummary> rounds = Repository.Rounds;
 
-                        return View("Result");
+                        return View("Result", rounds);
                     }
                     else
                         return View();
@@ -100,6 +101,6 @@ namespace BlackJack.Controllers
             }
             else
                 return View();
-        }
+        }      
     }
 }
