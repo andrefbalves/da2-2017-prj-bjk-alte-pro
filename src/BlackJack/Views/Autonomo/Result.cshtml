@@ -25,13 +25,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        @foreach (BlackJack.Models.RoundSummary round in Model)
-                        {
+                    @foreach (BlackJack.Models.RoundSummary round in Model)
+                    {
+                        <tr>
                             <td>@round.Rounds</td>
                             <td>@round.InitialCredits</td>
                             <td>@round.Bet</td>
-                            <td>@round.RoundResult</td>
+                            <td>@if (round.RoundResult == 1)
+                            {
+                                @:Perdeu
+             }
+                                else if (round.RoundResult == 2)
+                                {
+                                    @:Ganhou
+             }
+                            else if (round.RoundResult == 3)
+                            {
+                                @:Empatou
+             }
+                            else if (round.RoundResult == 4)
+                            {
+                                @:Desistiu
+             }
+                            </td>
                             <td>
                                 @if (round.Double)
                                 {
@@ -63,8 +79,8 @@
             }
                             </td>
                             <td>@round.FinalCredits</td>
-                        }
-                    </tr>
+                        </tr>
+                    }
                 </tbody>
             </table>
 
@@ -79,13 +95,11 @@
                         <th> Menor Aposta </th>
                         <th> Aposta Média </th>
                         <th> BlackJack </th>
-                        <th> Dealer BlackJack  </th>                        
+                        <th> Dealer BlackJack  </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>                                                                   
-                                                    
-                    </tr>
+                    <tr></tr>
                 </tbody>
             </table>
 

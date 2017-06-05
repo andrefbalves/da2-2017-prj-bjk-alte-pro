@@ -43,15 +43,16 @@ namespace BlackJack.Controllers
                     rd = 3;
                 else if (nr.PlayerName == "auto10")
                     rd = 10;
-
-                List<RoundSummary> rounds = null;
-                RoundSummary rs = new RoundSummary();
+                              
+             
 
                 // Ronda
                 while (nr.RoundCount < rd)
                 {
+                    RoundSummary rs = new RoundSummary(); 
+
                     if (nr.PlayingRound == false)
-                    {
+                    {                       
                         PlayApiRequest rq = new PlayApiRequest(nr.GameId, (int)PlayerAction.NewRound, 10);
                         response = client.PostAsJsonAsync("/api/Play", rq).Result;
                         if (!response.IsSuccessStatusCode)
@@ -77,7 +78,7 @@ namespace BlackJack.Controllers
                     }
                     else if (card.ValueHands(nr.PlayerHand) <= 18)
                         playerAction = PlayerAction.Hit;
-                    else if (card.ValueHands(nr.PlayerHand) > 19)
+                    else if (card.ValueHands(nr.PlayerHand) >= 19)
                         playerAction = PlayerAction.Stand;
                     else
                         playerAction = PlayerAction.Surrender;
@@ -101,11 +102,10 @@ namespace BlackJack.Controllers
                                                
                         rs.RoundResult = nr.RoundFinalResult;
                         rs.FinalCredits = nr.PlayerCredits;
-                        Repository.AddRound(rs);
-                        rounds = Repository.Rounds;
+                        Repository.AddRound(rs);                        
                     }
                 }
-                return View("Result", rounds);
+                return View("Result", Repository.Rounds);
             }
             else
                 return View();
