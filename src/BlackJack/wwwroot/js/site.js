@@ -56,3 +56,18 @@ $(document).ready(function () {
         $("#membros").hide();
     });
 });
+
+$(document).ready(function () {
+
+    $("#details").hide();
+
+    $("#btndetail").click(function () {
+        $("#details").toggle();
+        $("#global").hide();        
+    });
+
+    $("#btnglobal").click(function () {
+        $("#global").toggle();
+        $("#details").hide();
+    });
+});

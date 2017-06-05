@@ -4,11 +4,13 @@
     ViewData["Title"] = "Resultado";
     ViewBag.BodyCLass = "Jogo";
 }
+<a id="btnglobal" class="btn btn-success btn-large  "><span class="glyphicon glyphicon-zoom-out"></span><strong> Global</strong> </a>
+<a id="btndetail" class="btn btn-primary btn-large  "><span class="glyphicon glyphicon-zoom-in"></span><strong> Detalhes</strong> </a>
 
 <div class="container">
     <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-6">
+        <div id="details" class="col-md-6">
             <table class="table table-hover text-center tableop">
                 <thead>
                     <tr>
@@ -18,7 +20,7 @@
                         <th> Resultado </th>
                         <th> Double </th>
                         <th> BlackJack </th>
-                        <th> BlackJack Dealer </th>
+                        <th> Dealer BlackJack </th>
                         <th> Créditos Finais </th>
                     </tr>
                 </thead>
@@ -67,6 +69,28 @@
             </table>
 
         </div>
+        <div id="global" class="col-md-6">
+            <table class="table table-hover text-center tableop">
+                <thead>
+                    <tr>
+                        <th> Nº Rondas </th>
+                        <th> Total de Créditos</th>
+                        <th> Maior Aposta</th>
+                        <th> Menor Aposta </th>
+                        <th> Aposta Média </th>
+                        <th> BlackJack </th>
+                        <th> Dealer BlackJack  </th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>                                                                   
+                                                    
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
         <div class="col-md-3"></div>
     </div>
 </div>
+
