@@ -47,24 +47,30 @@ namespace BlackJack.Controllers
              
 
                 // Ronda
-                while (nr.RoundCount < rd)
+                while (nr.RoundCount < rd && nr.PlayerCredits !=0)
                 {
-                    RoundSummary rs = new RoundSummary(); 
+                    RoundSummary rs = new RoundSummary();                    
+
+                    if (nr.PlayerCredits >= 10)
+                        rs.Bet = 10;
+                    else
+                        rs.Bet = (int)nr.PlayerCredits;
 
                     if (nr.PlayingRound == false)
-                    {                       
-                        PlayApiRequest rq = new PlayApiRequest(nr.GameId, (int)PlayerAction.NewRound, 10);
+                    {
+                        rs.InitialCredits = nr.PlayerCredits;
+
+                        PlayApiRequest rq = new PlayApiRequest(nr.GameId, (int)PlayerAction.NewRound, rs.Bet);
                         response = client.PostAsJsonAsync("/api/Play", rq).Result;
                         if (!response.IsSuccessStatusCode)
                         {
                             return View("Index");
                         }
 
-                        nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
-                        rs.Rounds = nr.RoundCount;
-                        rs.InitialCredits = nr.PlayerCredits;
-                        rs.Bet = rq.InitialBet;
-                    }
+                        nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;                        
+                    }                    
+
+                    rs.Rounds = nr.RoundCount;
 
                     PlayerAction playerAction;
 
@@ -85,8 +91,10 @@ namespace BlackJack.Controllers
 
                     if (nr.RoundFinalResult == (int)RoundFinalResult.BlackJack)
                         rs.Blackjack = true;
+                    else
+                        rs.Blackjack = false;
 
-                    PlayApiRequest req = new PlayApiRequest(nr.GameId, (int)playerAction, 10);
+                    PlayApiRequest req = new PlayApiRequest(nr.GameId, (int)playerAction, rs.Bet);
                     response = client.PostAsJsonAsync("/api/Play", req).Result;
                     if (!response.IsSuccessStatusCode)
                     {
@@ -109,7 +117,7 @@ namespace BlackJack.Controllers
             }
             else
                 return View();
-        }
+        }               
     }
 }
 

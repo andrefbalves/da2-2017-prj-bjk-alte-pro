@@ -6,11 +6,11 @@
     background-attachment: fixed;
 }
 
-body.Jogo {
+    body.Jogo {
         background-image: url(../images/s-l1000.jpg);
         background-size: 100%;
         background-repeat: no-repeat;
-}
+    }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -118,7 +118,6 @@ div.body {
 
     .roundbtn:hover {
         background: #262626;
-       
     }
 
     .roundbtn:active {
@@ -132,7 +131,7 @@ div.body {
     }
 
 div.btnrules {
-    margin-top:10px;
+    margin-top: 10px;
 }
 
 .wellsize {
@@ -163,25 +162,25 @@ div.btnrules {
 }
 
 .alert {
-    padding: 20px;   
+    padding: 20px;
     color: white;
     text-align: center;
 }
 
-.lose{
-     background-color: #f66358;
+.lose {
+    background-color: #f66358;
 }
 
-.win {   
-    background-color: #6Abc6e;    
+.win {
+    background-color: #6Abc6e;
 }
 
-.empate {   
-    background-color: #47a8f5;   
+.empate {
+    background-color: #47a8f5;
 }
 
-.surrender {    
-    background-color: #ffa92c;    
+.surrender {
+    background-color: #ffa92c;
 }
 
 .closebtn {
@@ -200,20 +199,30 @@ div.btnrules {
     }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  color: black;   
-} 
-
-.tableop {
-     background:#000;
-        opacity: 0.7; 
-        filter:alpha(opacity=70); 
-        zoom:1;
+    color: black;
 }
 
-tr th {
-    text-align:center;
+.tableop {
+    background: #222222;         
+}
+
+tbody {    
+    height: 329px;
+    overflow: auto;    
+}
+
+td {
+    width:100px;          
+}
+
+thead > tr, tbody{
+    display:block;
+}
+
+th {
+    text-align: center;
 }
 
 .btnrules {
-    color:black;
+    color: black;
 }
