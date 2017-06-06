@@ -70,7 +70,7 @@ namespace BlackJack.Controllers
                         nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;                        
                     }                    
 
-                    rs.Rounds = nr.RoundCount;
+                    rs.Rounds = nr.RoundCount + 1;
 
                     PlayerAction playerAction;
 
