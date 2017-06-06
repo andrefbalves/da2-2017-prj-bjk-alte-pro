@@ -200,28 +200,27 @@ div.btnrules {
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
     color: black;
-    background-color: white;
 }
 
-
-.tableop tbody {
-    height: 330px;
-    overflow: auto;
+.tableop {
+    background: #222222;         
 }
 
-.tableop td {
-    background: #222222;
-    width: 100px;     
+tbody {    
+    height: 370px;
+    overflow: auto;    
 }
 
-.tableop thead > tr, tbody {
-    display: block;
+td { 
+    width:100px;                
 }
 
-.tableop th {
-    background: #222222;    
-    color:#999D9D;
-    width:100px;
+thead > tr, tbody{
+    display:block;
+}
+
+th {
+    text-align: center;
 }
 
 .btnrules {
