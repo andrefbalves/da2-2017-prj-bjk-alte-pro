@@ -19,15 +19,15 @@ namespace BlackJack.Models
 
         public  int ValueHands(List<Card> cards)
         {
+            bool AceInHands = AceHands(cards);
             int total = 0;
             foreach (BlackJack.Models.Card c in cards)
             {
                 total = ValueCards(c) + total;
-            }
-            bool AceInHands = AceHands(cards);
 
-            if (total > 21 && AceInHands == true)
-                total = total - 10;
+                if (total > 21 && AceInHands == true)
+                    total = total - 10;
+            }                
 
             return total;
         }
