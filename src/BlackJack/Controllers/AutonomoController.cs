@@ -113,6 +113,23 @@ namespace BlackJack.Controllers
                         Repository.AddRound(rs);                        
                     }
                 }
+
+                path = "/api/Play/rGAUUmCfk3vUgfSF/" + nr.GameId;
+                HttpResponseMessage resp = client.GetAsync(path).Result;
+                if (!resp.IsSuccessStatusCode)
+                {
+                    return View("Index");
+                }
+                nr = resp.Content.ReadAsAsync<PlayApiResponse>().Result;
+
+                path = "/api/Quit";
+                QuitApiRequest reqq = new QuitApiRequest(nr.GameId);
+                response = client.PostAsJsonAsync(path, reqq).Result;
+                if (!response.IsSuccessStatusCode)
+                {
+                    return View("Index");
+                }
+
                 return View("Result", Repository.Rounds);
             }
             else
