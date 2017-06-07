@@ -36,6 +36,11 @@ namespace BlackJack.Models
             rounds.Add(newround);
         }
 
+        public static void ClearRounds()
+        {
+            rounds.Clear();
+        }
+
         public static int Wins { get; set; }
 
         public static int Loses { get; set; }

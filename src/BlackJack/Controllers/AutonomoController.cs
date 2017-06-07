@@ -43,8 +43,8 @@ namespace BlackJack.Controllers
                     rd = 3;
                 else if (nr.PlayerName == "auto10")
                     rd = 10;
-                              
-             
+
+                Repository.ClearRounds();
 
                 // Ronda
                 while (nr.RoundCount < rd && nr.PlayerCredits !=0)
@@ -76,15 +76,17 @@ namespace BlackJack.Controllers
 
                     CardMethods card = new CardMethods();
 
-                    if (card.ValueHands(nr.PlayerHand) >= 8 && card.ValueHands(nr.PlayerHand) <= 11)
+                    if (card.ValueHands(nr.PlayerHand) >= 7 && card.ValueHands(nr.PlayerHand) <= 10)
                     {
                         playerAction = PlayerAction.Double;
                         rs.Double = true;
                         rs.Bet = rs.Bet + rs.Bet;
                     }
-                    else if (card.ValueHands(nr.PlayerHand) <= 18)
+                    else if (card.ValueHands(nr.PlayerHand) < 5 && card.ValueHands(nr.Dealerhand) == 11)
+                        playerAction = PlayerAction.Surrender;
+                    else if (card.ValueHands(nr.PlayerHand) <= 16)
                         playerAction = PlayerAction.Hit;
-                    else if (card.ValueHands(nr.PlayerHand) >= 19)
+                    else if (card.ValueHands(nr.PlayerHand) >= 17)
                         playerAction = PlayerAction.Stand;
                     else
                         playerAction = PlayerAction.Surrender;

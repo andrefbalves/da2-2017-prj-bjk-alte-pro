@@ -54,8 +54,8 @@ div.coltitle {
     text-align: center;
     font-weight: bolder;
     font-size: 80px;
-    padding-top: 20px;
-    padding-bottom: 14px;
+    padding-top: 15px;
+    padding-bottom: 0px;
 }
 
 div.title {
@@ -202,17 +202,17 @@ div.btnrules {
     color: black;
 }
 
-.tableop {
-    background: #222222;         
-}
-
 tbody {    
     height: 370px;
     overflow: auto;    
 }
 
 td { 
-    width:100px;                
+    width:100px;                   
+}
+
+.tableop tr{
+    background-color:#222222;
 }
 
 thead > tr, tbody{
