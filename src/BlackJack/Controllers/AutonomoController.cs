@@ -111,7 +111,7 @@ namespace BlackJack.Controllers
 
                         if (nr.PlayingRound == false)
                         {
-                            if (card.ValueHands(nr.Dealerhand) == 21)  // soma das duas primeiras cartas e não todas as cartas!!!! 
+                            if (card.ValueHands(nr.Dealerhand) == 21)  // soma das duas primeiras cartas e não todas as cartas!!!! teles
                                 rs.DealerBlackjack = true;
                         }                                         
                     }
