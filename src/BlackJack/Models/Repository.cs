@@ -48,5 +48,11 @@ namespace BlackJack.Models
         public static int Ties { get; set; }
 
         public static int BlackJack { get; set; }
+
+        private static List<TeamMember> identificacao = new List<TeamMember>();
+        public static List<TeamMember> Identificacao
+        {
+            get { return identificacao; }
+        }
     }
 }
