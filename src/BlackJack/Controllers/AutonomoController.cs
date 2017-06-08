@@ -46,22 +46,26 @@ namespace BlackJack.Controllers
 
                 Repository.ClearRounds();
 
+                RoundSummary rs = new RoundSummary();
+
                 // CICLO
                 while (nr.RoundCount < rd && nr.PlayerCredits != 0)
                 {
-                    RoundSummary rs = new RoundSummary();
 
-                    if (nr.PlayerCredits > 100)
-                        rs.Bet = 25;
-                    else if (nr.PlayerCredits >= 10)
-                        rs.Bet = 10;
-                    else
-                        rs.Bet = (int)nr.PlayerCredits;
-
-                    rs.InitialCredits = nr.PlayerCredits;
-
+                    //Inicio de Ronda
                     if (nr.PlayingRound == false)
-                    {                       
+                    {
+                        rs = new RoundSummary();
+
+                        if (nr.PlayerCredits > 100)
+                            rs.Bet = 25;
+                        else if (nr.PlayerCredits >= 10)
+                            rs.Bet = 10;
+                        else
+                            rs.Bet = (int)nr.PlayerCredits;
+
+                        rs.InitialCredits = nr.PlayerCredits;
+
                         PlayApiRequest rq = new PlayApiRequest(nr.GameId, (int)PlayerAction.NewRound, rs.Bet);
                         response = client.PostAsJsonAsync("/api/Play", rq).Result;
                         if (!response.IsSuccessStatusCode)
@@ -70,16 +74,17 @@ namespace BlackJack.Controllers
                         }
 
                         nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
+
+                        rs.Rounds = nr.RoundCount + 1;
+
+                        if (nr.RoundFinalResult == (int)RoundFinalResult.BlackJack)
+                            rs.Blackjack = true;
+                        else
+                            rs.Blackjack = false;
                     }
 
-                    rs.Rounds = nr.RoundCount + 1;
-
-                    if (nr.RoundFinalResult == (int)RoundFinalResult.BlackJack)
-                        rs.Blackjack = true;
-                    else
+                    if (nr.PlayingRound == true)
                     {
-                        rs.Blackjack = false;
-
                         PlayerAction playerAction;
 
                         CardMethods card = new CardMethods();
@@ -109,11 +114,10 @@ namespace BlackJack.Controllers
 
                         nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
 
-                        if (card.ValueHands(nr.Dealerhand) == 21)  // soma das duas primeiras cartas e não todas as cartas!!!! teles
+                        if (card.ValueHands(nr.Dealerhand) == 21 && nr.Dealerhand.Count == 2) 
                             rs.DealerBlackjack = true;
                         else
                             rs.DealerBlackjack = false;
-
                     }
 
                     if (nr.PlayingRound == false)
@@ -140,7 +144,10 @@ namespace BlackJack.Controllers
                     return View("Index");
                 }
 
-                return View("Result", Repository.Rounds);
+                List<RoundSummary> summaries = Repository.Rounds;
+
+
+                return View("Result", summaries);
             }
             else
                 return View();
