@@ -109,15 +109,19 @@ namespace BlackJack.Controllers
 
                         nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
 
-                        if (nr.PlayingRound == false)
-                        {
-                            if (card.ValueHands(nr.Dealerhand) == 21)  // soma das duas primeiras cartas e não todas as cartas!!!! teles
-                                rs.DealerBlackjack = true;
-                        }                                         
+                        if (card.ValueHands(nr.Dealerhand) == 21)  // soma das duas primeiras cartas e não todas as cartas!!!! teles
+                            rs.DealerBlackjack = true;
+                        else
+                            rs.DealerBlackjack = false;
+
                     }
-                    rs.RoundResult = nr.RoundFinalResult;
-                    rs.FinalCredits = nr.PlayerCredits;
-                    Repository.AddRound(rs);
+
+                    if (nr.PlayingRound == false)
+                    {
+                        rs.RoundResult = nr.RoundFinalResult;
+                        rs.FinalCredits = nr.PlayerCredits;
+                        Repository.AddRound(rs);
+                    }
                 }
 
                 path = "/api/Play/rGAUUmCfk3vUgfSF/" + nr.GameId;
