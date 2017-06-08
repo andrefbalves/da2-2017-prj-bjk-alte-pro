@@ -46,7 +46,7 @@ namespace BlackJack.Controllers
 
                 Repository.ClearRounds();
 
-                // Ronda
+                // CICLO
                 while (nr.RoundCount < rd && nr.PlayerCredits != 0)
                 {
                     RoundSummary rs = new RoundSummary();
@@ -58,10 +58,10 @@ namespace BlackJack.Controllers
                     else
                         rs.Bet = (int)nr.PlayerCredits;
 
-                    if (nr.PlayingRound == false)
-                    {
-                        rs.InitialCredits = nr.PlayerCredits;
+                    rs.InitialCredits = nr.PlayerCredits;
 
+                    if (nr.PlayingRound == false)
+                    {                       
                         PlayApiRequest rq = new PlayApiRequest(nr.GameId, (int)PlayerAction.NewRound, rs.Bet);
                         response = client.PostAsJsonAsync("/api/Play", rq).Result;
                         if (!response.IsSuccessStatusCode)
