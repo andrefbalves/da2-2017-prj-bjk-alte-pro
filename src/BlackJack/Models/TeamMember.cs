@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace BlackJack.Models
 {
-    public class TeamMember 
+    public class TeamMember : Controller
     {
         public string NomeEquipa  { get; set; }
 

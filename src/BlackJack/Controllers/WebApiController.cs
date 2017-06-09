@@ -10,12 +10,23 @@ namespace BlackJack.Controllers
     [Route("api/controller]")]
     public class WebApiController : Controller
     {
-      
-    //[HttpGet]
-    //public List<TeamMember> Get()
-    //    {
-            
-    //    }
-        
+
+        [HttpGet]
+        public IEnumerable<TeamMember> Get()
+        {
+            return new TeamMember [] { Repository.Identificacao.ToList };
+        }
+        [HttpGet("{id}")]
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+
+
+
+
+
     }
+
 }

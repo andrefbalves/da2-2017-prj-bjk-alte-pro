@@ -36,7 +36,16 @@ namespace BlackJack.Models
         {
              Game g = GetGame(game.GameId);
             g.PlayerName = game.PlayerName;
-            //continuar
+            g.BlackJack = game.BlackJack;
+            g.Credits = game.Credits;
+            g.Id = game.Id;
+            g.Loses = game.Loses;
+            g.Rounds = game.Rounds;
+            g.Ties = game.Ties;
+            g.Wins = game.Wins;
+
+
+            return g;
 
         }
 
