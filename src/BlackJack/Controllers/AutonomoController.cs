@@ -87,7 +87,7 @@ namespace BlackJack.Controllers
 
                         CardMethods card = new CardMethods();
 
-                        if (card.ValueHands(nr.PlayerHand) >= 5 && card.ValueHands(nr.PlayerHand) <= 10)
+                        if (card.ValueHands(nr.PlayerHand) >= 5 && card.ValueHands(nr.PlayerHand) <= 10 && nr.PlayerCredits >= rs.Bet)
                         {
                             playerAction = PlayerAction.Double;
                             rs.Double = true;

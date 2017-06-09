@@ -72,3 +72,8 @@ $(document).ready(function () {
     });
 });
 
+$('.btnresult').click(function () {
+    $(this).toggleClass('disabled')
+    $(this).siblings().removeClass('disabled');
+});
+
