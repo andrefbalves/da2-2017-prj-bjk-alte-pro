@@ -22,6 +22,15 @@ namespace BlackJack.Models
             players.Add(newPlayer);
         }
 
+        public static void FindGame(int id)
+        {
+            foreach (Game g in List<Game>)
+            {
+                if (id == g.GameId)
+                    return g;
+                         }
+        }
+
         private static List<RoundSummary> rounds = new List<RoundSummary>();
         public static List<RoundSummary> Rounds
         {

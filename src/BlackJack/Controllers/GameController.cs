@@ -21,6 +21,8 @@ namespace BlackJack.Controllers
         {
             if (ModelState.IsValid)
             {
+                Game game = new Game();
+
                 HttpClient client = MyHTTPClientNewGame.Client;
                 string path = "/api/NewGame";
                 HttpResponseMessage response = client.PostAsJsonAsync(path, novoJogador).Result;
@@ -30,6 +32,9 @@ namespace BlackJack.Controllers
                 }
 
                 PlayApiResponse ng = response.Content.ReadAsAsync<PlayApiResponse>().Result;
+                game.GameId = ng.GameId;
+                Repository.AddPlayer(game);
+
                 return View("PlayGame", ng);
             }
             else
@@ -60,6 +65,7 @@ namespace BlackJack.Controllers
 
                 if (nr.PlayingRound == false)
                 {
+
                     if (nr.RoundFinalResult == (int)RoundFinalResult.Win)
                         Repository.Wins = Repository.Wins + 1;
                     else if (nr.RoundFinalResult == (int)RoundFinalResult.Lose)

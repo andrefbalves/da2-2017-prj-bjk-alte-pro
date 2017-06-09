@@ -7,6 +7,8 @@ namespace BlackJack.Models
 {
     public class Game : IComparable
     {
+        public int Id { get; set; }
+        public int GameId { get; set; }
         public string PlayerName { get; set; }
         public int Rounds { get; set; }
         public int Wins { get; set; }
