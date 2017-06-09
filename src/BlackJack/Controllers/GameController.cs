@@ -33,7 +33,7 @@ namespace BlackJack.Controllers
 
                 PlayApiResponse ng = response.Content.ReadAsAsync<PlayApiResponse>().Result;
                 game.GameId = ng.GameId;
-                Repository.AddPlayer(game);
+                Repository.AddGame(game);
 
                 return View("PlayGame", ng);
             }
@@ -65,21 +65,24 @@ namespace BlackJack.Controllers
 
                 if (nr.PlayingRound == false)
                 {
+                    Game game =Repository.GetGame(id);
 
                     if (nr.RoundFinalResult == (int)RoundFinalResult.Win)
-                        Repository.Wins = Repository.Wins + 1;
+                        game.Wins = game.Wins + 1;
                     else if (nr.RoundFinalResult == (int)RoundFinalResult.Lose)
-                        Repository.Loses = Repository.Loses + 1;
+                        game.Loses = game.Loses + 1;
                     else if (nr.RoundFinalResult == (int)RoundFinalResult.Empate)
-                        Repository.Ties = Repository.Ties + 1;
+                        game.Ties = game.Ties + 1;
                     else if (nr.RoundFinalResult == (int)RoundFinalResult.BlackJack)
                     {
-                        Repository.BlackJack = Repository.BlackJack + 1;
-                        Repository.Wins = Repository.Wins + 1;
+                        game.BlackJack = game.BlackJack + 1;
+                        game.Wins = game.Wins + 1;
                         ViewBag.Result = ViewBag.Bet * 1.5;
                     }
                     else if (nr.RoundFinalResult == (int)RoundFinalResult.Surrender)
                         ViewBag.Result = ViewBag.Bet / 2;
+
+                    Repository.AddGame(game);
                 }
 
                 ViewBag.DealerHand = card.ValueHands(nr.Dealerhand);
@@ -95,7 +98,8 @@ namespace BlackJack.Controllers
         [HttpPost]
         public IActionResult QuitGame(int id)
         {
-            Game game = new Game();
+            Game game = Repository.GetGame(id);
+
             HttpClient client = MyHTTPClientNewGame.Client;
             string path = "/api/Play/rGAUUmCfk3vUgfSF/" + id;
             HttpResponseMessage resp = client.GetAsync(path).Result;
@@ -108,11 +112,8 @@ namespace BlackJack.Controllers
             game.PlayerName = nr.PlayerName;
             game.Rounds = nr.RoundCount;
             game.Credits = nr.PlayerCredits;
-            game.Wins = Repository.Wins;
-            game.Ties = Repository.Ties;
-            game.Loses = Repository.Loses;
-            game.BlackJack = Repository.BlackJack;
-            Repository.AddPlayer(game);
+                      
+            Repository.AddGame(game);
 
             string pathq = "/api/Quit";
             QuitApiRequest reqq = new QuitApiRequest(id);

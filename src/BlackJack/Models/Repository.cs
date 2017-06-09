@@ -5,30 +5,39 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Models
 {
-    public static class Repository 
+    public static class Repository
     {
 
-        private static List<Game> players = new List<Game>();
-        public static List<Game> Players
+        private static List<Game> games = new List<Game>();
+        public static List<Game> Games
         {
             get
             {
-                return players;
+                return games;
             }
         }
 
-        public static void AddPlayer(Game newPlayer)
+        public static void AddGame(Game newPlayer)
         {
-            players.Add(newPlayer);
+            games.Add(newPlayer);
         }
 
-        public static void FindGame(int id)
+        public static Game GetGame(int id)
         {
-            foreach (Game g in List<Game>)
+            foreach (Game g in Games)
             {
                 if (id == g.GameId)
                     return g;
-                         }
+            }
+            return null;
+        }
+
+        public static Game UpdateGame(Game game)
+        {
+             Game g = GetGame(game.GameId);
+            g.PlayerName = game.PlayerName;
+            //continuar
+
         }
 
         private static List<RoundSummary> rounds = new List<RoundSummary>();

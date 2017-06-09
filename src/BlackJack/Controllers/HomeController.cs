@@ -35,10 +35,10 @@ namespace BlackJack.Controllers
 
         public IActionResult HighScores()
         {
-            List<Game> players = Repository.Players;
-            players.Sort();
-            players.Reverse();
-            return View(players);
+            List<Game> games = Repository.Games;
+            games.Sort();
+            games.Reverse();
+            return View(games);
         }
 
        
