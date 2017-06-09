@@ -35,7 +35,7 @@ namespace BlackJack.Controllers
                 PlayApiResponse nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
 
 
-                                                
+
                 int rd = 0;
                 if (nr.PlayerName == "auto1")
                     rd = 1;
@@ -48,11 +48,11 @@ namespace BlackJack.Controllers
 
                 Repository.ClearRounds();
 
-               
+
 
                 // Ciclo de rondas
                 while (nr.RoundCount < rd && nr.PlayerCredits >= 10)
-                {                    
+                {
                     RoundSummary rs = new RoundSummary();
 
                     if (nr.PlayerCredits > 200)
@@ -60,7 +60,7 @@ namespace BlackJack.Controllers
                     else if (nr.PlayerCredits > 100)
                         rs.Bet = 25;
                     else if (nr.PlayerCredits >= 10)
-                        rs.Bet = 10;                    
+                        rs.Bet = 10;
 
                     rs.InitialCredits = nr.PlayerCredits;
 
@@ -79,7 +79,7 @@ namespace BlackJack.Controllers
                         rs.Blackjack = true;
                     else
                         rs.Blackjack = false;
-                    
+
                     //Jogadas
                     while (nr.PlayingRound == true)
                     {
@@ -93,15 +93,22 @@ namespace BlackJack.Controllers
                             rs.Double = true;
                             rs.Bet = rs.Bet + rs.Bet;
                         }
-                        else if (card.ValueHands(nr.PlayerHand) < 5 && card.ValueHands(nr.Dealerhand) == 11)
-                            playerAction = PlayerAction.Surrender;
-                        else if (card.ValueHands(nr.PlayerHand) <= 18)
-                            playerAction = PlayerAction.Hit;
-                        else if (card.ValueHands(nr.PlayerHand) >= 19)
-                            playerAction = PlayerAction.Stand;
-                        else
-                            playerAction = PlayerAction.Surrender;
 
+                        else if (card.ValueHands(nr.PlayerHand) <= 11)
+                            playerAction = PlayerAction.Hit;
+                        else if (card.ValueHands(nr.PlayerHand) <= 11 && (card.ValueHands(nr.Dealerhand) <= 6))
+                            playerAction = PlayerAction.Double;
+                        else if (card.ValueHands(nr.Dealerhand) >= 9 && (card.ValueHands(nr.PlayerHand) < 20))
+                            playerAction = PlayerAction.Surrender;
+                        else if (card.ValueHands(nr.PlayerHand) >= 15)
+                            playerAction = PlayerAction.Stand;
+                        else if (card.ValueHands(nr.PlayerHand) >= 12 && (card.ValueHands(nr.PlayerHand) <= 14) && (card.ValueHands(nr.Dealerhand) <= 9))
+                            playerAction = PlayerAction.Hit;
+                        else if (card.ValueHands(nr.PlayerHand) >= 12 && (card.ValueHands(nr.PlayerHand) <= 14) && (card.ValueHands(nr.Dealerhand) >= 10))
+                            playerAction = PlayerAction.Stand;
+                        else playerAction = PlayerAction.Surrender;
+                        
+                        
 
                         PlayApiRequest req = new PlayApiRequest(nr.GameId, (int)playerAction, rs.Bet);
                         response = client.PostAsJsonAsync("/api/Play", req).Result;
