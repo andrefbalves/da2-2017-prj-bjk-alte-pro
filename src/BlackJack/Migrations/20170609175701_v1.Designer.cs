@@ -8,8 +8,8 @@ using BlackJack.Models;
 namespace BlackJack.Migrations
 {
     [DbContext(typeof(BlackJackDbContext))]
-    [Migration("20170609165914_BdInicial")]
-    partial class BdInicial
+    [Migration("20170609175701_v1")]
+    partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

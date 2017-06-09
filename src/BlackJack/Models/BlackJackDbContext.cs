@@ -12,9 +12,7 @@ namespace BlackJack.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connection =
-            @"Server=(localdb)\mssqllocaldb;Database=DA2_2017_LABCOMPRAS;
-            Trusted_Connection=True;";
+            string connection = @"Server=(localdb)\mssqllocaldb;Database=AlteProBD;Trusted_Connection=True;";
             optionsBuilder.UseSqlServer(connection);
         }
     }
