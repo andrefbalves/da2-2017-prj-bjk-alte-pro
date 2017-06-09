@@ -5,18 +5,10 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Models
 {
-    public static class Repository 
+    public static class MemoryRepository
     {
 
-        private static List<Game> games
-        {
-            get
-            {
-                BlackJackDbContext context = new BlackJackDbContext();
-                List<Game> games = context.Games.ToList();
-                return games;
-            }
-        }
+        private static List<Game> games = new List<Game>();
         public static List<Game> Games
         {
             get
@@ -27,9 +19,7 @@ namespace BlackJack.Models
 
         public static void AddGame(Game game)
         {
-            BlackJackDbContext context = new BlackJackDbContext();
-            context.Games.Add(game);
-            context.SaveChanges();
+            games.Add(game);
         }
 
         public static Game GetGame(int id)
@@ -52,7 +42,7 @@ namespace BlackJack.Models
             g.Loses = game.Loses;
             g.Rounds = game.Rounds;
             g.Ties = game.Ties;
-            g.Wins = game.Wins;
+            g.Wins = game.Wins;                      
         }
 
         private static List<RoundSummary> rounds = new List<RoundSummary>();
@@ -73,14 +63,22 @@ namespace BlackJack.Models
         {
             rounds.Clear();
         }
-        
+
+        public static int Wins { get; set; }
+
+        public static int Loses { get; set; }
+
+        public static int Ties { get; set; }
+
+        public static int BlackJack { get; set; }
+
         private static List<TeamMember> identificacao = new List<TeamMember>();
         public static List<TeamMember> Identificacao
         {
             get { return identificacao; }
         }
 
-        static Repository()
+        static MemoryRepository()
         {
             TeamMember a = new TeamMember();
             TeamMember d = new TeamMember();
@@ -96,7 +94,7 @@ namespace BlackJack.Models
         public static List<Game> HiScores(HiScores p)
         {
 
-            return Games; //não é games.....
+            return Games;
         }
 
     }

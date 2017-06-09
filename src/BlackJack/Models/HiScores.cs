@@ -8,12 +8,11 @@ namespace BlackJack.Models
 {
     public class HiScores :  Controller
     {
-        public int Numero { get; set; }
+        public int Id { get; set; }
 
-        public string NomeJogador { get; set; }
+        public string PlayerName { get; set; }
 
         public bool Bool { get; set; }
-
 
         public HiScores()
         {}

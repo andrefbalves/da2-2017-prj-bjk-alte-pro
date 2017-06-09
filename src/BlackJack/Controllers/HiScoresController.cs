@@ -8,15 +8,15 @@ using BlackJack.Models;
 namespace BlackJack.Controllers
 {
     [Route("api/[controller]")]
-    public class IdentificarEquipaProjeto : Controller
+    public class HiScoresController : Controller
     {
-
-        [HttpGet]
-        public List<TeamMember> Get()
+        [HttpPost]
+        public IActionResult Post([FromBody] HiScores p)
         {
-            return Repository.Identificacao;
+           return  Ok(Repository.HiScores(p));
+            
         }
 
-    }
 
+    }
 }

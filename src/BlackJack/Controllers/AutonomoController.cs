@@ -107,8 +107,8 @@ namespace BlackJack.Controllers
                         else if (card.ValueHands(nr.PlayerHand) >= 12 && (card.ValueHands(nr.PlayerHand) <= 14) && (card.ValueHands(nr.Dealerhand) >= 10))
                             playerAction = PlayerAction.Stand;
                         else playerAction = PlayerAction.Surrender;
-                        
-                        
+
+
 
                         PlayApiRequest req = new PlayApiRequest(nr.GameId, (int)playerAction, rs.Bet);
                         response = client.PostAsJsonAsync("/api/Play", req).Result;
@@ -148,12 +148,31 @@ namespace BlackJack.Controllers
 
                 List<RoundSummary> rounds = Repository.Rounds;
 
+                double totalBet = 0;
+                int maxBet = 0;
+                int minBet = 0;
+                foreach (RoundSummary r in rounds)
+                {
+                    totalBet = r.Bet + totalBet;
+                    if (r.Bet > maxBet)
+                        maxBet = r.Bet;
+                    if (r.Bet < minBet)
+                        minBet = r.Bet;
+                }
+                totalBet = totalBet / rounds.Count();
 
                 return View("Result", rounds);
             }
             else
                 return View();
         }
+
+
+
+
+        //xxxxx
+
+
     }
 }
 
