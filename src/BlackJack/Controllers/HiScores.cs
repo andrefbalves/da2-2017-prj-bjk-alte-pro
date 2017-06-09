@@ -11,11 +11,11 @@ namespace BlackJack.Controllers
     public class HiScores : Controller
     {
 
-        [HttpGet]
-        public List<Game>// Get()
-        {
-           // return Repository.Game;
-        }
+        //[HttpGet]
+        //public List<Game>// Get()
+        //{
+        //   // return Repository.Game;
+        //}
 
         
     }
