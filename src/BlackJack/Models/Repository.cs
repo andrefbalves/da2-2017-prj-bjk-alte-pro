@@ -32,9 +32,9 @@ namespace BlackJack.Models
             return null;
         }
 
-        public static Game UpdateGame(Game game)
+        public static void UpdateGame(Game game)
         {
-             Game g = GetGame(game.GameId);
+            Game g = GetGame(game.GameId);
             g.PlayerName = game.PlayerName;
             g.BlackJack = game.BlackJack;
             g.Credits = game.Credits;
@@ -42,11 +42,7 @@ namespace BlackJack.Models
             g.Loses = game.Loses;
             g.Rounds = game.Rounds;
             g.Ties = game.Ties;
-            g.Wins = game.Wins;
-
-
-            return g;
-
+            g.Wins = game.Wins;                      
         }
 
         private static List<RoundSummary> rounds = new List<RoundSummary>();
