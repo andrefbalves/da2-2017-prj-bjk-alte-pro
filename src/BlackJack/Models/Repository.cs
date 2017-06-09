@@ -77,5 +77,19 @@ namespace BlackJack.Models
         {
             get { return identificacao; }
         }
+
+        static Repository()
+        {
+            TeamMember a = new TeamMember();
+            TeamMember d = new TeamMember();
+
+            a.NomeEquipa = "Alte.pro";
+            d.NomeEquipa = "Alte.pro";
+            a.NomeMembro = "André Filipe Barrela Alves";
+            d.NomeMembro = "Diogo Filipe Teles de Carvalho";
+            a.NumeroMembro = 150323014;
+            d.NumeroMembro = 150323035;
+
+        }
     }
 }

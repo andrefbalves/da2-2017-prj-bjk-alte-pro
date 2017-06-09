@@ -8,15 +8,15 @@ using BlackJack.Models;
 namespace BlackJack.Controllers
 {
     [Route("api/controller]")]
-    public class WebApiController : Controller
+    public class HiScores : Controller
     {
 
-      
+        [HttpGet]
+        public List<Game>// Get()
+        {
+           // return Repository.Game;
+        }
 
-
-
-
-
+        
     }
-
 }
