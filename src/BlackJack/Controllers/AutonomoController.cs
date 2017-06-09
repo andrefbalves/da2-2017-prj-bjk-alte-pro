@@ -43,13 +43,15 @@ namespace BlackJack.Controllers
                     rd = 3;
                 else if (nr.PlayerName == "auto10")
                     rd = 10;
+                else if (nr.PlayerName == "auto0")
+                    rd = 100;
 
                 Repository.ClearRounds();
 
                
 
                 // Ciclo de rondas
-                while (nr.RoundCount < rd )
+                while (nr.RoundCount < rd && nr.PlayerCredits >= 0)
                 {                    
                     RoundSummary rs = new RoundSummary();
 
