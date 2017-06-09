@@ -75,5 +75,7 @@ $(document).ready(function () {
 $('.btnresult').click(function () {
     $(this).toggleClass('disabled')
     $(this).siblings().removeClass('disabled');
+    $(this).toggleClass('active')
+    $(this).siblings().removeClass('active');
 });
 
