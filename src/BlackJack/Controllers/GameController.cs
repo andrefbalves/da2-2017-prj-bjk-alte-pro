@@ -82,7 +82,7 @@ namespace BlackJack.Controllers
                     else if (nr.RoundFinalResult == (int)RoundFinalResult.Surrender)
                         ViewBag.Result = ViewBag.Bet / 2;
 
-                    Repository.AddGame(game);
+                    Repository.UpdateGame(game);
                 }
 
                 ViewBag.DealerHand = card.ValueHands(nr.Dealerhand);
@@ -112,8 +112,7 @@ namespace BlackJack.Controllers
             game.PlayerName = nr.PlayerName;
             game.Rounds = nr.RoundCount;
             game.Credits = nr.PlayerCredits;
-                      
-            Repository.AddGame(game);
+                                  
 
             string pathq = "/api/Quit";
             QuitApiRequest reqq = new QuitApiRequest(id);
