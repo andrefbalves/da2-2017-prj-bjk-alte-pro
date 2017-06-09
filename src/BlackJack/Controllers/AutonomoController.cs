@@ -55,12 +55,12 @@ namespace BlackJack.Controllers
                 {                    
                     RoundSummary rs = new RoundSummary();
 
-                    if (nr.PlayerCredits > 100)
+                    if (nr.PlayerCredits > 200)
+                        rs.Bet = 50;
+                    else if (nr.PlayerCredits > 100)
                         rs.Bet = 25;
                     else if (nr.PlayerCredits >= 10)
-                        rs.Bet = 10;
-                    else
-                        rs.Bet = (int)nr.PlayerCredits;
+                        rs.Bet = 10;                    
 
                     rs.InitialCredits = nr.PlayerCredits;
 
