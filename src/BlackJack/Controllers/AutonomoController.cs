@@ -51,7 +51,7 @@ namespace BlackJack.Controllers
                
 
                 // Ciclo de rondas
-                while (nr.RoundCount < rd && nr.PlayerCredits >= 0)
+                while (nr.RoundCount < rd && nr.PlayerCredits >= 10)
                 {                    
                     RoundSummary rs = new RoundSummary();
 
