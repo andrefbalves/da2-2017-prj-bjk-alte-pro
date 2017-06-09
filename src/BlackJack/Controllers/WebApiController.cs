@@ -11,11 +11,11 @@ namespace BlackJack.Controllers
     public class WebApiController : Controller
     {
       
-    [HttpGet]
-    public List<TeamMember> Get()
-        {
-            return Repository.identificacao;
-        }
+    //[HttpGet]
+    //public List<TeamMember> Get()
+    //    {
+            
+    //    }
         
     }
 }

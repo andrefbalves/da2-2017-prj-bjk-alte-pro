@@ -35,7 +35,7 @@ namespace BlackJack.Controllers
                 PlayApiResponse nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
 
 
-                //Nova Ronda                                 
+                                                
                 int rd = 0;
                 if (nr.PlayerName == "auto1")
                     rd = 1;
@@ -46,44 +46,40 @@ namespace BlackJack.Controllers
 
                 Repository.ClearRounds();
 
-                RoundSummary rs = new RoundSummary();
+               
 
-                // CICLO
-                while (nr.RoundCount < rd && nr.PlayerCredits != 0)
-                {
+                // Ciclo de rondas
+                while (nr.RoundCount < rd )
+                {                    
+                    RoundSummary rs = new RoundSummary();
 
-                    //Inicio de Ronda
-                    if (nr.PlayingRound == false)
+                    if (nr.PlayerCredits > 100)
+                        rs.Bet = 25;
+                    else if (nr.PlayerCredits >= 10)
+                        rs.Bet = 10;
+                    else
+                        rs.Bet = (int)nr.PlayerCredits;
+
+                    rs.InitialCredits = nr.PlayerCredits;
+
+                    PlayApiRequest rq = new PlayApiRequest(nr.GameId, (int)PlayerAction.NewRound, rs.Bet);
+                    response = client.PostAsJsonAsync("/api/Play", rq).Result;
+                    if (!response.IsSuccessStatusCode)
                     {
-                        rs = new RoundSummary();
-
-                        if (nr.PlayerCredits > 100)
-                            rs.Bet = 25;
-                        else if (nr.PlayerCredits >= 10)
-                            rs.Bet = 10;
-                        else
-                            rs.Bet = (int)nr.PlayerCredits;
-
-                        rs.InitialCredits = nr.PlayerCredits;
-
-                        PlayApiRequest rq = new PlayApiRequest(nr.GameId, (int)PlayerAction.NewRound, rs.Bet);
-                        response = client.PostAsJsonAsync("/api/Play", rq).Result;
-                        if (!response.IsSuccessStatusCode)
-                        {
-                            return View("Index");
-                        }
-
-                        nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
-
-                        rs.Rounds = nr.RoundCount + 1;
-
-                        if (nr.RoundFinalResult == (int)RoundFinalResult.BlackJack)
-                            rs.Blackjack = true;
-                        else
-                            rs.Blackjack = false;
+                        return View("Index");
                     }
 
-                    if (nr.PlayingRound == true)
+                    nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
+
+                    rs.Rounds = nr.RoundCount + 1;
+
+                    if (nr.RoundFinalResult == (int)RoundFinalResult.BlackJack)
+                        rs.Blackjack = true;
+                    else
+                        rs.Blackjack = false;
+                    
+                    //Jogadas
+                    while (nr.PlayingRound == true)
                     {
                         PlayerAction playerAction;
 
@@ -114,18 +110,15 @@ namespace BlackJack.Controllers
 
                         nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
 
-                        if (card.ValueHands(nr.Dealerhand) == 21 && nr.Dealerhand.Count == 2) 
+                        if (card.ValueHands(nr.Dealerhand) == 21 && nr.Dealerhand.Count == 2)
                             rs.DealerBlackjack = true;
                         else
                             rs.DealerBlackjack = false;
                     }
 
-                    if (nr.PlayingRound == false)
-                    {
-                        rs.RoundResult = nr.RoundFinalResult;
-                        rs.FinalCredits = nr.PlayerCredits;
-                        Repository.AddRound(rs);
-                    }
+                    rs.RoundResult = nr.RoundFinalResult;
+                    rs.FinalCredits = nr.PlayerCredits;
+                    Repository.AddRound(rs);
                 }
 
                 path = "/api/Play/rGAUUmCfk3vUgfSF/" + nr.GameId;
@@ -144,10 +137,10 @@ namespace BlackJack.Controllers
                     return View("Index");
                 }
 
-                List<RoundSummary> summaries = Repository.Rounds;
+                List<RoundSummary> rounds = Repository.Rounds;
 
 
-                return View("Result", summaries);
+                return View("Result", rounds);
             }
             else
                 return View();
