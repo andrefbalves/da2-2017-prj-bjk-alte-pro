@@ -94,7 +94,7 @@ namespace BlackJack.Controllers
                         }
                         else if (card.ValueHands(nr.PlayerHand) <= 11)
                             playerAction = PlayerAction.Hit;                       
-                        else if (card.ValueHands(nr.Dealerhand) >= 9 && (card.ValueHands(nr.PlayerHand) < 20))
+                        else if (card.ValueHands(nr.Dealerhand) >= 9 && (card.ValueHands(nr.PlayerHand) < 8))
                             playerAction = PlayerAction.Surrender;
                         else if (card.ValueHands(nr.PlayerHand) >= 15)
                             playerAction = PlayerAction.Stand;
@@ -102,7 +102,8 @@ namespace BlackJack.Controllers
                             playerAction = PlayerAction.Hit;
                         else if (card.ValueHands(nr.PlayerHand) >= 12 && (card.ValueHands(nr.PlayerHand) <= 14) && (card.ValueHands(nr.Dealerhand) >= 10))
                             playerAction = PlayerAction.Stand;
-                        else playerAction = PlayerAction.Surrender;
+                        else
+                            playerAction = PlayerAction.Surrender;
 
 
 
