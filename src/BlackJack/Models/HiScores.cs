@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Models
 {
-    public class HiScores :  Controller
+    public class HiScores
     {
         public int Id { get; set; }
 

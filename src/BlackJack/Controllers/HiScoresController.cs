@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BlackJack.Models;
 
+
 namespace BlackJack.Controllers
 {
     [Route("api/[controller]")]
@@ -13,10 +14,23 @@ namespace BlackJack.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] HiScores p)
         {
-           return  Ok(Repository.HiScores(p));
+            HiScores hs = new HiScores();
+            
+            //foreach (Game high in Repository.Games.Take(hs.Id))
+            {
+                //if (hs.PlayerName == high.PlayerName)
+                    //return high;
+            }
+
+            int x;
+            if (hs.Bool == true)
+                x = hs.Id;
+
+            else
+                x = 3;
+            
+            return  Ok(Repository.HiScores(p));
             
         }
-
-
     }
 }
