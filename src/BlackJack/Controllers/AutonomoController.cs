@@ -87,17 +87,13 @@ namespace BlackJack.Controllers
 
                         CardMethods card = new CardMethods();
 
-                        if (card.ValueHands(nr.PlayerHand) >= 5 && card.ValueHands(nr.PlayerHand) <= 10 && nr.PlayerCredits >= rs.Bet && nr.PlayerCredits >= 30)
+                        if (card.ValueHands(nr.PlayerHand) <= 11 && (card.ValueHands(nr.Dealerhand) <= 6))
                         {
                             playerAction = PlayerAction.Double;
-                            rs.Double = true;
-                            rs.Bet = rs.Bet + rs.Bet;
+                            rs.Double = true;                           
                         }
-
                         else if (card.ValueHands(nr.PlayerHand) <= 11)
-                            playerAction = PlayerAction.Hit;
-                        else if (card.ValueHands(nr.PlayerHand) <= 11 && (card.ValueHands(nr.Dealerhand) <= 6))
-                            playerAction = PlayerAction.Double;
+                            playerAction = PlayerAction.Hit;                       
                         else if (card.ValueHands(nr.Dealerhand) >= 9 && (card.ValueHands(nr.PlayerHand) < 20))
                             playerAction = PlayerAction.Surrender;
                         else if (card.ValueHands(nr.PlayerHand) >= 15)
@@ -118,6 +114,9 @@ namespace BlackJack.Controllers
                         }
 
                         nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
+
+                        if(playerAction==PlayerAction.Double)
+                            rs.Bet = rs.Bet + rs.Bet;
 
                         if (card.ValueHands(nr.Dealerhand) == 21 && nr.Dealerhand.Count == 2)
                             rs.DealerBlackjack = true;
