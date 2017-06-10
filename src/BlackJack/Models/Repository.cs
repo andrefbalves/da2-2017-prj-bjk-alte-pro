@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Models
 {
-    public static class Repository 
+    public static class Repository
     {
 
         private static List<Game> games
@@ -45,14 +45,12 @@ namespace BlackJack.Models
         public static void UpdateGame(Game game)
         {
             Game g = GetGame(game.GameId);
-            g.PlayerName = game.PlayerName;
             g.BlackJack = game.BlackJack;
             g.Credits = game.Credits;
-            g.Id = game.GameId;
             g.Loses = game.Loses;
             g.Rounds = game.Rounds;
             g.Ties = game.Ties;
-            g.Wins = game.Wins;            
+            g.Ties = game.Ties;           
         }
 
         private static List<RoundSummary> rounds = new List<RoundSummary>();
@@ -73,7 +71,7 @@ namespace BlackJack.Models
         {
             rounds.Clear();
         }
-        
+
         private static List<TeamMember> identificacao = new List<TeamMember>();
         public static List<TeamMember> Identificacao
         {

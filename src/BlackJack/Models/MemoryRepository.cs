@@ -35,14 +35,12 @@ namespace BlackJack.Models
         public static void UpdateGame(Game game)
         {
             Game g = GetGame(game.GameId);
-            g.PlayerName = game.PlayerName;
             g.BlackJack = game.BlackJack;
             g.Credits = game.Credits;
-            g.Id = game.Id;
             g.Loses = game.Loses;
             g.Rounds = game.Rounds;
             g.Ties = game.Ties;
-            g.Wins = game.Wins;                      
+            g.Ties = game.Ties;           
         }
 
         private static List<RoundSummary> rounds = new List<RoundSummary>();
@@ -63,14 +61,6 @@ namespace BlackJack.Models
         {
             rounds.Clear();
         }
-
-        public static int Wins { get; set; }
-
-        public static int Loses { get; set; }
-
-        public static int Ties { get; set; }
-
-        public static int BlackJack { get; set; }
 
         private static List<TeamMember> identificacao = new List<TeamMember>();
         public static List<TeamMember> Identificacao
