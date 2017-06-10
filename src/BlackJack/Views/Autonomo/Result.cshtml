@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Resultado";
     ViewBag.BodyCLass = "Jogo";
+    var game = ViewBag.Game;
 }
 
 
@@ -106,7 +107,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr></tr>
+                    <tr>
+                        <td>@game.Rounds</td>
+                        <td>@game.Credits</td>
+                        <td>@game.MaxBet</td>
+                        <td>@game.MinBet</td>
+                        <td>@game.AvgBet</td>
+                        <td>@game.PlayerBlackjack</td>
+                        <td>@game.DealerBlackjack</td>
+                    </tr>
                 </tbody>
             </table>
 

@@ -148,18 +148,26 @@ namespace BlackJack.Controllers
 
                 List<RoundSummary> rounds = Repository.Rounds;
 
-                double totalBet = 0;
-                int maxBet = 0;
-                int minBet = 0;
+                GameSummary g = new GameSummary();
+                g.Rounds = nr.RoundCount;
+                g.Credits = nr.PlayerCredits;
                 foreach (RoundSummary r in rounds)
                 {
-                    totalBet = r.Bet + totalBet;
-                    if (r.Bet > maxBet)
-                        maxBet = r.Bet;
-                    if (r.Bet < minBet)
-                        minBet = r.Bet;
+                    g.AvgBet = r.Bet + g.AvgBet;
+                    if (r.Bet > g.MaxBet)
+                        g.MaxBet = r.Bet;
+                    if (r.Bet < g.MinBet)
+                        g.MinBet = r.Bet;
+                    else
+                        g.MinBet = 10;
+                    if (r.RoundResult == (int)RoundResult.BlackJack)
+                        g.PlayerBlackjack = g.PlayerBlackjack + 1;
+                    if (r.DealerBlackjack == true)
+                        g.DealerBlackjack = g.DealerBlackjack + 1;
                 }
-                totalBet = totalBet / rounds.Count();
+                g.AvgBet = g.AvgBet / rounds.Count();
+
+                ViewBag.Game = g;              
 
                 return View("Result", rounds);
             }

@@ -48,11 +48,11 @@ namespace BlackJack.Models
             g.PlayerName = game.PlayerName;
             g.BlackJack = game.BlackJack;
             g.Credits = game.Credits;
-            g.Id = game.Id;
+            g.Id = game.GameId;
             g.Loses = game.Loses;
             g.Rounds = game.Rounds;
             g.Ties = game.Ties;
-            g.Wins = game.Wins;
+            g.Wins = game.Wins;            
         }
 
         private static List<RoundSummary> rounds = new List<RoundSummary>();

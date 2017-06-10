@@ -33,6 +33,7 @@ namespace BlackJack.Controllers
 
                 PlayApiResponse ng = response.Content.ReadAsAsync<PlayApiResponse>().Result;
                 game.GameId = ng.GameId;
+                game.PlayerName = ng.PlayerName;
                 Repository.AddGame(game);
 
                 return View("PlayGame", ng);
@@ -109,7 +110,7 @@ namespace BlackJack.Controllers
             }
             PlayApiResponse nr = resp.Content.ReadAsAsync<PlayApiResponse>().Result;
 
-            game.PlayerName = nr.PlayerName;
+       
             game.Rounds = nr.RoundCount;
             game.Credits = nr.PlayerCredits;
                                   
