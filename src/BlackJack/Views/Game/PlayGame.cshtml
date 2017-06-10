@@ -66,7 +66,7 @@
             @if (Model.PlayingRound == false)
             {
                 <div class="container well wellsize">
-                    @if (Model.PlayerCredits > 0)
+                    @if (Model.PlayerCredits >= 10)
                     {
                         <h3 class="text-center">Aposta!</h3>
                         <form action="/Game/PlayGame" method="post">
