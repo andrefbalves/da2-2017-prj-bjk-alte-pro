@@ -202,26 +202,26 @@ div.btnrules {
     color: black;
 }
 
-tbody {    
+table.tableop tbody{    
     height: 370px;
     overflow: auto;    
 }
 
-td { 
+table.tableop  td{ 
     width:100px;                   
 }
 
-.tableop tr{
+table.tableop  tr{
     background-color:#222222;
 }
 
-thead > tr, tbody{
+table.tableop thead > .tableop tr, tbody{
     display:block;
 }
 
-th {
+/*th {
     text-align: center;
-}
+}*/
 
 .btnrules {
     color: black;

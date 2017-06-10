@@ -27,14 +27,14 @@
                         <th> Créditos Finais </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     @foreach (BlackJack.Models.RoundSummary round in Model)
                     {
                         <tr>
-                            <td>@round.Rounds</td>
-                            <td>@round.InitialCredits</td>
-                            <td>@round.Bet</td>
-                            <td>
+                            <td >@round.Rounds</td>
+                            <td >@round.InitialCredits</td>
+                            <td >@round.Bet</td>
+                            <td >
                                 @if (round.RoundResult == 1)
                                 {
                                     @:<div class="text-danger">Perdeu</div>
@@ -56,7 +56,7 @@
                                     @:<div class="text-success">BlackJack</div>
              }
                             </td>
-                            <td>
+                            <td >
                                 @if (round.Double)
                                 {
                                     @:X
@@ -66,7 +66,7 @@
                                     @:-
             }
                             </td>
-                            <td>
+                            <td >
                                 @if (round.Blackjack)
                                 {
                                     @:X
@@ -76,7 +76,7 @@
                                     @:-
             }
                             </td>
-                            <td>
+                            <td >
                                 @if (round.DealerBlackjack)
                                 {
                                     @:X

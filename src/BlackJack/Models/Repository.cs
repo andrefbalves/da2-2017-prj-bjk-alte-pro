@@ -44,13 +44,9 @@ namespace BlackJack.Models
 
         public static void UpdateGame(Game game)
         {
-            Game g = GetGame(game.GameId);
-            g.BlackJack = game.BlackJack;
-            g.Credits = game.Credits;
-            g.Loses = game.Loses;
-            g.Rounds = game.Rounds;
-            g.Ties = game.Ties;
-            g.Ties = game.Ties;           
+            BlackJackDbContext context = new BlackJackDbContext();
+            context.Games.Update(game);
+            context.SaveChanges();
         }
 
         private static List<RoundSummary> rounds = new List<RoundSummary>();

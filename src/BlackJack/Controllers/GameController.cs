@@ -66,7 +66,7 @@ namespace BlackJack.Controllers
 
                 if (nr.PlayingRound == false)
                 {
-                    Game game =Repository.GetGame(id);
+                    Game game = Repository.GetGame(id);
 
                     if (nr.RoundFinalResult == (int)RoundFinalResult.Win)
                         game.Wins = game.Wins + 1;
@@ -83,6 +83,8 @@ namespace BlackJack.Controllers
                     else if (nr.RoundFinalResult == (int)RoundFinalResult.Surrender)
                         ViewBag.Result = ViewBag.Bet / 2;
 
+                    game.Rounds = nr.RoundCount;
+                    game.Credits = nr.PlayerCredits;
                     Repository.UpdateGame(game);
                 }
 
@@ -109,11 +111,6 @@ namespace BlackJack.Controllers
                 return View("Index");
             }
             PlayApiResponse nr = resp.Content.ReadAsAsync<PlayApiResponse>().Result;
-
-       
-            game.Rounds = nr.RoundCount;
-            game.Credits = nr.PlayerCredits;
-                                  
 
             string pathq = "/api/Quit";
             QuitApiRequest reqq = new QuitApiRequest(id);
