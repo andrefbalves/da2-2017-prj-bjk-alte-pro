@@ -54,17 +54,19 @@ namespace BlackJack.Controllers
                 while (nr.RoundCount < rd && nr.PlayerCredits >= 10)
                 {
                     RoundSummary rs = new RoundSummary();
+                    rs.Blackjack = false;
 
+                    int initialBet = 0;
                     if (nr.PlayerCredits > 200)
-                        rs.Bet = 50;
+                        initialBet = 50;
                     else if (nr.PlayerCredits > 100)
-                        rs.Bet = 25;
-                    else if (nr.PlayerCredits >= 10)
-                        rs.Bet = 10;
+                        initialBet = 25;
+                    else
+                        initialBet = 10;
 
                     rs.InitialCredits = nr.PlayerCredits;
 
-                    PlayApiRequest rq = new PlayApiRequest(nr.GameId, (int)PlayerAction.NewRound, rs.Bet);
+                    PlayApiRequest rq = new PlayApiRequest(nr.GameId, (int)PlayerAction.NewRound, initialBet);
                     response = client.PostAsJsonAsync("/api/Play", rq).Result;
                     if (!response.IsSuccessStatusCode)
                     {
@@ -77,37 +79,87 @@ namespace BlackJack.Controllers
 
                     if (nr.RoundFinalResult == (int)RoundFinalResult.BlackJack)
                         rs.Blackjack = true;
-                    else
-                        rs.Blackjack = false;
+
 
                     //Jogadas
-                    while (nr.PlayingRound == true)
+                    while (nr.PlayingRound == true && nr.PlayerCredits >= 10)
                     {
                         PlayerAction playerAction;
 
                         CardMethods card = new CardMethods();
 
-                        if (card.ValueHands(nr.PlayerHand) <= 11 && (card.ValueHands(nr.Dealerhand) <= 6))
+                        int playerHand = card.ValueHands(nr.PlayerHand);
+                        int dealerHand = card.ValueHands(nr.Dealerhand);
+
+                        //if (card.ValueHands(nr.PlayerHand) >= 5 && card.ValueHands(nr.PlayerHand) <= 10)
+                        //{
+                        //    playerAction = PlayerAction.Double;
+                        //    rs.Double = true;
+                        //    rs.Bet = rs.Bet + rs.Bet;
+                        //}
+                        //else if (card.ValueHands(nr.PlayerHand) < 5 && card.ValueHands(nr.Dealerhand) == 11)
+                        //    playerAction = PlayerAction.Surrender;
+                        //else if (card.ValueHands(nr.PlayerHand) <= 16)
+                        //    playerAction = PlayerAction.Hit;
+                        //else if (card.ValueHands(nr.PlayerHand) >= 17)
+                        //    playerAction = PlayerAction.Stand;
+                        //else
+                        //    playerAction = PlayerAction.Surrender;
+
+                        if (dealerHand >= 9 && playerHand == 16)
+                            playerAction = PlayerAction.Surrender;
+                        else if (dealerHand == 10 && playerHand == 15)
+                            playerAction = PlayerAction.Surrender;
+                        else if (playerHand >= 17 && playerHand <= 21)
+                            playerAction = PlayerAction.Stand;
+                        else if (playerHand == 16 && dealerHand >= 7 && dealerHand <= 8)
+                            playerAction = PlayerAction.Hit;
+                        else if (playerHand == 16 && dealerHand >= 2 && dealerHand <= 6)
+                            playerAction = PlayerAction.Stand;
+                        else if (playerHand == 15 && dealerHand == 11)
+                            playerAction = PlayerAction.Hit;
+                        else if (playerHand == 15 && dealerHand >= 7 && dealerHand <= 9)
+                            playerAction = PlayerAction.Hit;
+                        else if (playerHand == 15 && dealerHand >= 2 && dealerHand <= 6)
+                            playerAction = PlayerAction.Stand;
+                        else if (playerHand >= 12 && playerHand <= 14 && dealerHand >= 7)
+                            playerAction = PlayerAction.Hit;
+                        else if (playerHand >= 13 && playerHand <= 14 && dealerHand >= 2 && dealerHand <= 6)
+                            playerAction = PlayerAction.Stand;
+                        else if (playerHand == 12 && dealerHand >= 4 && dealerHand <= 6)
+                            playerAction = PlayerAction.Stand;
+                        else if (playerHand == 12 && dealerHand >= 2 && dealerHand <= 3)
+                            playerAction = PlayerAction.Hit;
+                        else if (playerHand == 11 && dealerHand == 11)
+                            playerAction = PlayerAction.Hit;
+                        else if (playerHand == 11)
                         {
                             playerAction = PlayerAction.Double;
-                            rs.Double = true;                           
+                            rs.Double = true;
+                            rs.Bet = rs.Bet + rs.Bet;
                         }
-                        else if (card.ValueHands(nr.PlayerHand) <= 11)
-                            playerAction = PlayerAction.Hit;                       
-                        else if (card.ValueHands(nr.Dealerhand) >= 9 && (card.ValueHands(nr.PlayerHand) < 8))
-                            playerAction = PlayerAction.Surrender;
-                        else if (card.ValueHands(nr.PlayerHand) >= 15)
-                            playerAction = PlayerAction.Stand;
-                        else if (card.ValueHands(nr.PlayerHand) >= 12 && (card.ValueHands(nr.PlayerHand) <= 14) && (card.ValueHands(nr.Dealerhand) <= 9))
+                        else if (playerHand == 10 && dealerHand >= 10)
                             playerAction = PlayerAction.Hit;
-                        else if (card.ValueHands(nr.PlayerHand) >= 12 && (card.ValueHands(nr.PlayerHand) <= 14) && (card.ValueHands(nr.Dealerhand) >= 10))
-                            playerAction = PlayerAction.Stand;
+                        else if (playerHand == 10)
+                        {
+                            playerAction = PlayerAction.Double;
+                            rs.Double = true;
+                            rs.Bet = rs.Bet + rs.Bet;
+                        }
+                        else if (playerHand == 9 && dealerHand >= 7)
+                            playerAction = PlayerAction.Hit;
+                        else if (playerHand == 9 && dealerHand >= 3)
+                        {
+                            playerAction = PlayerAction.Double;
+                            rs.Double = true;
+                            rs.Bet = rs.Bet + rs.Bet;
+                        }
+                        else if (playerHand == 9)
+                            playerAction = PlayerAction.Hit;
                         else
-                            playerAction = PlayerAction.Surrender;
+                            playerAction = PlayerAction.Hit;
 
-
-
-                        PlayApiRequest req = new PlayApiRequest(nr.GameId, (int)playerAction, rs.Bet);
+                        PlayApiRequest req = new PlayApiRequest(nr.GameId, (int)playerAction, initialBet);
                         response = client.PostAsJsonAsync("/api/Play", req).Result;
                         if (!response.IsSuccessStatusCode)
                         {
@@ -116,8 +168,10 @@ namespace BlackJack.Controllers
 
                         nr = response.Content.ReadAsAsync<PlayApiResponse>().Result;
 
-                        if(playerAction==PlayerAction.Double)
+                        if (playerAction == PlayerAction.Double)
                             rs.Bet = rs.Bet + rs.Bet;
+                        else
+                            rs.Bet = initialBet;
 
                         if (card.ValueHands(nr.Dealerhand) == 21 && nr.Dealerhand.Count == 2)
                             rs.DealerBlackjack = true;
@@ -167,7 +221,7 @@ namespace BlackJack.Controllers
                 }
                 g.AvgBet = g.AvgBet / rounds.Count();
 
-                ViewBag.Game = g;              
+                ViewBag.Game = g;
 
                 return View("Result", rounds);
             }
