@@ -134,25 +134,40 @@ namespace BlackJack.Controllers
                             playerAction = PlayerAction.Hit;
                         else if (playerHand == 11)
                         {
-                            playerAction = PlayerAction.Double;
-                            rs.Double = true;
-                            rs.Bet = rs.Bet + rs.Bet;
+                            if (nr.PlayerCredits >= 10)
+                            {
+                                playerAction = PlayerAction.Double;
+                                rs.Double = true;
+                                rs.Bet = rs.Bet + rs.Bet;
+                            }
+                            else
+                                playerAction = PlayerAction.Hit;
                         }
                         else if (playerHand == 10 && dealerHand >= 10)
                             playerAction = PlayerAction.Hit;
                         else if (playerHand == 10)
                         {
-                            playerAction = PlayerAction.Double;
-                            rs.Double = true;
-                            rs.Bet = rs.Bet + rs.Bet;
+                            if (nr.PlayerCredits >= 10)
+                            {
+                                playerAction = PlayerAction.Double;
+                                rs.Double = true;
+                                rs.Bet = rs.Bet + rs.Bet;
+                            }
+                            else
+                                playerAction = PlayerAction.Hit;
                         }
                         else if (playerHand == 9 && dealerHand >= 7)
                             playerAction = PlayerAction.Hit;
                         else if (playerHand == 9 && dealerHand >= 3)
                         {
-                            playerAction = PlayerAction.Double;
-                            rs.Double = true;
-                            rs.Bet = rs.Bet + rs.Bet;
+                            if (nr.PlayerCredits >= 10)
+                            {
+                                playerAction = PlayerAction.Double;
+                                rs.Double = true;
+                                rs.Bet = rs.Bet + rs.Bet;
+                            }
+                            else
+                                playerAction = PlayerAction.Hit;
                         }
                         else if (playerHand == 9)
                             playerAction = PlayerAction.Hit;
