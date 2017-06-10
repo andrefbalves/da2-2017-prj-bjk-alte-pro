@@ -204,7 +204,7 @@ div.btnrules {
 
 table.tableop tbody{    
     height: 370px;
-    overflow: auto;    
+    overflow: auto;     
 }
 
 table.tableop  td{ 
@@ -212,12 +212,12 @@ table.tableop  td{
 }
 
 table.tableop  tr{
-    background-color:#222222;
+    background-color:#222222;    
 }
 
-table.tableop thead > .tableop tr, tbody{
+/*table.tableop thead > .tableop tr, tbody{
     display:block;
-}
+}*/
 
 /*th {
     text-align: center;
