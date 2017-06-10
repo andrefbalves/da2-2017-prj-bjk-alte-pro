@@ -215,13 +215,9 @@ table.tableop  tr{
     background-color:#222222;    
 }
 
-/*table.tableop thead > .tableop tr, tbody{
-    display:block;
-}*/
-
-/*th {
+table.tableop th {
     text-align: center;
-}*/
+}
 
 .btnrules {
     color: black;
