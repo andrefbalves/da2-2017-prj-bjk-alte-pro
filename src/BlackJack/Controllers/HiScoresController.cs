@@ -21,7 +21,6 @@ namespace BlackJack.Controllers
                 //if (hs.PlayerName == high.PlayerName)
                     //return high;
             }
-
             int x;
             if (hs.Bool == true)
                 x = hs.Id;
