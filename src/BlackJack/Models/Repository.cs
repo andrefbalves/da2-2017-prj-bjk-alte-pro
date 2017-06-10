@@ -89,8 +89,8 @@ namespace BlackJack.Models
         }
         public static List<Game> HiScores(HiScores p)
         {
-
-            return Games; //não é games.....
+            
+            return Repository.HiScores(p);
         }
 
     }

@@ -13,7 +13,8 @@ namespace BlackJack.Models
         public string PlayerName { get; set; }
 
         public bool Bool { get; set; }
-
+        
+       
         public HiScores()
         {}
     }
