@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Models
 {
-    public class TeamMember : Controller
+    public class TeamMember
     {
         public string NomeEquipa  { get; set; }
 

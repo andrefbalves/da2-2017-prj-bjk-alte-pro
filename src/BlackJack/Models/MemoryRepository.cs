@@ -81,7 +81,7 @@ namespace BlackJack.Models
             d.NumeroMembro = 150323035;
 
         }
-        public static List<Game> HiScores(HiScores p)
+        public static List<Game> HiScores(HighScores p)
         {
 
             return Games;

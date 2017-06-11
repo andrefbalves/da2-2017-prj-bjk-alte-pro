@@ -8,13 +8,13 @@ using BlackJack.Models;
 namespace BlackJack.Controllers
 {
     [Route("api/[controller]")]
-    public class IdentificarEquipaProjeto : Controller
+    public class IdentificarEquipaProjetoController : Controller
     {
 
         [HttpGet]
         public List<TeamMember> Get()
         {
-            return Repository.Identificacao;
+            return Repository.Members;
         }
 
     }

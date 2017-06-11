@@ -68,10 +68,15 @@ namespace BlackJack.Models
             rounds.Clear();
         }
 
-        private static List<TeamMember> identificacao = new List<TeamMember>();
-        public static List<TeamMember> Identificacao
+        private static List<TeamMember> members = new List<TeamMember>();
+        public static List<TeamMember> Members
         {
-            get { return identificacao; }
+            get { return members; }
+        }
+
+        public static void AddMember(TeamMember newmember)
+        {
+            members.Add(newmember);
         }
 
         static Repository()
@@ -86,12 +91,19 @@ namespace BlackJack.Models
             a.NumeroMembro = 150323014;
             d.NumeroMembro = 150323035;
 
-        }
-        public static List<Game> HiScores(HiScores p)
-        {
-            return Repository.HiScores(p);
+            AddMember(a);
+            AddMember(d);
         }
 
-        
+        private static List<HighScores> highscores = new List<HighScores>();
+        public static List<HighScores> Highscores
+        {
+            get { return highscores; }
+        }
+
+        public static void AddHighScore(HighScores newhighscore)
+        {
+            highscores.Add(newhighscore);
+        }               
     }
 }
